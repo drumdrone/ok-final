@@ -163,6 +163,8 @@
     color: var(--ink-soft);
   }
 
+  .top-actions { display: inline-flex; align-items: center; gap: 8px; }
+
   .theme-toggle {
     appearance: none;
     background: var(--panel);
@@ -457,10 +459,15 @@
         <div class="sub">Fáze 2 (Cursor) · větev <code>claude/okfinal-nextjs-migration-a2du70</code></div>
       </div>
     </div>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Přepnout motiv">
-      <span class="dot" aria-hidden="true"></span>
-      <span>Motiv</span>
-    </button>
+    <div class="top-actions">
+      <button type="button" class="theme-toggle" id="resetBtn" aria-label="Resetovat na výchozí stav" title="Vymaže tvoje změny a načte výchozí stav ze zdroje.">
+        Reset
+      </button>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Přepnout motiv">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Motiv</span>
+      </button>
+    </div>
   </header>
 
   <!-- Overall -->
@@ -468,8 +475,9 @@
     <div class="overall-head">
       <div class="pct"><span class="n" id="overallN">9</span><span class="unit">%</span></div>
       <p class="lede">
-        Fáze 1 (plán) prakticky <strong>hotová</strong>. Zbývá schůzka
-        s klientem a mockup — pak Cursor spouští Fázi 2.
+        <strong>Scaffold, obsah, admin shell a formulář hotové.</strong>
+        Zbývá schůzka s klientem, mockup a věci, které potřebují reálné
+        klíče: Convex, Resend, Turnstile, Netlify, DNS.
       </p>
     </div>
 
@@ -526,6 +534,13 @@
     });
   })();
 
+  // Reset
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    if (!confirm("Smazat tvoje úpravy a načíst výchozí stav ze zdroje?")) return;
+    try { localStorage.removeItem("planner:okfinal:v2"); } catch {}
+    location.reload();
+  });
+
   // Data
   const sections = [
     {
@@ -546,53 +561,53 @@
       code: "B",
       title: "Setup & infrastruktura",
       tasks: [
-        ["B1", "create-next-app / klon starteru", "queue"],
+        ["B1", "create-next-app (Next 16 App Router + TS)", "ok"],
         ["B2", "Convex projekt (npx convex dev)", "queue"],
         ["B3", ".env.local — Convex / Resend / Turnstile / ADMIN", "queue"],
-        ["B4", "Tailwind tokeny — steel + accent paleta", "queue"],
-        ["B5", "Inter font přes next/font/google", "queue"],
-        ["B6", "Favicon + apple-touch-icon", "queue"],
-        ["B7", "sitemap.ts + robots.ts", "queue"],
+        ["B4", "Tailwind tokeny — steel + accent paleta", "ok"],
+        ["B5", "Inter font přes next/font/google", "ok"],
+        ["B6", "Favicon (SVG)", "ok"],
+        ["B7", "sitemap.ts + robots.ts", "ok"],
       ],
     },
     {
       code: "C",
       title: "Layout & sdílené komponenty",
       tasks: [
-        ["C1", "Header — nav (6 pol.), CTA, mobile", "queue"],
-        ["C2", "Footer — kontakty, mapa webu, IČ/DIČ", "queue"],
-        ["C3", "Section + SectionHeader wrapper", "queue"],
-        ["C4", "Reveal (scroll-in animace)", "queue"],
-        ["C5", "JsonLd komponenta", "queue"],
-        ["C6", "site.ts — contacts, nav, services", "queue"],
+        ["C1", "Header — nav (7 pol.), CTA, mobile", "ok"],
+        ["C2", "Footer — kontakty, mapa webu, IČ/DIČ", "ok"],
+        ["C3", "Section + SectionHeader + PageHero", "ok"],
+        ["C4", "Reveal (scroll-in animace)", "ok"],
+        ["C5", "JsonLd komponenta", "ok"],
+        ["C6", "site.ts — contacts, nav, services", "ok"],
       ],
     },
     {
       code: "D",
       title: "Stránky (obsah)",
       tasks: [
-        ["D1", "Home — hero (tmavý, stat řada)", "queue"],
-        ["D2", "Home — sekce služeb (3 karty)", "queue"],
-        ["D3", "Home — band „33 let\"", "queue"],
-        ["D4", "Home — segmenty zákazníků", "queue"],
-        ["D5", "Home — CTA band (oranžový)", "queue"],
-        ["D6", "/o-firme — storytelling + timeline", "queue"],
-        ["D7", "/nase-sluzby — 3 sekce s kotvami", "queue"],
-        ["D8", "/certifikaty — grid osvědčení", "queue"],
-        ["D9", "/kariera — Convex jobs + fallback", "queue"],
-        ["D10", "/kontakt — karty + mapa", "queue"],
-        ["D11", "/faq — 10 otázek (SEO)", "queue"],
+        ["D1", "Home — hero (tmavý, stat řada, tech grid)", "ok"],
+        ["D2", "Home — sekce služeb (3 karty)", "ok"],
+        ["D3", "Home — band „33 let\"", "ok"],
+        ["D4", "Home — segmenty zákazníků", "ok"],
+        ["D5", "Home — CTA band (oranžový)", "ok"],
+        ["D6", "/o-firme — storytelling + timeline", "ok"],
+        ["D7", "/nase-sluzby — 3 sekce s kotvami", "ok"],
+        ["D8", "/certifikaty — grid osvědčení", "ok"],
+        ["D9", "/kariera — fallback (Convex později)", "ok"],
+        ["D10", "/kontakt — karty + mapa + formulář", "ok"],
+        ["D11", "/faq — 10 otázek (SEO)", "ok"],
       ],
     },
     {
       code: "E",
       title: "Kontaktní formulář",
       tasks: [
-        ["E1", "ContactForm — pole, validace", "queue"],
+        ["E1", "ContactForm — pole, validace", "ok"],
         ["E2", "Cloudflare Turnstile widget", "queue"],
         ["E3", "Upload PDF/DWG → Convex storage", "queue"],
-        ["E4", "POST /api/contact route handler", "queue"],
-        ["E5", "Mutation inquiries:create", "queue"],
+        ["E4", "POST /api/contact route handler (stub)", "ok"],
+        ["E5", "Convex schema pro inquiries", "ok"],
         ["E6", "Action sendInquiryMail (Resend)", "queue"],
         ["E7", "Rate limit 3 / IP / hod", "queue"],
         ["E8", "Success stav + potvrzovací mail", "queue"],
@@ -602,23 +617,23 @@
       code: "F",
       title: "Admin",
       tasks: [
-        ["F1", "/admin/login + JWT cookie", "queue"],
-        ["F2", "Middleware /admin/*", "queue"],
-        ["F3", "Dashboard (počet nových poptávek)", "queue"],
-        ["F4", "/admin/kontakty — edit", "queue"],
-        ["F5", "/admin/kariera — CRUD", "queue"],
-        ["F6", "/admin/poptavky — list + detail", "queue"],
+        ["F1", "/admin/login + cookie session", "ok"],
+        ["F2", "Proxy /admin/* (Next 16 middleware)", "ok"],
+        ["F3", "Dashboard (počet nových poptávek)", "ok"],
+        ["F4", "/admin/kontakty — přehled", "ok"],
+        ["F5", "/admin/kariera — CRUD (bez Convexu)", "ok"],
+        ["F6", "/admin/poptavky — list + detail (empty state)", "ok"],
       ],
     },
     {
       code: "G",
       title: "SEO & JSON-LD",
       tasks: [
-        ["G1", "generateMetadata per stránka", "queue"],
-        ["G2", "Organization JSON-LD v layoutu", "queue"],
-        ["G3", "LocalBusiness na /", "queue"],
-        ["G4", "Service × 3 na /nase-sluzby", "queue"],
-        ["G5", "FAQPage na /faq", "queue"],
+        ["G1", "generateMetadata per stránka", "ok"],
+        ["G2", "Organization JSON-LD v layoutu", "ok"],
+        ["G3", "LocalBusiness na /", "ok"],
+        ["G4", "Service × 3 na /nase-sluzby", "ok"],
+        ["G5", "FAQPage na /faq", "ok"],
         ["G6", "OG obrázky per stránka", "queue"],
       ],
     },
@@ -638,7 +653,7 @@
       code: "I",
       title: "Deploy & spuštění",
       tasks: [
-        ["I1", "netlify.toml + Next plugin", "queue"],
+        ["I1", "netlify.toml + Next plugin", "ok"],
         ["I2", "ENV do Netlify dashboardu", "queue"],
         ["I3", "Convex production deployment", "queue"],
         ["I4", "Preview deploy — projít 6 URL", "queue"],
@@ -658,7 +673,7 @@
   };
 
   // ── State (with localStorage persistence) ──────────────────────
-  const STORAGE_KEY = "planner:okfinal:v1";
+  const STORAGE_KEY = "planner:okfinal:v2";
   const stored = (() => {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
     catch { return {}; }
