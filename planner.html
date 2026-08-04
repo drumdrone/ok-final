@@ -278,6 +278,24 @@
   .legend .lg-dot.wip   { background: var(--wip); }
   .legend .lg-dot.queue { border-color: var(--queue); background: transparent; }
   .legend .lg-dot.bug   { background: var(--bug); }
+  .legend .hint {
+    color: var(--muted);
+    font-size: 11.5px;
+    margin-left: auto;
+    letter-spacing: 0.01em;
+  }
+  .legend .hint kbd {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border-strong);
+    background: var(--panel-2);
+    color: var(--ink-soft);
+  }
+  @media (max-width: 780px) {
+    .legend .hint { margin-left: 0; }
+  }
 
   /* ── Section grid ─────────────────────────────────────────────── */
   .grid {
@@ -327,7 +345,7 @@
   .tasks { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
   .tasks li {
     display: grid;
-    grid-template-columns: 22px 44px 1fr auto;
+    grid-template-columns: 28px 44px 1fr auto;
     align-items: center;
     gap: 10px;
     padding: 9px 0;
@@ -338,21 +356,35 @@
   .tasks li:last-child { border-bottom: none; }
 
   .status {
-    width: 18px; height: 18px;
+    width: 22px; height: 22px;
     display: grid; place-items: center;
     border-radius: 50%;
+    padding: 0;
+    background: transparent;
+    border: 1.5px solid transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    transition: transform 0.1s ease, box-shadow 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
   }
-  .status.ok    { background: var(--ok); color: #fff; }
+  .status:hover { transform: scale(1.12); }
+  .status:active { transform: scale(0.95); }
+  .status:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-tint), 0 0 0 4.5px var(--accent);
+  }
+  .status.ok    { background: var(--ok); color: #fff; border-color: var(--ok); }
   .status.wip   {
-    background: var(--wip); color: #fff;
+    background: var(--wip); color: #fff; border-color: var(--wip);
     animation: pulse 2.4s ease-in-out infinite;
   }
   .status.queue {
     background: transparent;
-    border: 1.5px solid var(--queue);
+    border-color: var(--queue);
   }
-  .status.bug   { background: var(--bug); color: #fff; }
-  .status svg { width: 11px; height: 11px; display: block; }
+  .status.bug   { background: var(--bug); color: #fff; border-color: var(--bug); }
+  .status svg { width: 12px; height: 12px; display: block; }
 
   @keyframes pulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.35); }
@@ -459,6 +491,7 @@
       <span><span class="lg-dot wip"></span>Probíhá</span>
       <span><span class="lg-dot queue"></span>Čeká</span>
       <span><span class="lg-dot bug"></span>Blokované / bug</span>
+      <span class="hint">Klikni na kolečko: čeká → probíhá → hotovo. <kbd>Shift</kbd>+klik: bug on/off. Stav se ukládá lokálně.</span>
     </div>
   </section>
 
@@ -624,6 +657,30 @@
     bug:   "Bug",
   };
 
+  // ── State (with localStorage persistence) ──────────────────────
+  const STORAGE_KEY = "planner:okfinal:v1";
+  const stored = (() => {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch { return {}; }
+  })();
+
+  const taskIndex = new Map();   // code → { section, taskArr, dot, pill, li }
+  const sectionMeta = new Map(); // sectionCode → { card, bar, pctlbl, tasks: [taskArr] }
+
+  sections.forEach((s) => {
+    s.tasks.forEach((t) => {
+      if (stored[t[0]] && ["ok","wip","queue","bug"].includes(stored[t[0]])) {
+        t[2] = stored[t[0]];
+      }
+    });
+  });
+
+  function persist() {
+    const snap = {};
+    taskIndex.forEach((v, k) => { snap[k] = v.taskArr[2]; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(snap)); } catch {}
+  }
+
   // Cache status icons
   const iconSrc = document.getElementById("statusIcons");
   function iconFor(status) {
@@ -631,70 +688,151 @@
     return svg ? svg.cloneNode(true) : null;
   }
 
+  const CYCLE = ["queue", "wip", "ok"];   // click cycle
+  function nextStatus(cur) {
+    const i = CYCLE.indexOf(cur);
+    return CYCLE[(i + 1) % CYCLE.length];
+  }
+
+  function applyDot(dot, status) {
+    dot.className = `status ${status}`;
+    dot.innerHTML = "";
+    const ic = iconFor(status);
+    if (ic) dot.appendChild(ic);
+    dot.setAttribute("aria-label", `Stav: ${statusLabel[status]}. Klik změní.`);
+    dot.setAttribute("title", `${statusLabel[status]} — klik pro změnu, Shift+klik pro bug.`);
+  }
+
+  function setTaskStatus(code, status) {
+    const entry = taskIndex.get(code);
+    if (!entry) return;
+    entry.taskArr[2] = status;
+    entry.li.dataset.status = status;
+    applyDot(entry.dot, status);
+    entry.pill.className = `pill ${status}`;
+    entry.pill.textContent = statusLabel[status];
+    recomputeSection(entry.section);
+    recomputeOverall();
+    persist();
+  }
+
+  function recomputeSection(sectionCode) {
+    const meta = sectionMeta.get(sectionCode);
+    if (!meta) return;
+    const total = meta.tasks.length;
+    const done = meta.tasks.filter(t => t[2] === "ok").length;
+    const wip  = meta.tasks.filter(t => t[2] === "wip").length;
+    const bug  = meta.tasks.filter(t => t[2] === "bug").length;
+    const pct  = Math.round((done / total) * 100);
+    meta.pctlbl.textContent = pct + "%";
+    meta.bar.children[0].style.width = (done / total) * 100 + "%";
+    meta.bar.children[1].style.width = (wip  / total) * 100 + "%";
+    meta.bar.children[2].style.width = (bug  / total) * 100 + "%";
+  }
+
+  function recomputeOverall() {
+    let c = { ok: 0, wip: 0, queue: 0, bug: 0 };
+    taskIndex.forEach((v) => { c[v.taskArr[2]]++; });
+    const total = c.ok + c.wip + c.queue + c.bug;
+    const pct = total ? Math.round((c.ok / total) * 100) : 0;
+    document.getElementById("overallN").textContent = pct;
+    document.getElementById("cOk").textContent = c.ok;
+    document.getElementById("cWip").textContent = c.wip;
+    document.getElementById("cQueue").textContent = c.queue;
+    document.getElementById("cBug").textContent = c.bug;
+    const bar = document.getElementById("overallBar");
+    bar.children[0].style.width = (c.ok  / total) * 100 + "%";
+    bar.children[1].style.width = (c.wip / total) * 100 + "%";
+    bar.children[2].style.width = (c.bug / total) * 100 + "%";
+  }
+
+  // ── Render ─────────────────────────────────────────────────────
   const grid = document.getElementById("sections");
-  let counts = { ok: 0, wip: 0, queue: 0, bug: 0 };
 
   sections.forEach((s) => {
-    const total = s.tasks.length;
-    const done  = s.tasks.filter(t => t[2] === "ok").length;
-    const wip   = s.tasks.filter(t => t[2] === "wip").length;
-    const bug   = s.tasks.filter(t => t[2] === "bug").length;
-    const pct   = Math.round((done / total) * 100);
-
-    counts.ok    += done;
-    counts.wip   += wip;
-    counts.bug   += bug;
-    counts.queue += s.tasks.filter(t => t[2] === "queue").length;
-
     const card = document.createElement("section");
     card.className = "card section";
     card.innerHTML = `
       <div class="head">
         <div class="badge">${s.code}</div>
         <h2>${s.title}</h2>
-        <div class="pctlbl">${pct}%</div>
+        <div class="pctlbl">0%</div>
       </div>
       <div class="bar" aria-hidden="true">
-        <span class="seg-ok"  style="width:${(done/total)*100}%"></span>
-        <span class="seg-wip" style="width:${(wip/total)*100}%"></span>
-        <span class="seg-bug" style="width:${(bug/total)*100}%"></span>
+        <span class="seg-ok"></span>
+        <span class="seg-wip"></span>
+        <span class="seg-bug"></span>
       </div>
       <ul class="tasks"></ul>
     `;
     const ul = card.querySelector("ul");
-    s.tasks.forEach(([code, name, status]) => {
+    sectionMeta.set(s.code, {
+      card,
+      bar: card.querySelector(".bar"),
+      pctlbl: card.querySelector(".pctlbl"),
+      tasks: s.tasks,
+    });
+
+    s.tasks.forEach((t) => {
+      const [code, name, status] = t;
       const li = document.createElement("li");
       li.dataset.status = status;
-      const st = document.createElement("span");
-      st.className = `status ${status}`;
-      const ic = iconFor(status);
-      if (ic) st.appendChild(ic);
+
+      const dot = document.createElement("button");
+      dot.type = "button";
+      applyDot(dot, status);
+
       const cd = document.createElement("span");
       cd.className = "code";
       cd.textContent = code;
+
       const nm = document.createElement("span");
       nm.className = "task-name";
       nm.textContent = name;
+
       const pl = document.createElement("span");
       pl.className = `pill ${status}`;
       pl.textContent = statusLabel[status];
-      li.append(st, cd, nm, pl);
+
+      taskIndex.set(code, { section: s.code, taskArr: t, dot, pill: pl, li });
+
+      dot.addEventListener("click", (e) => {
+        e.preventDefault();
+        const cur = t[2];
+        if (e.shiftKey) {
+          setTaskStatus(code, cur === "bug" ? "queue" : "bug");
+        } else {
+          setTaskStatus(code, nextStatus(cur === "bug" ? "queue" : cur));
+        }
+      });
+
+      li.append(dot, cd, nm, pl);
       ul.appendChild(li);
     });
+
     grid.appendChild(card);
+    recomputeSection(s.code);
   });
 
-  // Recompute overall (in case data changes)
-  const totalTasks = counts.ok + counts.wip + counts.queue + counts.bug;
-  const overallPct = totalTasks ? Math.round((counts.ok / totalTasks) * 100) : 0;
-  document.getElementById("overallN").textContent  = overallPct;
-  document.getElementById("cOk").textContent       = counts.ok;
-  document.getElementById("cWip").textContent      = counts.wip;
-  document.getElementById("cQueue").textContent    = counts.queue;
-  document.getElementById("cBug").textContent      = counts.bug;
+  recomputeOverall();
 
-  const bar = document.getElementById("overallBar");
-  bar.children[0].style.width = (counts.ok    / totalTasks) * 100 + "%";
-  bar.children[1].style.width = (counts.wip   / totalTasks) * 100 + "%";
-  bar.children[2].style.width = (counts.bug   / totalTasks) * 100 + "%";
+  // Sync across tabs
+  window.addEventListener("storage", (e) => {
+    if (e.key !== STORAGE_KEY || !e.newValue) return;
+    try {
+      const snap = JSON.parse(e.newValue);
+      Object.entries(snap).forEach(([code, st]) => {
+        const entry = taskIndex.get(code);
+        if (entry && entry.taskArr[2] !== st) {
+          entry.taskArr[2] = st;
+          entry.li.dataset.status = st;
+          applyDot(entry.dot, st);
+          entry.pill.className = `pill ${st}`;
+          entry.pill.textContent = statusLabel[st];
+          recomputeSection(entry.section);
+        }
+      });
+      recomputeOverall();
+    } catch {}
+  });
 </script>
