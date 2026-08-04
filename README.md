@@ -1,30 +1,73 @@
-# okfinal.cz — migrace na Next.js
+# okfinal.cz — Next.js migrace
 
-Plánovací repo pro migraci webu **OK FINAL s.r.o.** (přesné soustružení
-a svařování kovů) z WordPress/Elementor na Next.js.
+Web pro **OK FINAL s.r.o.** (přesné soustružení a svařování kovů),
+migrace z WordPress/Elementor na Next.js 15 + Convex.
 
-Vlastní kód budu psát v Cursoru. Tenhle repozitář obsahuje jen podklady,
-aby Cursor (a já v něm) věděli, co stavět.
+## Rychlý start
 
-## Obsah
+```bash
+cp .env.example .env.local          # doplnit klíče (viz níže)
+npm install
+npm run dev
+```
+
+Otevře se na `http://localhost:3000`.
+
+Doplň nejdřív `ADMIN_PASSWORD` a `ADMIN_JWT_SECRET`, ať funguje `/admin`.
+Zbytek klíčů (Convex, Resend, Turnstile) je pro produkční feature.
+
+## Struktura
+
+```
+src/
+  app/
+    layout.tsx           root layout + font + Organization JSON-LD
+    page.tsx             /              — homepage
+    o-firme/             /o-firme
+    nase-sluzby/         /nase-sluzby   (+ kotvy #soustruzeni …)
+    certifikaty/         /certifikaty
+    kariera/             /kariera       (fallback bez Convexu)
+    kontakt/             /kontakt       (karty + mapa + formulář)
+    faq/                 /faq           (SEO — 10 otázek + JSON-LD)
+    admin/               /admin         (login, dashboard, poptavky, kariera, kontakty)
+    api/
+      contact/           POST — přijme poptávku (zatím stub log)
+      admin/
+        login/           POST — přihlášení
+        logout/          POST — odhlášení
+    sitemap.ts           /sitemap.xml
+    robots.ts            /robots.txt
+    icon.svg             favicon
+  components/
+    Header.tsx / Footer.tsx / Section.tsx / Reveal.tsx / JsonLd.tsx
+    ContactForm.tsx
+  lib/
+    site.ts              zdroj pravdy — adresa, kontakty, služby, nav
+    schema.ts            JSON-LD generátory (Organization / LocalBusiness / Service / FAQ)
+    auth.ts              minimal cookie session pro admin
+  middleware.ts          brána /admin/*
+convex/
+  schema.ts              tabulky contacts, jobs, inquiries, rateLimits
+```
+
+## Plánovací dokumenty
 
 | Soubor | K čemu je |
 |---|---|
-| [`BRIEF.md`](./BRIEF.md) | Původní zadání od klienta / z předprodejní fáze |
-| [`PLAN.md`](./PLAN.md) | Konkrétní stavební plán: stack, struktura, komponenty, data model |
-| [`PROGRESS.md`](./PROGRESS.md) | Progress board — checklist, který se zaškrtává během stavby |
-| [`PROMPTS.md`](./PROMPTS.md) | Sada promptů pro Cursor — krok po kroku, spustitelné 1:1 |
-| [`OPEN-QUESTIONS.md`](./OPEN-QUESTIONS.md) | Otázky na klienta, které blokují finální rozhodnutí |
+| [`BRIEF.md`](./BRIEF.md) | Původní zadání od klienta |
+| [`PLAN.md`](./PLAN.md) | Stack, tokeny, routing, data model, komponenty |
+| [`PROGRESS.md`](./PROGRESS.md) | Textový checklist per úkol |
+| [`planner.html`](./planner.html) | Interaktivní progress board (Artifact) |
+| [`PROMPTS.md`](./PROMPTS.md) | Prompty pro Cursor, když budeš dostavovat zbytek |
+| [`OPEN-QUESTIONS.md`](./OPEN-QUESTIONS.md) | Věci na klienta před dokončením |
 
-## Rychlá orientace
+## Co ještě chybí (potřebuje tvůj vstup)
 
-1. **Přečti `BRIEF.md`** — kontext projektu.
-2. **`PLAN.md`** říká *co* se staví.
-3. **`PROMPTS.md`** říká *jak* to nakopat do Cursoru krok po kroku.
-4. **`PROGRESS.md`** zaškrtávej během práce, ať vidíš, kde jsi.
-5. **`OPEN-QUESTIONS.md`** vyřiď s klientem před fází 2.
+- **Convex** — založit projekt (`npx convex dev`), doplnit `NEXT_PUBLIC_CONVEX_URL`,
+  napojit `/kariera`, `/admin/*` a formulář na reálné tabulky.
+- **Resend** — API klíč, ověřená doména `okfinal.cz`, `RESEND_FROM`.
+- **Cloudflare Turnstile** — site key + secret, přidat widget do `ContactForm`.
+- **Netlify** — deploy, ENV proměnné, DNS přepnutí.
+- **Klient** — schválit design, dodat fotky výroby, potvrdit texty.
 
-## Metodika
-
-Postupuji podle interního **PLAYBOOK.md** (Claude → Cursor → Next.js starter).
-Tenhle repozitář odpovídá výstupu **Fáze 1** playbooku pro konkrétní projekt.
+Detaily viz `OPEN-QUESTIONS.md`.
