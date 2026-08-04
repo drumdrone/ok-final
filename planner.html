@@ -1,0 +1,700 @@
+<title>Planner · okfinal.cz</title>
+
+<style>
+  :root {
+    --bg: #fafbfc;
+    --panel: #ffffff;
+    --panel-2: #f4f6f8;
+    --ink: #0f1724;
+    --ink-soft: #354458;
+    --muted: #6b7787;
+    --border: #e6ebf0;
+    --border-strong: #cfd6de;
+
+    --accent: #f97316;
+    --accent-ink: #7a3908;
+    --accent-tint: #fff2e6;
+
+    --ok: #16a34a;
+    --ok-tint: #dcfce7;
+    --wip: #f97316;
+    --wip-tint: #ffedd5;
+    --queue: #94a3b8;
+    --queue-tint: #eef2f6;
+    --bug: #dc2626;
+    --bug-tint: #fee2e2;
+
+    --radius: 14px;
+    --radius-sm: 8px;
+
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
+      "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1420;
+      --panel: #17202f;
+      --panel-2: #1c2634;
+      --ink: #eef1f5;
+      --ink-soft: #c3ccd8;
+      --muted: #8a97a8;
+      --border: #253143;
+      --border-strong: #334159;
+
+      --accent: #fb923c;
+      --accent-ink: #ffd7b0;
+      --accent-tint: #3a2311;
+
+      --ok: #22c55e;
+      --ok-tint: #0e2a1a;
+      --wip: #fb923c;
+      --wip-tint: #3a2311;
+      --queue: #64748b;
+      --queue-tint: #1f2836;
+      --bug: #ef4444;
+      --bug-tint: #3a1618;
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #fafbfc;
+    --panel: #ffffff;
+    --panel-2: #f4f6f8;
+    --ink: #0f1724;
+    --ink-soft: #354458;
+    --muted: #6b7787;
+    --border: #e6ebf0;
+    --border-strong: #cfd6de;
+    --accent: #f97316;
+    --accent-ink: #7a3908;
+    --accent-tint: #fff2e6;
+    --ok: #16a34a; --ok-tint: #dcfce7;
+    --wip: #f97316; --wip-tint: #ffedd5;
+    --queue: #94a3b8; --queue-tint: #eef2f6;
+    --bug: #dc2626; --bug-tint: #fee2e2;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1420;
+    --panel: #17202f;
+    --panel-2: #1c2634;
+    --ink: #eef1f5;
+    --ink-soft: #c3ccd8;
+    --muted: #8a97a8;
+    --border: #253143;
+    --border-strong: #334159;
+    --accent: #fb923c;
+    --accent-ink: #ffd7b0;
+    --accent-tint: #3a2311;
+    --ok: #22c55e; --ok-tint: #0e2a1a;
+    --wip: #fb923c; --wip-tint: #3a2311;
+    --queue: #64748b; --queue-tint: #1f2836;
+    --bug: #ef4444; --bug-tint: #3a1618;
+  }
+
+  html, body { background: var(--bg); color: var(--ink); }
+  body {
+    font-family: var(--font-body);
+    font-feature-settings: "cv02", "cv03", "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 24px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ── Header ───────────────────────────────────────────────────── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 6px 4px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .brand-mark {
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06), inset 0 -2px 0 rgba(0,0,0,0.1);
+  }
+  .brand-meta { min-width: 0; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .brand h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 2px 0 0;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .brand .sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .brand .sub code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--panel-2);
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+  }
+
+  .theme-toggle {
+    appearance: none;
+    background: var(--panel);
+    color: var(--ink-soft);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .theme-toggle:hover { border-color: var(--border-strong); color: var(--ink); }
+  .theme-toggle .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff 50%, #0f1724 50%);
+    border: 1px solid var(--border-strong);
+  }
+
+  /* ── Overall progress card ─────────────────────────────────────── */
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .overall {
+    display: grid;
+    gap: 18px;
+  }
+  .overall-head {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .overall .pct {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .overall .pct .n { font-size: 72px; }
+  .overall .pct .unit { font-size: 22px; color: var(--muted); font-weight: 500; }
+  .overall .lede {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 44ch;
+  }
+  .overall .lede strong { color: var(--ink); font-weight: 600; }
+
+  .bar {
+    background: var(--panel-2);
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+    display: flex;
+  }
+  .bar > span {
+    display: block;
+    height: 100%;
+  }
+  .bar .seg-ok { background: var(--ok); }
+  .bar .seg-wip { background: var(--wip); }
+  .bar .seg-bug { background: var(--bug); }
+
+  .chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .chip.ok    { background: var(--ok-tint);    color: var(--ok); }
+  .chip.wip   { background: var(--wip-tint);   color: var(--wip); }
+  .chip.queue { background: var(--queue-tint); color: var(--muted); }
+  .chip.bug   { background: var(--bug-tint);   color: var(--bug); }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    padding-top: 4px;
+    border-top: 1px dashed var(--border);
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .legend > span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend .lg-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 1.5px solid transparent;
+  }
+  .legend .lg-dot.ok    { background: var(--ok); }
+  .legend .lg-dot.wip   { background: var(--wip); }
+  .legend .lg-dot.queue { border-color: var(--queue); background: transparent; }
+  .legend .lg-dot.bug   { background: var(--bug); }
+
+  /* ── Section grid ─────────────────────────────────────────────── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  @media (max-width: 780px) {
+    .grid { grid-template-columns: 1fr; }
+    .overall .pct .n { font-size: 56px; }
+  }
+
+  .section .head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .section .badge {
+    width: 30px; height: 30px;
+    display: grid; place-items: center;
+    background: var(--accent-tint);
+    color: var(--accent);
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .section h2 {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .section .pctlbl {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .section .bar { height: 6px; margin-bottom: 14px; }
+
+  .tasks { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+  .tasks li {
+    display: grid;
+    grid-template-columns: 22px 44px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .tasks li:last-child { border-bottom: none; }
+
+  .status {
+    width: 18px; height: 18px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+  }
+  .status.ok    { background: var(--ok); color: #fff; }
+  .status.wip   {
+    background: var(--wip); color: #fff;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  .status.queue {
+    background: transparent;
+    border: 1.5px solid var(--queue);
+  }
+  .status.bug   { background: var(--bug); color: #fff; }
+  .status svg { width: 11px; height: 11px; display: block; }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.35); }
+    50%      { box-shadow: 0 0 0 5px rgba(249,115,22,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .status.wip { animation: none; }
+  }
+
+  .code {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    padding: 3px 6px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .task-name { color: var(--ink); font-weight: 500; }
+  .tasks li[data-status="queue"] .task-name { color: var(--ink-soft); font-weight: 400; }
+
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .pill.ok    { background: var(--ok-tint);    color: var(--ok); }
+  .pill.wip   { background: var(--wip-tint);   color: var(--wip); }
+  .pill.queue { background: var(--queue-tint); color: var(--muted); }
+  .pill.bug   { background: var(--bug-tint);   color: var(--bug); }
+
+  /* Footer note */
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 4px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer code {
+    font-family: var(--font-mono);
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+</style>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">OK</div>
+      <div class="brand-meta">
+        <div class="eyebrow">Stav prací · okfinal.cz</div>
+        <h1>Migrace na Next.js</h1>
+        <div class="sub">Fáze 2 (Cursor) · větev <code>claude/okfinal-nextjs-migration-a2du70</code></div>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Přepnout motiv">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Motiv</span>
+    </button>
+  </header>
+
+  <!-- Overall -->
+  <section class="card overall" aria-label="Celkový postup">
+    <div class="overall-head">
+      <div class="pct"><span class="n" id="overallN">9</span><span class="unit">%</span></div>
+      <p class="lede">
+        Fáze 1 (plán) prakticky <strong>hotová</strong>. Zbývá schůzka
+        s klientem a mockup — pak Cursor spouští Fázi 2.
+      </p>
+    </div>
+
+    <div class="bar" id="overallBar" aria-hidden="true">
+      <span class="seg-ok"  style="width:9%"></span>
+      <span class="seg-wip" style="width:2%"></span>
+      <span class="seg-bug" style="width:0%"></span>
+    </div>
+
+    <div class="chips" id="overallChips">
+      <span class="chip ok"><span id="cOk">6</span> hotovo</span>
+      <span class="chip wip"><span id="cWip">1</span> probíhá</span>
+      <span class="chip queue"><span id="cQueue">59</span> čeká</span>
+      <span class="chip bug"><span id="cBug">0</span> bug</span>
+    </div>
+
+    <div class="legend">
+      <span><span class="lg-dot ok"></span>Hotovo</span>
+      <span><span class="lg-dot wip"></span>Probíhá</span>
+      <span><span class="lg-dot queue"></span>Čeká</span>
+      <span><span class="lg-dot bug"></span>Blokované / bug</span>
+    </div>
+  </section>
+
+  <!-- Sections -->
+  <div class="grid" id="sections"></div>
+
+  <div class="footer">
+    <div>Podklad podle <code>PLAN.md</code> a <code>PROGRESS.md</code>.</div>
+    <div>Cursor: pouštěj prompty <code>PROMPTS.md #0 → #10</code>, po každém commit + zaškrtni řádek zde.</div>
+  </div>
+
+</div>
+
+<template id="statusIcons">
+  <svg data-key="ok"  viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.5 5 9.5l5-6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg data-key="wip" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="1.6" fill="currentColor"/></svg>
+  <svg data-key="bug" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3v3.5M6 8.6v.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+</template>
+
+<script>
+  // Theme toggle
+  (function () {
+    const root = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+    btn.addEventListener("click", () => {
+      const cur = root.getAttribute("data-theme");
+      const isDark =
+        cur === "dark" ||
+        (cur === null &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      root.setAttribute("data-theme", isDark ? "light" : "dark");
+    });
+  })();
+
+  // Data
+  const sections = [
+    {
+      code: "A",
+      title: "Plán & podklady (Fáze 1)",
+      tasks: [
+        ["A1", "Sitemapa + inventura původního webu", "ok"],
+        ["A2", "Priority stránek (P1 / P2 / P3)", "ok"],
+        ["A3", "Návrh design tokenů (steel + accent)", "ok"],
+        ["A4", "Návrh datového modelu (Convex)", "ok"],
+        ["A5", "Prompty pro Cursor (PROMPTS.md)", "ok"],
+        ["A6", "Otevřené otázky pro klienta", "ok"],
+        ["A7", "Schůzka s klientem — projít otázky", "queue"],
+        ["A8", "Mockup homepage (Figma / v0 / HTML)", "wip"],
+      ],
+    },
+    {
+      code: "B",
+      title: "Setup & infrastruktura",
+      tasks: [
+        ["B1", "create-next-app / klon starteru", "queue"],
+        ["B2", "Convex projekt (npx convex dev)", "queue"],
+        ["B3", ".env.local — Convex / Resend / Turnstile / ADMIN", "queue"],
+        ["B4", "Tailwind tokeny — steel + accent paleta", "queue"],
+        ["B5", "Inter font přes next/font/google", "queue"],
+        ["B6", "Favicon + apple-touch-icon", "queue"],
+        ["B7", "sitemap.ts + robots.ts", "queue"],
+      ],
+    },
+    {
+      code: "C",
+      title: "Layout & sdílené komponenty",
+      tasks: [
+        ["C1", "Header — nav (6 pol.), CTA, mobile", "queue"],
+        ["C2", "Footer — kontakty, mapa webu, IČ/DIČ", "queue"],
+        ["C3", "Section + SectionHeader wrapper", "queue"],
+        ["C4", "Reveal (scroll-in animace)", "queue"],
+        ["C5", "JsonLd komponenta", "queue"],
+        ["C6", "site.ts — contacts, nav, services", "queue"],
+      ],
+    },
+    {
+      code: "D",
+      title: "Stránky (obsah)",
+      tasks: [
+        ["D1", "Home — hero (tmavý, stat řada)", "queue"],
+        ["D2", "Home — sekce služeb (3 karty)", "queue"],
+        ["D3", "Home — band „33 let\"", "queue"],
+        ["D4", "Home — segmenty zákazníků", "queue"],
+        ["D5", "Home — CTA band (oranžový)", "queue"],
+        ["D6", "/o-firme — storytelling + timeline", "queue"],
+        ["D7", "/nase-sluzby — 3 sekce s kotvami", "queue"],
+        ["D8", "/certifikaty — grid osvědčení", "queue"],
+        ["D9", "/kariera — Convex jobs + fallback", "queue"],
+        ["D10", "/kontakt — karty + mapa", "queue"],
+        ["D11", "/faq — 10 otázek (SEO)", "queue"],
+      ],
+    },
+    {
+      code: "E",
+      title: "Kontaktní formulář",
+      tasks: [
+        ["E1", "ContactForm — pole, validace", "queue"],
+        ["E2", "Cloudflare Turnstile widget", "queue"],
+        ["E3", "Upload PDF/DWG → Convex storage", "queue"],
+        ["E4", "POST /api/contact route handler", "queue"],
+        ["E5", "Mutation inquiries:create", "queue"],
+        ["E6", "Action sendInquiryMail (Resend)", "queue"],
+        ["E7", "Rate limit 3 / IP / hod", "queue"],
+        ["E8", "Success stav + potvrzovací mail", "queue"],
+      ],
+    },
+    {
+      code: "F",
+      title: "Admin",
+      tasks: [
+        ["F1", "/admin/login + JWT cookie", "queue"],
+        ["F2", "Middleware /admin/*", "queue"],
+        ["F3", "Dashboard (počet nových poptávek)", "queue"],
+        ["F4", "/admin/kontakty — edit", "queue"],
+        ["F5", "/admin/kariera — CRUD", "queue"],
+        ["F6", "/admin/poptavky — list + detail", "queue"],
+      ],
+    },
+    {
+      code: "G",
+      title: "SEO & JSON-LD",
+      tasks: [
+        ["G1", "generateMetadata per stránka", "queue"],
+        ["G2", "Organization JSON-LD v layoutu", "queue"],
+        ["G3", "LocalBusiness na /", "queue"],
+        ["G4", "Service × 3 na /nase-sluzby", "queue"],
+        ["G5", "FAQPage na /faq", "queue"],
+        ["G6", "OG obrázky per stránka", "queue"],
+      ],
+    },
+    {
+      code: "H",
+      title: "QA & responsivita",
+      tasks: [
+        ["H1", "Průchod 375 px", "queue"],
+        ["H2", "Průchod 768 px", "queue"],
+        ["H3", "Průchod 1440 px", "queue"],
+        ["H4", "Lighthouse ≥ 90", "queue"],
+        ["H5", "axe check (a11y)", "queue"],
+        ["H6", "End-to-end test poptávky", "queue"],
+      ],
+    },
+    {
+      code: "I",
+      title: "Deploy & spuštění",
+      tasks: [
+        ["I1", "netlify.toml + Next plugin", "queue"],
+        ["I2", "ENV do Netlify dashboardu", "queue"],
+        ["I3", "Convex production deployment", "queue"],
+        ["I4", "Preview deploy — projít 6 URL", "queue"],
+        ["I5", "DNS přepnutí (TTL, MX zachovat)", "queue"],
+        ["I6", "HTTPS ověřit (Netlify auto)", "queue"],
+        ["I7", "Search Console + submit sitemap", "queue"],
+        ["I8", "Analytics / Plausible", "queue"],
+      ],
+    },
+  ];
+
+  const statusLabel = {
+    ok:    "Hotovo",
+    wip:   "Probíhá",
+    queue: "Čeká",
+    bug:   "Bug",
+  };
+
+  // Cache status icons
+  const iconSrc = document.getElementById("statusIcons");
+  function iconFor(status) {
+    const svg = iconSrc.content.querySelector(`svg[data-key="${status}"]`);
+    return svg ? svg.cloneNode(true) : null;
+  }
+
+  const grid = document.getElementById("sections");
+  let counts = { ok: 0, wip: 0, queue: 0, bug: 0 };
+
+  sections.forEach((s) => {
+    const total = s.tasks.length;
+    const done  = s.tasks.filter(t => t[2] === "ok").length;
+    const wip   = s.tasks.filter(t => t[2] === "wip").length;
+    const bug   = s.tasks.filter(t => t[2] === "bug").length;
+    const pct   = Math.round((done / total) * 100);
+
+    counts.ok    += done;
+    counts.wip   += wip;
+    counts.bug   += bug;
+    counts.queue += s.tasks.filter(t => t[2] === "queue").length;
+
+    const card = document.createElement("section");
+    card.className = "card section";
+    card.innerHTML = `
+      <div class="head">
+        <div class="badge">${s.code}</div>
+        <h2>${s.title}</h2>
+        <div class="pctlbl">${pct}%</div>
+      </div>
+      <div class="bar" aria-hidden="true">
+        <span class="seg-ok"  style="width:${(done/total)*100}%"></span>
+        <span class="seg-wip" style="width:${(wip/total)*100}%"></span>
+        <span class="seg-bug" style="width:${(bug/total)*100}%"></span>
+      </div>
+      <ul class="tasks"></ul>
+    `;
+    const ul = card.querySelector("ul");
+    s.tasks.forEach(([code, name, status]) => {
+      const li = document.createElement("li");
+      li.dataset.status = status;
+      const st = document.createElement("span");
+      st.className = `status ${status}`;
+      const ic = iconFor(status);
+      if (ic) st.appendChild(ic);
+      const cd = document.createElement("span");
+      cd.className = "code";
+      cd.textContent = code;
+      const nm = document.createElement("span");
+      nm.className = "task-name";
+      nm.textContent = name;
+      const pl = document.createElement("span");
+      pl.className = `pill ${status}`;
+      pl.textContent = statusLabel[status];
+      li.append(st, cd, nm, pl);
+      ul.appendChild(li);
+    });
+    grid.appendChild(card);
+  });
+
+  // Recompute overall (in case data changes)
+  const totalTasks = counts.ok + counts.wip + counts.queue + counts.bug;
+  const overallPct = totalTasks ? Math.round((counts.ok / totalTasks) * 100) : 0;
+  document.getElementById("overallN").textContent  = overallPct;
+  document.getElementById("cOk").textContent       = counts.ok;
+  document.getElementById("cWip").textContent      = counts.wip;
+  document.getElementById("cQueue").textContent    = counts.queue;
+  document.getElementById("cBug").textContent      = counts.bug;
+
+  const bar = document.getElementById("overallBar");
+  bar.children[0].style.width = (counts.ok    / totalTasks) * 100 + "%";
+  bar.children[1].style.width = (counts.wip   / totalTasks) * 100 + "%";
+  bar.children[2].style.width = (counts.bug   / totalTasks) * 100 + "%";
+</script>
