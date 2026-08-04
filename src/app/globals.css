@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-steel-900 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv11", "ss01";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-steel-950;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-500;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-5 py-3
+           text-sm font-semibold transition-colors;
+  }
+  .btn-primary   { @apply bg-accent-500 text-white hover:bg-accent-600; }
+  .btn-ghost     { @apply border border-steel-300 text-steel-900 hover:bg-steel-50; }
+  .btn-dark      { @apply bg-steel-900 text-white hover:bg-steel-800; }
+  .btn-onDark    { @apply border border-steel-700 text-white hover:bg-steel-900; }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-widest text-accent-600;
+  }
+  .section       { @apply py-16 lg:py-24; }
+  .container-tight { @apply container max-w-5xl; }
+
+  .field-label   { @apply mb-1.5 block text-sm font-medium text-steel-800; }
+  .field-input   {
+    @apply w-full rounded-md border border-steel-300 bg-white px-3.5 py-2.5
+           text-sm text-steel-900 placeholder:text-steel-400
+           focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30;
+  }
+}
