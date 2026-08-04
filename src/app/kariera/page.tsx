@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/Section";
+import { convexClient } from "@/lib/convex";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -9,12 +10,34 @@ export const metadata: Metadata = {
   alternates: { canonical: "/kariera" },
 };
 
-// TODO: až bude Convex, přesunout do tabulky `jobs` a načítat query.
-const jobs: Array<{ title: string; location: string; type: string; body: string }> = [
-  // Zatím prázdné — v adminu bude klient přidávat pozice.
-];
+// Fallback, když ještě není Convex.
+const fallbackJobs: Array<{
+  title: string; location: string; type: string; body: string;
+}> = [];
 
-export default function KarieraPage() {
+type Job = { title: string; location: string; type: string; body: string };
+
+async function loadJobs(): Promise<Job[]> {
+  const cvx = convexClient();
+  if (!cvx) return fallbackJobs;
+  try {
+    const { api } = await import("../../../convex/_generated/api");
+    const rows = (await cvx.query(api.jobs.listActive, { locale: "cs" })) as Array<{
+      title: string; location: string; type: string; summary: string;
+    }>;
+    return rows.map((j) => ({
+      title: j.title,
+      location: j.location,
+      type: j.type,
+      body: j.summary,
+    }));
+  } catch {
+    return fallbackJobs;
+  }
+}
+
+export default async function KarieraPage() {
+  const jobs = await loadJobs();
   return (
     <>
       <PageHero

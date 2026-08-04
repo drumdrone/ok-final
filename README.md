@@ -74,13 +74,32 @@ convex/
 | [`PROMPTS.md`](./PROMPTS.md) | Prompty pro Cursor, když budeš dostavovat zbytek |
 | [`OPEN-QUESTIONS.md`](./OPEN-QUESTIONS.md) | Věci na klienta před dokončením |
 
+## Convex — aktivace produkční části
+
+Kód je připravený, jen čeká na napojení:
+
+```bash
+npx convex dev                  # založí projekt, spustí codegen
+# doplň NEXT_PUBLIC_CONVEX_URL do .env.local
+# doplň RESEND_API_KEY do Convex dashboardu (Settings → Environment Variables)
+```
+
+Po tomhle:
+- Poptávkový formulář ukládá do tabulky `inquiries` + posílá e-maily
+  přes Resend + rate limit 3/hod/IP.
+- `/kariera` čte pozice z tabulky `jobs` (fallback zůstává jako záloha).
+- Admin `/poptavky` a dashboard čtou počty a poptávky z Convexu.
+- `_generated/` stuby v `convex/` se automaticky přepíšou.
+
+Bez Convexu funguje web dál — formulář se stubuje (log na server),
+kariéra ukazuje výzvu „pošlete životopis", admin ukazuje empty state.
+
 ## Co ještě chybí (potřebuje tvůj vstup)
 
-- **Convex** — založit projekt (`npx convex dev`), doplnit `NEXT_PUBLIC_CONVEX_URL`,
-  napojit `/kariera`, `/admin/*` a formulář na reálné tabulky.
-- **Resend** — API klíč, ověřená doména `okfinal.cz`, `RESEND_FROM`.
-- **Cloudflare Turnstile** — site key + secret, přidat widget do `ContactForm`.
-- **Netlify** — deploy, ENV proměnné, DNS přepnutí.
-- **Klient** — schválit design, dodat fotky výroby, potvrdit texty.
+- **Convex** — účet + `npx convex dev` (viz výše)
+- **Resend** — API klíč, ověřená doména `okfinal.cz`
+- **Cloudflare Turnstile** — site key + secret, přidat widget do `ContactForm`
+- **Netlify** — deploy, ENV proměnné, DNS přepnutí
+- **Klient** — schválit design, dodat fotky výroby, potvrdit texty
 
 Detaily viz `OPEN-QUESTIONS.md`.
