@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.shortName,
   authors: [{ name: site.name }],
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     type: "website",
     locale: site.locale,

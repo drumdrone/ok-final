@@ -38,6 +38,14 @@ export const site = {
   social: {
     // doplnit až klient řekne
   },
+  assets: {
+    logo: "/brand/logo.jpg",
+    logoMark: "/brand/logo-mark.jpg",
+    hero: "/images/hero1_res.jpg",
+    workshop: "/images/workshop.jpg",
+    machine: "/images/manurhin.jpg",
+    cert: "/images/cert1.png",
+  },
 } as const;
 
 export const nav = [
@@ -58,6 +66,7 @@ export const services: Array<{
   short: string;
   body: string;
   bullets: string[];
+  image: string;
 }> = [
   {
     slug: "soustruzeni",
@@ -71,6 +80,7 @@ export const services: Array<{
       "Kusová výroba i série do 500 ks",
       "Tolerance IT6 – IT9",
     ],
+    image: "/images/manurhin.jpg",
   },
   {
     slug: "svarovani",
@@ -84,6 +94,7 @@ export const services: Array<{
       "Certifikovaní svářeči ČSN EN ISO 9606-1",
       "Podniková svařovna s odsáváním",
     ],
+    image: "/images/svarec.jpg",
   },
   {
     slug: "montaz",
@@ -97,5 +108,177 @@ export const services: Array<{
       "Balení, expedice, doprava",
       "Zajištění povrchových úprav",
     ],
+    image: "/images/kolo.jpg",
   },
 ];
+
+/** Homepage copy — single source of truth */
+export const home = {
+  hero: {
+    eyebrow: "Přesné strojírenství · Žamberk",
+    titleBefore: "Kovové dílce podle vaší",
+    titleAccent: "výkresové dokumentace",
+    lead:
+      "Přesné soustružení, ruční svařování a kompletace. Kusová i sériová výroba pro strojírenství, energetiku a průmyslovou automatizaci. Odezva na poptávku do 24 hodin.",
+    ctaPrimary: { href: "/kontakt", label: "Nezávazná poptávka" },
+    ctaSecondary: { href: "/nase-sluzby", label: "Naše služby" },
+    machineAlt: "CNC soustruh Manurhin K'MX 413",
+    contactLabel: "Kontaktní osoba",
+    badge: "ČSN EN ISO 9606-1",
+  },
+  stats: [
+    { value: "33", unit: "let", label: "na trhu" },
+    { value: "500+", unit: "", label: "dokončených zakázek ročně" },
+    { value: "IT6", unit: "", label: "nejvyšší dosahovaná tolerance" },
+    { value: "24 h", unit: "", label: "odezva na poptávku" },
+  ],
+  services: {
+    eyebrow: "Co pro vás uděláme",
+    title: "Tři služby, jeden dodavatel",
+    lead: "Od výkresu k hotovému výrobku bez potřeby přeprodávat práci dalším dílnám.",
+    detailLink: "Detail služby →",
+  },
+  experience: {
+    years: "33",
+    yearsLabel: "let řemeslné praxe",
+    title: "Rodinná dílna, která rozumí strojařině",
+    body:
+      "OK FINAL byla založena v roce {founded}. Za tři dekády jsme dodali statisíce dílců pro tuzemské živnostníky, střední strojírenské podniky i zahraniční klienty. Držíme si kompaktní tým a osobní přístup — s vaší poptávkou nekomunikujete s callcentrem, ale přímo s technologem.",
+    ctaPrimary: { href: "/o-firme", label: "O firmě" },
+    ctaSecondary: { href: "/certifikaty", label: "Certifikáty" },
+  },
+  segments: {
+    eyebrow: "Pro koho pracujeme",
+    title: "Živnostníci i mezinárodní firmy",
+    lead: "Škála zákazníků od jednotlivců po výrobní závody z Německa a Rakouska.",
+    items: [
+      {
+        title: "Živnostníci a malé dílny",
+        body: "Kusové zakázky, prototypy, náhradní díly. Vyrobíme i jeden kus podle vašeho výkresu nebo poškozeného originálu.",
+        icon: "/images/service-1.png",
+      },
+      {
+        title: "Zahraniční výrobci",
+        body: "Střední série pro exportní zákazníky. Rámcové smlouvy, pravidelné dodávky, jednotná kvalita, komunikace v angličtině a němčině.",
+        icon: "/images/service-2.png",
+      },
+    ],
+  },
+  cta: {
+    title: "Máte výkres? Ozvěte se, ať vidíme, jestli to spolu vyrobíme.",
+    lead: "Odpovídáme do 24 hodin. Konzultace a odhad ceny zdarma.",
+    button: { href: "/kontakt", label: "Sjednat schůzku" },
+  },
+} as const;
+
+export const faqItems = [
+  {
+    q: "Jaké tolerance zvládáte?",
+    a: "U soustružení běžně držíme IT7 – IT9, u přesných dílců s dokončovací operací dosahujeme až IT6. Konkrétní tolerance vždy potvrdíme podle výkresu a použitého materiálu.",
+  },
+  {
+    q: "Vyrábíte i kusové zakázky?",
+    a: "Ano — kusová výroba a prototypy tvoří významnou část naší produkce. Nemáme minimální množství, vyrobíme i jeden kus podle výkresu nebo poškozeného originálu.",
+  },
+  {
+    q: "Jaké materiály zpracováváte?",
+    a: "Konstrukční ocel, nerez (304, 316), mosaz, hliník i barevné kovy. U speciálních materiálů (titan, žáropevné oceli) se domluvíme podle konkrétního požadavku.",
+  },
+  {
+    q: "Jaké svařovací metody používáte?",
+    a: "MIG/MAG (135/138), TIG (141) a obalenou elektrodou (111). Zvládáme svařování oceli, nerezu i hliníku.",
+  },
+  {
+    q: "Máte certifikované svářeče?",
+    a: "Ano, všichni aktivní svářeči drží platné osvědčení podle ČSN EN ISO 9606-1 pro konkrétní kombinace metoda / materiál / poloha. Kopie certifikátů dodáme na vyžádání.",
+  },
+  {
+    q: "Jak dlouho trvá výroba typické zakázky?",
+    a: "Menší kusovky zpravidla 1 – 2 týdny od potvrzení objednávky, střední série 3 – 5 týdnů. Přesný termín potvrdíme s nabídkou podle aktuální vytíženosti dílny.",
+  },
+  {
+    q: "V jaké formě přijímáte výkresovou dokumentaci?",
+    a: "Ideálně PDF nebo DWG/DXF. Přijmeme i papírový výkres — načteme si ho a potvrdíme, že je čitelný. Model 3D (STEP, IGES) uvítáme u složitějších dílců.",
+  },
+  {
+    q: "Zajišťujete i povrchové úpravy?",
+    a: "Ano, ve spolupráci s ověřenými partnery zajišťujeme zinkování, lakování, moření, pasivaci a další úpravy. Předáváme dílce úpravci a přebíráme zpět, klient řeší jen nás.",
+  },
+  {
+    q: "Dodáváte do zahraničí?",
+    a: "Pravidelně dodáváme do Německa a Rakouska. Komunikace v angličtině nebo němčině, doprava po dohodě.",
+  },
+  {
+    q: "Jak se dostaneme k nabídce?",
+    a: "Nejrychlejší je poslat výkres přes formulář na stránce Kontakt nebo e-mailem na info@okfinal.cz. Odpovídáme do 24 hodin s cenou a termínem.",
+  },
+] as const;
+
+export const certificates = [
+  {
+    title: "ČSN EN ISO 9606-1",
+    body:
+      "Zkouška svářečů — tavné svařování ocelí. Platné osvědčení pro všechny aktivní svářeče v podniku.",
+    tag: "Svařování",
+  },
+  {
+    title: "Metoda 135 / 138 (MIG/MAG)",
+    body:
+      "Certifikované obloukové svařování tavící se elektrodou v ochranné atmosféře plynu — pro ocel i nerez.",
+    tag: "Svařování",
+  },
+  {
+    title: "Metoda 141 (TIG)",
+    body:
+      "Obloukové svařování netavící se wolframovou elektrodou v ochranné atmosféře plynu — pro nerez, hliník a přesné spoje.",
+    tag: "Svařování",
+  },
+  {
+    title: "Metoda 111 (elektroda)",
+    body:
+      "Obloukové svařování obalenou elektrodou — pro konstrukční ocel a montáže v terénu.",
+    tag: "Svařování",
+  },
+  {
+    title: "Kalibrace měřidel",
+    body:
+      "Pravidelná kalibrace posuvných měřidel, mikrometrů a měřicích přístrojů akreditovanou laboratoří.",
+    tag: "Metrologie",
+  },
+  {
+    title: "Kontrolní protokoly",
+    body:
+      "Na vyžádání dodáváme protokoly o měření rozměrů a jakosti pro každou dávku.",
+    tag: "Kvalita",
+  },
+] as const;
+
+export const milestones = [
+  { year: "1992", text: "Založení firmy — první soustružnická dílna v Žamberku." },
+  { year: "2001", text: "Rozšíření o svařovnu a certifikaci svářečů." },
+  { year: "2010", text: "Instalace prvního CNC soustruhu, zvýšení kapacity." },
+  { year: "2018", text: "Rozšíření provozu, spolupráce se zahraničními klienty." },
+  { year: "2026", text: "Přes 33 let nepřetržité výroby a 500+ zakázek ročně." },
+] as const;
+
+export const about = {
+  hero: {
+    eyebrow: "O firmě",
+    title: "Rodinná dílna s třemi desetiletími praxe",
+    lead:
+      "Přesné soustružení, svařování a kompletace kovových dílců. OK FINAL s.r.o. sídlí v Žamberku a od roku 1992 dodává zákazníkům po celé České republice i do zahraničí.",
+  },
+  paragraphs: [
+    "OK FINAL s.r.o. byla založena v roce {founded} jako malá soustružnická dílna. Za tři desetiletí jsme vyrostli v spolehlivého dodavatele přesných kovových dílců pro tuzemské i zahraniční strojírenské firmy — a přesto jsme si zachovali osobní přístup, jaký velké závody nedokáží nabídnout.",
+    "Naše silná stránka je flexibilita. Vyrábíme kusově i sériově — od jednoho prototypu po několik stovek shodných dílů. Zpracováváme konstrukční ocel, nerez, mosaz, hliník i barevné kovy. Držíme tolerance IT6 – IT9 a všechny svařovací práce provádí certifikovaní svářeči podle ČSN EN ISO 9606-1.",
+    "Věříme, že strojařině se dá rozumět jen v dialogu — proto s vámi komunikuje přímo technolog, ne obchodník. Přijmeme výkres v PDF, DWG i papírově, poradíme s materiálem a technologií a do 24 hodin odešleme nabídku.",
+  ],
+  workshopAlt: "Výrobní dílna OK FINAL",
+  milestonesTitle: "Milníky, kterými jsme prošli",
+  cta: {
+    title: "Chcete vidět, co umíme?",
+    lead: "Přijeďte se podívat na provoz nebo nám pošlete výkres. Nezávazně probereme, jak dílec vyrobit.",
+    primary: { href: "/kontakt", label: "Nezávazná poptávka" },
+    secondary: { href: "/nase-sluzby", label: "Naše služby" },
+  },
+} as const;

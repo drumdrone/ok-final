@@ -31,6 +31,7 @@
   .btn-ghost     { @apply border border-steel-300 text-steel-900 hover:bg-steel-50; }
   .btn-dark      { @apply bg-steel-900 text-white hover:bg-steel-800; }
   .btn-onDark    { @apply border border-steel-700 text-white hover:bg-steel-900; }
+  .btn-onAccent  { @apply bg-white text-accent-600 hover:bg-steel-50; }
 
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-widest text-accent-600;

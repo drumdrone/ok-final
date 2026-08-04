@@ -8,12 +8,17 @@ export function Footer() {
     <footer className="border-t border-steel-800 bg-steel-950 text-steel-200">
       <div className="container grid gap-10 py-14 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded bg-accent-500 font-display text-sm font-bold text-white">
-              OK
-            </span>
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={site.assets.logoMark}
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-md"
+            />
             <span className="font-display text-lg font-bold tracking-tight text-white">
-              {site.name}
+              {site.shortName}
             </span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-steel-300">

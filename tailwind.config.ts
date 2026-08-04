@@ -5,6 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        // PLAN.md §2 steel + cool crimson accent (logo-adjacent)
         steel: {
           50: "#f5f7fa",
           100: "#e4e9f0",
@@ -19,12 +20,12 @@ export default {
           950: "#111721",
         },
         accent: {
-          50: "#fff7ed",
-          100: "#ffedd5",
-          400: "#ff9a3d",
-          500: "#f97316",
-          600: "#e35d0f",
-          700: "#b6480c",
+          50: "#fff1f3",
+          100: "#ffe0e4",
+          400: "#e83a52",
+          500: "#c8102e",
+          600: "#a50d26",
+          700: "#860b1f",
         },
       },
       fontFamily: {

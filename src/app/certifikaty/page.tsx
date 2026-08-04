@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero, Section, SectionHeader } from "@/components/Section";
+import { certificates, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Certifikáty",
@@ -7,45 +9,6 @@ export const metadata: Metadata = {
     "Certifikace svářečů podle ČSN EN ISO 9606-1 a další doklady kvality výroby OK FINAL s.r.o.",
   alternates: { canonical: "/certifikaty" },
 };
-
-const certificates = [
-  {
-    title: "ČSN EN ISO 9606-1",
-    body:
-      "Zkouška svářečů — tavné svařování ocelí. Platné osvědčení pro všechny aktivní svářeče v podniku.",
-    tag: "Svařování",
-  },
-  {
-    title: "Metoda 135 / 138 (MIG/MAG)",
-    body:
-      "Certifikované obloukové svařování tavící se elektrodou v ochranné atmosféře plynu — pro ocel i nerez.",
-    tag: "Svařování",
-  },
-  {
-    title: "Metoda 141 (TIG)",
-    body:
-      "Obloukové svařování netavící se wolframovou elektrodou v ochranné atmosféře plynu — pro nerez, hliník a přesné spoje.",
-    tag: "Svařování",
-  },
-  {
-    title: "Metoda 111 (elektroda)",
-    body:
-      "Obloukové svařování obalenou elektrodou — pro konstrukční ocel a montáže v terénu.",
-    tag: "Svařování",
-  },
-  {
-    title: "Kalibrace měřidel",
-    body:
-      "Pravidelná kalibrace posuvných měřidel, mikrometrů a měřicích přístrojů akreditovanou laboratoří.",
-    tag: "Metrologie",
-  },
-  {
-    title: "Kontrolní protokoly",
-    body:
-      "Na vyžádání dodáváme protokoly o měření rozměrů a jakosti pro každou dávku.",
-    tag: "Kvalita",
-  },
-];
 
 export default function CertifikatyPage() {
   return (
@@ -61,6 +24,17 @@ export default function CertifikatyPage() {
           title="Certifikáty a osvědčení"
           lead="Kopie dokladů dodáváme na vyžádání s každou zakázkou."
         />
+        <div className="mb-12 overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-4 sm:p-6">
+          <div className="relative mx-auto aspect-[3/4] max-w-md">
+            <Image
+              src={site.assets.cert}
+              alt="Ukázka certifikátu OK FINAL"
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 448px"
+            />
+          </div>
+        </div>
         <div className="grid gap-6 md:grid-cols-2">
           {certificates.map((c) => (
             <div

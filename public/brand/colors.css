@@ -1,0 +1,12 @@
+﻿/* UI tokens — steel from PLAN.md §2, cool crimson accent */
+:root {
+  --steel-950: #111721;
+  --steel-900: #1c2431;
+  --steel-700: #354458;
+  --steel-500: #526a87;
+  --steel-300: #a1b1c4;
+  --steel-100: #e4e9f0;
+  --steel-50: #f5f7fa;
+  --accent-500: #c8102e;
+  --accent-600: #a50d26;
+}

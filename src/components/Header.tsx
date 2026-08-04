@@ -6,13 +6,14 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-steel-100 bg-white/90 backdrop-blur">
       <div className="container flex h-16 items-center justify-between gap-8">
         <Link href="/" className="flex items-center gap-2" aria-label={site.name}>
-          <span className="flex h-9 w-9 items-center justify-center rounded bg-steel-900 font-display text-sm font-bold text-accent-500">
-            OK
-          </span>
-          <span className="font-display text-base font-bold tracking-tight text-steel-950">
-            OK FINAL
-            <span className="ml-1 font-normal text-steel-400">s.r.o.</span>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={site.assets.logo}
+            alt={site.shortName}
+            width={160}
+            height={28}
+            className="h-8 w-auto"
+          />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Hlavní">
           {nav.map((item) => (

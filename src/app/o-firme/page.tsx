@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero, Section } from "@/components/Section";
-import { site } from "@/lib/site";
+import { about, milestones, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "O firmě",
@@ -10,59 +11,47 @@ export const metadata: Metadata = {
   alternates: { canonical: "/o-firme" },
 };
 
-const milestones = [
-  { year: "1992", text: "Založení firmy — první soustružnická dílna v Žamberku." },
-  { year: "2001", text: "Rozšíření o svařovnu a certifikaci svářečů." },
-  { year: "2010", text: "Instalace prvního CNC soustruhu, zvýšení kapacity." },
-  { year: "2018", text: "Rozšíření provozu, spolupráce se zahraničními klienty." },
-  { year: "2026", text: "Přes 33 let nepřetržité výroby a 500+ zakázek ročně." },
-];
-
 export default function OFirmePage() {
+  const paragraphs = about.paragraphs.map((p) =>
+    p.replace("{founded}", String(site.company.founded)),
+  );
+
   return (
     <>
       <PageHero
-        eyebrow="O firmě"
-        title="Rodinná dílna s třemi desetiletími praxe"
-        lead="Přesné soustružení, svařování a kompletace kovových dílců. OK FINAL s.r.o. sídlí v Žamberku a od roku 1992 dodává zákazníkům po celé České republice i do zahraničí."
+        eyebrow={about.hero.eyebrow}
+        title={about.hero.title}
+        lead={about.hero.lead}
       />
 
       <Section tight>
-        <div className="space-y-6 text-lg leading-relaxed text-steel-700">
-          <p>
-            OK FINAL s.r.o. byla založena v roce {site.company.founded} jako
-            malá soustružnická dílna. Za tři desetiletí jsme vyrostli
-            v spolehlivého dodavatele přesných kovových dílců pro tuzemské
-            i zahraniční strojírenské firmy — a přesto jsme si zachovali osobní
-            přístup, jaký velké závody nedokáží nabídnout.
-          </p>
-          <p>
-            Naše silná stránka je flexibilita. Vyrábíme kusově i sériově — od
-            jednoho prototypu po několik stovek shodných dílů. Zpracováváme
-            konstrukční ocel, nerez, mosaz, hliník i barevné kovy. Držíme
-            tolerance IT6 – IT9 a všechny svařovací práce provádí certifikovaní
-            svářeči podle ČSN EN ISO 9606-1.
-          </p>
-          <p>
-            Věříme, že strojařině se dá rozumět jen v dialogu — proto s vámi
-            komunikuje přímo technolog, ne obchodník. Přijmeme výkres v PDF,
-            DWG i papírově, poradíme s materiálem a technologií a do 24 hodin
-            odešleme nabídku.
-          </p>
+        <div className="grid items-start gap-10 lg:grid-cols-[1.2fr_1fr]">
+          <div className="space-y-6 text-lg leading-relaxed text-steel-700">
+            {paragraphs.map((p) => (
+              <p key={p.slice(0, 40)}>{p}</p>
+            ))}
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-steel-100">
+            <Image
+              src={site.assets.workshop}
+              alt={about.workshopAlt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+          </div>
         </div>
       </Section>
 
       <Section className="bg-steel-50">
         <h2 className="mb-10 text-3xl font-bold sm:text-4xl">
-          Milníky, kterými jsme prošli
+          {about.milestonesTitle}
         </h2>
         <ol className="relative space-y-8 border-l-2 border-steel-200 pl-6">
           {milestones.map((m) => (
             <li key={m.year} className="relative">
               <span className="absolute -left-[33px] top-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent-500 ring-4 ring-steel-50" />
-              <div className="text-sm font-semibold uppercase tracking-widest text-accent-600">
-                {m.year}
-              </div>
+              <div className="eyebrow">{m.year}</div>
               <div className="mt-1 text-lg text-steel-800">{m.text}</div>
             </li>
           ))}
@@ -71,17 +60,14 @@ export default function OFirmePage() {
 
       <Section tight>
         <div className="rounded-lg border border-steel-200 bg-white p-8 text-center">
-          <h2 className="text-2xl font-bold">Chcete vidět, co umíme?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-steel-600">
-            Přijeďte se podívat na provoz nebo nám pošlete výkres. Nezávazně
-            probereme, jak dílec vyrobit.
-          </p>
+          <h2 className="text-2xl font-bold">{about.cta.title}</h2>
+          <p className="mx-auto mt-3 max-w-xl text-steel-600">{about.cta.lead}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/kontakt" className="btn btn-primary">
-              Nezávazná poptávka
+            <Link href={about.cta.primary.href} className="btn btn-primary">
+              {about.cta.primary.label}
             </Link>
-            <Link href="/nase-sluzby" className="btn btn-ghost">
-              Naše služby
+            <Link href={about.cta.secondary.href} className="btn btn-ghost">
+              {about.cta.secondary.label}
             </Link>
           </div>
         </div>

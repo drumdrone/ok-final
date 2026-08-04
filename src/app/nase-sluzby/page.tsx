@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero, Section } from "@/components/Section";
 import { JsonLd } from "@/components/JsonLd";
@@ -30,6 +31,15 @@ export default function ServicesPage() {
               className="grid gap-8 border-t border-steel-200 pt-12 lg:grid-cols-[1fr_2fr] lg:gap-16"
             >
               <div>
+                <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-lg bg-steel-100">
+                  <Image
+                    src={s.image}
+                    alt={s.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                </div>
                 <div className="font-display text-6xl font-bold text-accent-500">
                   0{i + 1}
                 </div>

@@ -23,7 +23,7 @@ Zaškrtávej během práce. Když je celá sekce hotová, přesuň ji dolů pod
 - [ ] `pnpm install`, ověřit dev server
 - [ ] Convex projekt založit, `npx convex dev`
 - [ ] `.env.local` s dev keys (Convex, ADMIN_PASSWORD, Resend, Turnstile)
-- [ ] Nahradit tokeny Tailwind podle `PLAN.md` §2
+- [x] Nahradit tokeny Tailwind podle `PLAN.md` §2
 - [ ] Nahradit favicon a apple-touch-icon
 
 ### 2.2 Layout a globální komponenty
