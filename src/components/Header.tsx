@@ -28,7 +28,7 @@ export function Header() {
         </nav>
         <Link
           href="/kontakt"
-          className="btn btn-primary hidden md:inline-flex"
+          className="btn btn-primary hidden lg:inline-flex"
         >
           Poptávka
         </Link>

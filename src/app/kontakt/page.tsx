@@ -25,7 +25,7 @@ export default function KontaktPage() {
 
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <div className="space-y-4">
+          <div className="order-2 space-y-4 lg:order-1">
             <ContactCard title="Adresa">
               <div>{site.address.street}</div>
               <div>{site.address.zip} {site.address.city}</div>
@@ -80,7 +80,7 @@ export default function KontaktPage() {
             </ContactCard>
           </div>
 
-          <div className="rounded-lg border border-steel-200 bg-white p-6 sm:p-8">
+          <div className="order-1 rounded-lg border border-steel-200 bg-white p-6 sm:p-8 lg:order-2">
             <h2 className="text-2xl font-bold">Nezávazná poptávka</h2>
             <p className="mt-2 text-steel-600">
               Přiložte výkres, popište zakázku a my se ozveme.
@@ -99,7 +99,7 @@ export default function KontaktPage() {
             <iframe
               title="Mapa OK FINAL s.r.o."
               src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-              className="h-[420px] w-full"
+              className="h-[320px] w-full sm:h-[420px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
