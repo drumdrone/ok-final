@@ -475,9 +475,9 @@
     <div class="overall-head">
       <div class="pct"><span class="n" id="overallN">9</span><span class="unit">%</span></div>
       <p class="lede">
-        <strong>Scaffold, obsah, admin shell a formulář hotové.</strong>
-        Zbývá schůzka s klientem, mockup a věci, které potřebují reálné
-        klíče: Convex, Resend, Turnstile, Netlify, DNS.
+        <strong>Web je funkčně kompletní.</strong> Convex kód, Resend
+        integrace, rate limit, admin a e2e testy jsou napsané a aktivují
+        se, jakmile přijdou klíče (Convex, Resend, Turnstile, Netlify).
       </p>
     </div>
 
@@ -537,7 +537,7 @@
   // Reset
   document.getElementById("resetBtn").addEventListener("click", () => {
     if (!confirm("Smazat tvoje úpravy a načíst výchozí stav ze zdroje?")) return;
-    try { localStorage.removeItem("planner:okfinal:v2"); } catch {}
+    try { localStorage.removeItem("planner:okfinal:v3"); } catch {}
     location.reload();
   });
 
@@ -594,7 +594,7 @@
         ["D6", "/o-firme — storytelling + timeline", "ok"],
         ["D7", "/nase-sluzby — 3 sekce s kotvami", "ok"],
         ["D8", "/certifikaty — grid osvědčení", "ok"],
-        ["D9", "/kariera — fallback (Convex později)", "ok"],
+        ["D9", "/kariera — Convex jobs + fallback", "ok"],
         ["D10", "/kontakt — karty + mapa + formulář", "ok"],
         ["D11", "/faq — 10 otázek (SEO)", "ok"],
       ],
@@ -604,13 +604,13 @@
       title: "Kontaktní formulář",
       tasks: [
         ["E1", "ContactForm — pole, validace", "ok"],
-        ["E2", "Cloudflare Turnstile widget", "queue"],
-        ["E3", "Upload PDF/DWG → Convex storage", "queue"],
-        ["E4", "POST /api/contact route handler (stub)", "ok"],
-        ["E5", "Convex schema pro inquiries", "ok"],
-        ["E6", "Action sendInquiryMail (Resend)", "queue"],
-        ["E7", "Rate limit 3 / IP / hod", "queue"],
-        ["E8", "Success stav + potvrzovací mail", "queue"],
+        ["E2", "Cloudflare Turnstile — backend verify (widget čeká na klíč)", "wip"],
+        ["E3", "Upload PDF/DWG → Convex storage", "ok"],
+        ["E4", "POST /api/contact — Convex + Turnstile + rate limit", "ok"],
+        ["E5", "Convex funkce inquiries (create/list/counts/upload)", "ok"],
+        ["E6", "Action sendInquiryMail (Resend, čeká na API key)", "wip"],
+        ["E7", "Rate limit 3 / IP / hod (Convex mutation)", "ok"],
+        ["E8", "Success stav + potvrzovací mail (implementováno)", "ok"],
       ],
     },
     {
@@ -619,10 +619,10 @@
       tasks: [
         ["F1", "/admin/login + cookie session", "ok"],
         ["F2", "Proxy /admin/* (Next 16 middleware)", "ok"],
-        ["F3", "Dashboard (počet nových poptávek)", "ok"],
+        ["F3", "Dashboard s Convex counts (badge)", "ok"],
         ["F4", "/admin/kontakty — přehled", "ok"],
-        ["F5", "/admin/kariera — CRUD (bez Convexu)", "ok"],
-        ["F6", "/admin/poptavky — list + detail (empty state)", "ok"],
+        ["F5", "/admin/kariera — CRUD (bez Convexu, mutations ready)", "wip"],
+        ["F6", "/admin/poptavky — list z Convexu", "ok"],
       ],
     },
     {
@@ -644,19 +644,19 @@
         ["H1", "Průchod 375 px (Playwright)", "ok"],
         ["H2", "Průchod 768 px (Playwright)", "ok"],
         ["H3", "Průchod 1440 px (Playwright)", "ok"],
-        ["H4", "Lighthouse ≥ 90", "queue"],
+        ["H4", "Lighthouse ≥ 90 (potřebuje deploy)", "queue"],
         ["H5", "axe check (a11y)", "queue"],
-        ["H6", "End-to-end test poptávky", "queue"],
+        ["H6", "E2E test suite (42 testů, CI)", "ok"],
       ],
     },
     {
       code: "I",
       title: "Deploy & spuštění",
       tasks: [
-        ["I1", "netlify.toml + Next plugin", "ok"],
-        ["I2", "ENV do Netlify dashboardu", "queue"],
+        ["I1", "netlify.toml + Node 22 + Next plugin", "ok"],
+        ["I2", "DEPLOY.md — kompletní checklist", "ok"],
         ["I3", "Convex production deployment", "queue"],
-        ["I4", "Preview deploy — projít 6 URL", "queue"],
+        ["I4", "Preview deploy — projít 7 URL", "queue"],
         ["I5", "DNS přepnutí (TTL, MX zachovat)", "queue"],
         ["I6", "HTTPS ověřit (Netlify auto)", "queue"],
         ["I7", "Search Console + submit sitemap", "queue"],
@@ -673,7 +673,7 @@
   };
 
   // ── State (with localStorage persistence) ──────────────────────
-  const STORAGE_KEY = "planner:okfinal:v2";
+  const STORAGE_KEY = "planner:okfinal:v3";
   const stored = (() => {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
     catch { return {}; }
