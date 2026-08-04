@@ -16,6 +16,19 @@ Otevře se na `http://localhost:3000`.
 Doplň nejdřív `ADMIN_PASSWORD` a `ADMIN_JWT_SECRET`, ať funguje `/admin`.
 Zbytek klíčů (Convex, Resend, Turnstile) je pro produkční feature.
 
+## Testy
+
+```bash
+npm run typecheck                   # TS bez emitu
+npm run build                       # produkční build
+npx playwright install chromium     # jednou stačí
+npm run test:e2e                    # 42 e2e testů × 3 viewporty
+npm run test:e2e:ui                 # interaktivní UI runner
+```
+
+CI běží ve `.github/workflows/ci.yml` — typecheck + build + Playwright na
+každý PR.
+
 ## Struktura
 
 ```
