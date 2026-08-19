@@ -1,0 +1,807 @@
+<title>Nasazení · okfinal.cz</title>
+
+<style>
+  :root {
+    --bg: #fafbfc;
+    --panel: #ffffff;
+    --panel-2: #f4f6f8;
+    --ink: #0f1724;
+    --ink-soft: #354458;
+    --muted: #6b7787;
+    --border: #d8dee6;
+    --border-strong: #b6bfcb;
+
+    --accent: #c8102e;
+    --accent-ink: #7a0a1c;
+    --accent-tint: #ffe0e4;
+
+    --ok: #16a34a;
+    --ok-tint: #dcfce7;
+    --wip-tint: #fff2cc;
+    --wip-border: #ffd166;
+
+    --section-a-bg: #ffe0e4;
+    --section-b-bg: #dbeafe;
+    --section-c-bg: #dcfce7;
+    --section-d-bg: #f3e8ff;
+    --section-e-bg: #fef3c7;
+    --section-f-bg: #ffedd5;
+    --section-g-bg: #e0f2fe;
+
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
+      monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1420;
+      --panel: #17202f;
+      --panel-2: #1c2634;
+      --ink: #eef1f5;
+      --ink-soft: #c3ccd8;
+      --muted: #8a97a8;
+      --border: #2c3a4f;
+      --border-strong: #3d4e68;
+
+      --accent: #e83a52;
+      --accent-ink: #ffd0d5;
+      --accent-tint: #3a1418;
+
+      --ok: #22c55e;
+      --ok-tint: #0e2a1a;
+      --wip-tint: #3a2f10;
+      --wip-border: #7a5b0d;
+
+      --section-a-bg: #3a1418;
+      --section-b-bg: #10233e;
+      --section-c-bg: #0e2a1a;
+      --section-d-bg: #26163a;
+      --section-e-bg: #3a2a08;
+      --section-f-bg: #3a2311;
+      --section-g-bg: #0e2536;
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #fafbfc; --panel: #ffffff; --panel-2: #f4f6f8;
+    --ink: #0f1724; --ink-soft: #354458; --muted: #6b7787;
+    --border: #d8dee6; --border-strong: #b6bfcb;
+    --accent: #c8102e; --accent-ink: #7a0a1c; --accent-tint: #ffe0e4;
+    --ok: #16a34a; --ok-tint: #dcfce7;
+    --wip-tint: #fff2cc; --wip-border: #ffd166;
+    --section-a-bg: #ffe0e4; --section-b-bg: #dbeafe; --section-c-bg: #dcfce7;
+    --section-d-bg: #f3e8ff; --section-e-bg: #fef3c7; --section-f-bg: #ffedd5;
+    --section-g-bg: #e0f2fe;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1420; --panel: #17202f; --panel-2: #1c2634;
+    --ink: #eef1f5; --ink-soft: #c3ccd8; --muted: #8a97a8;
+    --border: #2c3a4f; --border-strong: #3d4e68;
+    --accent: #e83a52; --accent-ink: #ffd0d5; --accent-tint: #3a1418;
+    --ok: #22c55e; --ok-tint: #0e2a1a;
+    --wip-tint: #3a2f10; --wip-border: #7a5b0d;
+    --section-a-bg: #3a1418; --section-b-bg: #10233e; --section-c-bg: #0e2a1a;
+    --section-d-bg: #26163a; --section-e-bg: #3a2a08; --section-f-bg: #3a2311;
+    --section-g-bg: #0e2536;
+  }
+
+  html, body { background: var(--bg); color: var(--ink); }
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+  }
+
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+  }
+
+  /* Header */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    border-radius: 8px;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .actions { display: flex; gap: 8px; align-items: center; }
+  .btn-ghost {
+    appearance: none;
+    background: var(--panel);
+    color: var(--ink-soft);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn-ghost:hover { background: var(--panel-2); color: var(--ink); }
+
+  /* Progress row */
+  .progress {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .progress-pct {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .progress-bar {
+    flex: 1;
+    min-width: 200px;
+    height: 8px;
+    background: var(--panel-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .progress-note {
+    font-size: 13px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Table */
+  .board {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--panel-2);
+    border-bottom: 2px solid var(--border-strong);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    vertical-align: bottom;
+  }
+  th.num, td.num {
+    width: 40px;
+    text-align: center;
+    font-family: var(--font-mono);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  th.check, td.check {
+    width: 68px;
+    text-align: center;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  tr:last-child td { border-bottom: none; }
+
+  /* Section header rows */
+  tr.section-head td {
+    padding: 12px 14px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  tr.section-a td { background: var(--section-a-bg); }
+  tr.section-b td { background: var(--section-b-bg); }
+  tr.section-c td { background: var(--section-c-bg); }
+  tr.section-d td { background: var(--section-d-bg); }
+  tr.section-e td { background: var(--section-e-bg); }
+  tr.section-f td { background: var(--section-f-bg); }
+  tr.section-g td { background: var(--section-g-bg); }
+  .section-code {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.08);
+    color: var(--ink);
+    margin-right: 8px;
+    vertical-align: 1px;
+  }
+  :root[data-theme="dark"] .section-code,
+  @media (prefers-color-scheme: dark) {
+    .section-code { background: rgba(255,255,255,0.15); }
+  }
+  .section-hint {
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-left: 8px;
+  }
+
+  /* Task rows */
+  .task-title { font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .where { color: var(--accent); font-weight: 500; }
+  .where code {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--accent-tint);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--accent-ink);
+  }
+  .how, .stuck { color: var(--ink-soft); }
+  code.inline {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* Done state */
+  tr.done td {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: rgba(107,119,135,0.4);
+  }
+  tr.done .task-title { color: var(--muted); }
+  tr.done .where, tr.done .where code { color: var(--muted); background: var(--panel-2); }
+
+  tr.wip td { background: linear-gradient(90deg, var(--wip-tint), transparent 300px); }
+  tr.wip td:first-child { border-left: 3px solid var(--wip-border); }
+
+  /* Checkbox */
+  .check-btn {
+    appearance: none;
+    width: 26px; height: 26px;
+    border: 2px solid var(--border-strong);
+    border-radius: 6px;
+    background: var(--panel);
+    cursor: pointer;
+    display: grid; place-items: center;
+    padding: 0;
+    transition: all 0.12s ease;
+  }
+  .check-btn:hover { border-color: var(--ok); }
+  .check-btn[data-state="done"] {
+    background: var(--ok);
+    border-color: var(--ok);
+  }
+  .check-btn[data-state="done"] svg { display: block; }
+  .check-btn svg { display: none; width: 14px; height: 14px; color: white; }
+  .check-btn[data-state="wip"] {
+    background: var(--wip-tint);
+    border-color: var(--wip-border);
+  }
+  .check-btn[data-state="wip"]::after {
+    content: "…";
+    color: var(--wip-border);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    margin-top: -6px;
+  }
+
+  /* Legend/footer */
+  .legend {
+    margin-top: 14px;
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .dot {
+    width: 12px; height: 12px; border-radius: 3px;
+    display: inline-block;
+    border: 2px solid var(--border-strong);
+    background: var(--panel);
+  }
+  .legend .dot.done { background: var(--ok); border-color: var(--ok); }
+  .legend .dot.wip { background: var(--wip-tint); border-color: var(--wip-border); }
+  .legend em { font-style: normal; color: var(--ink-soft); }
+
+  @media (max-width: 900px) {
+    .page { padding: 16px 12px 64px; }
+    .board { font-size: 12px; }
+    td, th { padding: 8px 8px; }
+    th.check, td.check { width: 54px; }
+    .hide-mobile { display: none; }
+    tr.section-head td { padding: 10px; }
+  }
+</style>
+
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">OK</div>
+      <div>
+        <h1>Nasazení okfinal.cz — postup krok za krokem</h1>
+        <div class="subtitle">Klik za klikem od lokálního běhu po live web. Postup pro první nasazení.</div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn-ghost" id="resetBtn" title="Vrátí všechny řádky do výchozího stavu">Reset</button>
+      <button type="button" class="btn-ghost" id="themeBtn">Motiv</button>
+    </div>
+  </header>
+
+  <div class="progress">
+    <div class="progress-pct"><span id="pctN">0</span>%</div>
+    <div style="flex:1; min-width: 200px;">
+      <div class="progress-bar"><div class="progress-fill" id="pctFill" style="width:0%"></div></div>
+      <div class="progress-note" style="margin-top:6px;"><span id="doneN">0</span> hotovo · <span id="wipN">0</span> probíhá · <span id="totalN">0</span> celkem</div>
+    </div>
+  </div>
+
+  <div class="board">
+    <table id="board">
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Co uděláš</th>
+          <th class="hide-mobile">Kde přesně</th>
+          <th>Jak (klik za klikem)</th>
+          <th class="hide-mobile">Když se zasekneš</th>
+          <th class="check">Hotovo</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot"></span> <em>Čeká</em></span>
+    <span><span class="dot wip"></span> <em>Probíhá (klikni znovu pro hotovo)</em></span>
+    <span><span class="dot done"></span> <em>Hotovo</em></span>
+    <span style="margin-left:auto">Stavy se ukládají lokálně (localStorage).</span>
+  </div>
+</div>
+
+<template id="check-icon">
+  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.5 5 9.5l5-6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</template>
+
+<script>
+  const STORAGE_KEY = "okfinal-deploy:v1";
+
+  const sections = [
+    {
+      code: "A", cls: "section-a",
+      title: "Lokální projekt",
+      hint: "spuštění webu na tvém počítači (jsi tady teď)",
+      tasks: [
+        {
+          n: 1,
+          what: "Naklonuj repo z GitHubu",
+          where: '<code>C:\\06_Cursor\\07_Okfinal\\</code>',
+          how: "V PowerShellu: <code class='inline'>cd C:\\06_Cursor\\07_Okfinal\\ok-final</code> (jsi tam už, gh clone vytvořil podsložku).",
+          stuck: "Když <code class='inline'>ok-final</code> složka není: <code class='inline'>gh repo clone drumdrone/ok-final . -- -b claude/okfinal-nextjs-migration-a2du70</code>",
+          default: "wip",
+        },
+        {
+          n: 2,
+          what: "Nainstaluj závislosti",
+          where: "PowerShell v <code>ok-final/</code>",
+          how: "<code class='inline'>npm install</code> — trvá 30–60 s, stáhne ~400 balíčků.",
+          stuck: "Chyba EACCES / permissions → zavři jiné procesy nad složkou. Chyba network → zkus znovu.",
+        },
+        {
+          n: 3,
+          what: "Vytvoř .env.local",
+          where: "kořen projektu",
+          how: "<code class='inline'>copy .env.example .env.local</code>, otevři v Cursoru, vyplň <code class='inline'>ADMIN_PASSWORD</code> (cokoli silného) a <code class='inline'>ADMIN_JWT_SECRET</code> (32+ znaků, náhodně).",
+          stuck: "Náhodný secret v PowerShellu: <code class='inline'>-join ((48..57)+(65..90)+(97..122) | Get-Random -Count 40 | ForEach {[char]$_})</code>",
+        },
+        {
+          n: 4,
+          what: "Spusť dev server",
+          where: "PowerShell v ok-final",
+          how: "<code class='inline'>npm run dev</code> → otevři <code class='inline'>http://localhost:3000</code> v prohlížeči.",
+          stuck: "Port obsazený → zastav Ctrl+C, změň port: <code class='inline'>npm run dev -- -p 3001</code>",
+        },
+        {
+          n: 5,
+          what: "Ověř, že web běží",
+          where: "prohlížeč",
+          how: "Projdi: /, /o-firme, /nase-sluzby, /certifikaty, /kariera, /kontakt, /faq. Zkus /admin/login s heslem z .env.local.",
+          stuck: "Bílá stránka → mrkni do PowerShellu na chybu. Restart: Ctrl+C, <code class='inline'>npm run dev</code>.",
+        },
+      ],
+    },
+    {
+      code: "B", cls: "section-b",
+      title: "Convex — databáze pro poptávky, kariéru, admin",
+      hint: "backend běží 100% zdarma na Convex cloud (free tier)",
+      tasks: [
+        {
+          n: 6,
+          what: "Založ Convex účet",
+          where: '<a href="https://dashboard.convex.dev" target="_blank" rel="noopener">dashboard.convex.dev</a>',
+          how: "Sign up → Continue with GitHub → povolit přístup účtu drumdrone.",
+          stuck: "GitHub OAuth okno se neotevře → zkus jiný prohlížeč nebo incognito.",
+        },
+        {
+          n: 7,
+          what: "Spusť Convex dev",
+          where: "PowerShell v ok-final",
+          how: "<code class='inline'>npx convex dev</code> → Create a new project → název 'okfinal'. Otevře prohlížeč pro auth.",
+          stuck: "Auth zůstane visící → zastav Ctrl+C, přihlas se přes <code class='inline'>npx convex login</code>, pak znovu.",
+        },
+        {
+          n: 8,
+          what: "Ověř, že .env.local má Convex URL",
+          where: ".env.local",
+          how: "Convex tam automaticky přidal <code class='inline'>NEXT_PUBLIC_CONVEX_URL=https://…convex.cloud</code> a <code class='inline'>CONVEX_DEPLOYMENT=dev:…</code>.",
+          stuck: "Když tam není, otevři <code class='inline'>.env.local</code> ručně a přidej ze zprávy Convex CLI.",
+        },
+        {
+          n: 9,
+          what: "Nech Convex běžet + spusť dev server v druhém okně",
+          where: "dvě PowerShell okna",
+          how: "Okno 1: <code class='inline'>npx convex dev</code> (běží dál, hlídá změny). Okno 2: <code class='inline'>npm run dev</code>.",
+          stuck: "Okno 2 chybí → v Cursoru pravý klik na terminál → Split Terminal.",
+        },
+        {
+          n: 10,
+          what: "Testovací poptávka",
+          where: "/kontakt → /admin/poptavky",
+          how: "Otevři /kontakt, vyplň, odešli. V /admin/poptavky uvidíš záznam. V dashboardu Convex → Data → inquiries taky.",
+          stuck: "Poptávka se neuloží → mrkni do PowerShellu okna 1 (Convex) na chybu.",
+        },
+      ],
+    },
+    {
+      code: "C", cls: "section-c",
+      title: "Resend — transakční e-mail",
+      hint: "posílá poptávku na info@okfinal.cz + potvrzení odesilateli",
+      tasks: [
+        {
+          n: 11,
+          what: "Založ Resend účet",
+          where: '<a href="https://resend.com" target="_blank" rel="noopener">resend.com</a> → Sign up',
+          how: "Přes GitHub nebo e-mail. Free plán = 3 000 mailů/měsíc a 100/den, stačí.",
+          stuck: "Verifikace mailu vypadla → Sign in → Resend verification.",
+        },
+        {
+          n: 12,
+          what: "Přidej doménu okfinal.cz",
+          where: "Resend dashboard → Domains → Add Domain",
+          how: "Zadej <code class='inline'>okfinal.cz</code>. Ukáže ti 3 DNS záznamy (DKIM CNAME + SPF TXT + DMARC).",
+          stuck: "Nemáš přístup k DNS → domluv se s tím, kdo drží doménu, ať přidá.",
+        },
+        {
+          n: 13,
+          what: "Přidej DNS záznamy",
+          where: "DNS správce domény (Wedos / Forpsi / Cloudflare / …)",
+          how: "Přesně opsat 3 záznamy z Resendu. Čekat na verifikaci (obvykle 10–30 min).",
+          stuck: "Po hodině stále 'pending' → zkontroluj, že jsi vložil hodnoty přesně (žádné mezery, žádná uvozovka navíc).",
+        },
+        {
+          n: 14,
+          what: "Vytvoř API klíč",
+          where: "Resend → API Keys → Create API Key",
+          how: "Permission: Sending access. Zkopíruj klíč HNED — už ho neuvidíš.",
+          stuck: "Ztratil klíč → smaž ho a vytvoř nový.",
+        },
+        {
+          n: 15,
+          what: "Přidej RESEND_API_KEY do Convexu",
+          where: "Convex dashboard → Settings → Environment Variables",
+          how: "Add: <code class='inline'>RESEND_API_KEY</code> = &lt;klíč&gt;. Přidej i <code class='inline'>RESEND_FROM=noreply@okfinal.cz</code> a <code class='inline'>RESEND_TO_INQUIRIES=info@okfinal.cz</code>.",
+          stuck: "Nejde uložit → obnov stránku, přihlas se znovu.",
+        },
+        {
+          n: 16,
+          what: "Testovací e-mail",
+          where: "/kontakt",
+          how: "Pošli poptávku se svým e-mailem. Do 30 s má přijít potvrzení. Na info@okfinal.cz taky.",
+          stuck: "Nepřišel → Resend dashboard → Emails → uvidíš stav (delivered / bounced / …).",
+        },
+      ],
+    },
+    {
+      code: "D", cls: "section-d",
+      title: "Cloudflare Turnstile (anti-spam, volitelné)",
+      hint: "captcha bez cookies, zdarma. Můžeš přeskočit a nasadit později.",
+      tasks: [
+        {
+          n: 17,
+          what: "Založ Cloudflare účet",
+          where: '<a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a>',
+          how: "Přes e-mail. Není nutné převádět doménu na Cloudflare.",
+          stuck: "—",
+        },
+        {
+          n: 18,
+          what: "Přidej Turnstile site",
+          where: "Cloudflare → Turnstile → Add site",
+          how: "Domain: <code class='inline'>okfinal.cz</code>, Mode: Managed. Uloží Sitekey (public) a Secret Key.",
+          stuck: "—",
+        },
+        {
+          n: 19,
+          what: "Přidej klíče do prostředí",
+          where: ".env.local (dev) + později Netlify (prod)",
+          how: "<code class='inline'>NEXT_PUBLIC_TURNSTILE_SITE_KEY=…</code> a <code class='inline'>TURNSTILE_SECRET_KEY=…</code>. Backend už verify volá; widget se ve formuláři dodělá po dodání klíčů.",
+          stuck: "—",
+        },
+      ],
+    },
+    {
+      code: "E", cls: "section-e",
+      title: "Netlify — publikace webu",
+      hint: "hosting, HTTPS, deploy z GitHubu",
+      tasks: [
+        {
+          n: 20,
+          what: "Založ Netlify účet",
+          where: '<a href="https://app.netlify.com" target="_blank" rel="noopener">app.netlify.com</a>',
+          how: "Log in → GitHub → povolit přístup účtu drumdrone.",
+          stuck: "GitHub App instalace vyžádá potvrzení → Grant access.",
+        },
+        {
+          n: 21,
+          what: "Import repo",
+          where: "Netlify → Add new site → Import an existing project → GitHub",
+          how: "Vyber <code class='inline'>drumdrone/ok-final</code>. Branch: <code class='inline'>main</code> (nebo aktuální feature větev). Build settings netýkat — přečte se z netlify.toml.",
+          stuck: "Repo v seznamu není → Configure GitHub App → dej mu přístup i k tomuhle repu.",
+        },
+        {
+          n: 22,
+          what: "Deploy Convex do produkce",
+          where: "PowerShell v ok-final",
+          how: "<code class='inline'>npx convex deploy --prod</code>. Vypíše production <code class='inline'>NEXT_PUBLIC_CONVEX_URL</code> a <code class='inline'>CONVEX_DEPLOY_KEY</code> — zkopíruj do Netlify env.",
+          stuck: "Neptá se — projekt už má prod deployment → dashboard.convex.dev → Settings → Deploy Keys.",
+        },
+        {
+          n: 23,
+          what: "Přidej ENV proměnné do Netlify",
+          where: "Site settings → Environment variables",
+          how: "Přidej 10 proměnných z <code class='inline'>DEPLOY.md</code>: NEXT_PUBLIC_SITE_URL, NEXT_PUBLIC_CONVEX_URL, CONVEX_DEPLOY_KEY, ADMIN_PASSWORD, ADMIN_JWT_SECRET, RESEND_API_KEY, RESEND_FROM, RESEND_TO_INQUIRIES, NEXT_PUBLIC_TURNSTILE_SITE_KEY, TURNSTILE_SECRET_KEY.",
+          stuck: "Neví se hodnota → viz .env.local + Convex/Resend dashboardy.",
+        },
+        {
+          n: 24,
+          what: "Trigger deploy",
+          where: "Netlify → Deploys → Trigger deploy → Clear cache and deploy",
+          how: "Čeká 2–5 min. Až je 'Published', uvidíš preview URL typu <code class='inline'>random-name.netlify.app</code>.",
+          stuck: "Build failed → klikni na deploy → přečti log → nejčastěji chybí ENV proměnná.",
+        },
+        {
+          n: 25,
+          what: "Otestuj preview URL",
+          where: "prohlížeč — https://random-name.netlify.app",
+          how: "Projdi 7 URL, pošli testovací poptávku, přihlas se do /admin.",
+          stuck: "500 na formuláři → Netlify → Functions → uvidíš log.",
+        },
+      ],
+    },
+    {
+      code: "F", cls: "section-f",
+      title: "Doména a DNS — přepnutí okfinal.cz",
+      hint: "pozor na MX záznamy (mail!) — nesahat na ně",
+      tasks: [
+        {
+          n: 26,
+          what: "Sniž TTL v DNS (den předem)",
+          where: "DNS správce domény",
+          how: "U A a CNAME záznamů okfinal.cz sniž TTL na 300 s (5 min). Umožní rychlé zpětné vypnutí.",
+          stuck: "TTL nelze snížit → nasaď v době nízkého provozu.",
+        },
+        {
+          n: 27,
+          what: "Přidej custom doménu v Netlify",
+          where: "Netlify → Domain management → Add custom domain",
+          how: "Zadej <code class='inline'>okfinal.cz</code>. Netlify ukáže, jaké A / CNAME záznamy potřebuje.",
+          stuck: "'Already in use' → potvrď vlastnictví přes verify.",
+        },
+        {
+          n: 28,
+          what: "Přenastav DNS",
+          where: "DNS správce",
+          how: "A záznam <code class='inline'>okfinal.cz</code> → Netlify load balancer IP (Netlify ukáže). CNAME <code class='inline'>www</code> → <code class='inline'>random-name.netlify.app</code>. <strong>MX záznamy nesahat!</strong>",
+          stuck: "Po hodině stále starý web → DNS cache, počkej. Ověř: <code class='inline'>nslookup okfinal.cz</code>.",
+        },
+        {
+          n: 29,
+          what: "Ověř HTTPS",
+          where: "Netlify → Domain → HTTPS",
+          how: "Netlify automaticky vydá Let's Encrypt certifikát (~5 min). Až je 'Enabled', <code class='inline'>https://okfinal.cz</code> funguje.",
+          stuck: "'Awaiting external DNS' → čekej, DNS ještě neproběhlo.",
+        },
+        {
+          n: 30,
+          what: "Zkontroluj, že mail chodí",
+          where: "e-mail klient nebo webmail",
+          how: "Pošli si testovací mail na info@okfinal.cz. Pokud přijde, MX se nedotklo.",
+          stuck: "Mail nechodí → v DNS ověř, že MX záznamy jsou beze změny.",
+        },
+      ],
+    },
+    {
+      code: "G", cls: "section-g",
+      title: "SEO + Analytika",
+      hint: "aby Google věděl o webu a viděl jsi návštěvnost",
+      tasks: [
+        {
+          n: 31,
+          what: "Google Search Console",
+          where: '<a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>',
+          how: "Add property → Domain → <code class='inline'>okfinal.cz</code>. Ověř přes TXT record v DNS.",
+          stuck: "Ověření selže → počkej hodinu na DNS, zkus znovu.",
+        },
+        {
+          n: 32,
+          what: "Submit sitemap",
+          where: "Search Console → Sitemaps",
+          how: "Add <code class='inline'>https://okfinal.cz/sitemap.xml</code>. Google začne během pár dní indexovat.",
+          stuck: "'Couldn't fetch' → zkontroluj, že /sitemap.xml se otevře v prohlížeči.",
+        },
+        {
+          n: 33,
+          what: "Analytika (vyber)",
+          where: "Plausible.io nebo analytics.google.com",
+          how: "Plausible (9 €/měs, EU, bez cookies): přidat &lt;script&gt; do <code class='inline'>src/app/layout.tsx</code>. GA4 (zdarma, ale cookie banner): totéž s GA scriptem + Consent Mode.",
+          stuck: "Doporučuji Plausible pro strojírenskou B2B — méně bolesti s GDPR.",
+        },
+        {
+          n: 34,
+          what: "Otestuj mobilní zobrazení",
+          where: "Chrome DevTools → Device toolbar → iPhone 12",
+          how: "Projdi hlavní stránky. Ověř, že hero funguje, formulář jde odeslat.",
+          stuck: "Něco se láme na mobilu → nahlas mi to, doladíme.",
+        },
+        {
+          n: 35,
+          what: "Předej klientovi + zpětná vazba",
+          where: "e-mail nebo schůzka",
+          how: "Ukaž web, formulář, admin. Získej seznam připomínek. Zapiš do OPEN-QUESTIONS.md.",
+          stuck: "—",
+        },
+      ],
+    },
+  ];
+
+  // ── Render ─────────────────────────────────────────────────────
+  const stored = (() => {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch { return {}; }
+  })();
+
+  const iconTpl = document.getElementById("check-icon");
+  const tbody = document.getElementById("tbody");
+  let totalCount = 0;
+
+  sections.forEach((s) => {
+    const head = document.createElement("tr");
+    head.className = `section-head ${s.cls}`;
+    head.innerHTML = `<td colspan="6"><span class="section-code">${s.code}</span>${s.title}<span class="section-hint">— ${s.hint}</span></td>`;
+    tbody.appendChild(head);
+
+    s.tasks.forEach((t) => {
+      totalCount++;
+      const state = stored[t.n] ?? t.default ?? "queue";
+      const tr = document.createElement("tr");
+      tr.dataset.n = t.n;
+      applyRowClass(tr, state);
+      tr.innerHTML = `
+        <td class="num">${t.n}</td>
+        <td><div class="task-title">${t.what}</div></td>
+        <td class="where hide-mobile">${t.where}</td>
+        <td class="how">${t.how}</td>
+        <td class="stuck hide-mobile">${t.stuck}</td>
+        <td class="check"></td>
+      `;
+      const cell = tr.querySelector(".check");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "check-btn";
+      btn.dataset.state = state;
+      btn.setAttribute("aria-label", "Přepnout stav");
+      const icon = iconTpl.content.firstElementChild.cloneNode(true);
+      btn.appendChild(icon);
+      btn.addEventListener("click", () => cycleTask(t.n, tr, btn));
+      cell.appendChild(btn);
+      tbody.appendChild(tr);
+    });
+  });
+
+  function applyRowClass(tr, state) {
+    tr.classList.remove("done", "wip");
+    if (state === "done") tr.classList.add("done");
+    if (state === "wip") tr.classList.add("wip");
+  }
+
+  function cycleTask(n, tr, btn) {
+    const cur = btn.dataset.state;
+    const next = cur === "queue" ? "wip" : cur === "wip" ? "done" : "queue";
+    btn.dataset.state = next;
+    applyRowClass(tr, next);
+    stored[n] = next;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stored)); } catch {}
+    recompute();
+  }
+
+  function recompute() {
+    let done = 0, wip = 0;
+    document.querySelectorAll(".check-btn").forEach((b) => {
+      if (b.dataset.state === "done") done++;
+      else if (b.dataset.state === "wip") wip++;
+    });
+    const pct = totalCount ? Math.round((done / totalCount) * 100) : 0;
+    document.getElementById("pctN").textContent = pct;
+    document.getElementById("pctFill").style.width = pct + "%";
+    document.getElementById("doneN").textContent = done;
+    document.getElementById("wipN").textContent = wip;
+    document.getElementById("totalN").textContent = totalCount;
+  }
+  recompute();
+
+  // Theme toggle
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    const root = document.documentElement;
+    const cur = root.getAttribute("data-theme");
+    const isDark =
+      cur === "dark" ||
+      (cur === null && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    root.setAttribute("data-theme", isDark ? "light" : "dark");
+  });
+
+  // Reset
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    if (!confirm("Vrátit všechny řádky do výchozího stavu?")) return;
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    location.reload();
+  });
+</script>
