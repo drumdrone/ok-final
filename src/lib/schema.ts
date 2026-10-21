@@ -55,14 +55,6 @@ export const localBusinessJsonLd = {
     latitude: site.address.lat,
     longitude: site.address.lng,
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "07:00",
-      closes: "15:30",
-    },
-  ],
 };
 
 export const servicesJsonLd = services.map((s) => ({

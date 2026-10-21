@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Kariéra",
   description:
-    "Aktuální nabídka pracovních pozic v OK FINAL s.r.o. — soustružník, svářeč, pomocná síla ve výrobě.",
+    "Kariéra v OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713, mobil: +420 603 534 364.",
   alternates: { canonical: "/kariera" },
 };
 
@@ -42,24 +42,23 @@ export default async function KarieraPage() {
     <>
       <PageHero
         eyebrow="Kariéra"
-        title="Práce, kde záleží na řemesle"
-        lead="Nejsme velký závod — jsme dílna, kde každý ví, co dělá. Když vás baví přesná strojírenská práce a chcete klidné prostředí, ozvěte se."
+        title="Kariéra"
+        lead="OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713, mobil: +420 603 534 364."
       />
 
       <Section tight>
         {jobs.length === 0 ? (
           <div className="rounded-lg border border-steel-200 bg-white p-10 text-center">
-            <h2 className="text-2xl font-bold">Momentálně nevypisujeme žádnou pozici</h2>
+            <h2 className="text-2xl font-bold">Adresa a telefony</h2>
             <p className="mx-auto mt-3 max-w-xl text-steel-600">
-              Přesto přijímáme životopisy do zásoby. Pokud jste soustružník,
-              svářeč nebo šikovný pomocník do výroby, pošlete nám krátké
-              představení — ozveme se, jakmile se místo uvolní.
+              OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. IČ: 46506578,
+              DIČ: CZ46506578. Tel.: +420 465 612 713, mobil: +420 603 534 364.
             </p>
             <a
-              href={`mailto:${site.contacts.career}`}
+              href="tel:+420465612713"
               className="btn btn-primary mt-6"
             >
-              Poslat životopis
+              Zavolat +420 465 612 713
             </a>
           </div>
         ) : (

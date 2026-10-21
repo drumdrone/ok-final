@@ -9,7 +9,7 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Naše služby",
   description:
-    "Přesné soustružení, ruční svařování a kompletace kovových dílců. Kusová i sériová výroba podle výkresové dokumentace.",
+    "Soustružení na CNC dlouhotočných automatech od průměru 2 mm do 26 mm, ruční svařování a montážní práce.",
   alternates: { canonical: "/nase-sluzby" },
 };
 
@@ -18,8 +18,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Naše služby"
-        title="Od výkresu k hotovému dílci"
-        lead="Tři návazné technologie pod jednou střechou — bez zbytečné koordinace mezi subdodavateli."
+        title="Soustružení, ruční svařování a montážní práce"
+        lead="Práci provádíme na CNC dlouhotočných automatech a jsme schopni obrábět dílce od průměru 2 mm do průměru 26 mm."
       />
 
       <Section>
@@ -51,8 +51,8 @@ export default function ServicesPage() {
                   {s.body}
                 </p>
                 <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {s.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-3">
+                  {s.bullets.map((b, bulletIndex) => (
+                    <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
                       <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-500" />
                       <span className="text-steel-700">{b}</span>
                     </li>
@@ -68,14 +68,14 @@ export default function ServicesPage() {
         <div className="container flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
           <div>
             <h2 className="text-2xl font-bold sm:text-3xl">
-              Máte konkrétní zakázku?
+              Sjednejte si schůzku s námi ještě dnes
             </h2>
             <p className="mt-2 text-steel-300">
-              Pošlete nám výkres, ozveme se do 24 hodin s cenou a termínem.
+              Pokud máte zájem o případnou spolupráci, tak nám zašlete nezávaznou poptávku a my vám dílce bezplatně naceníme.
             </p>
           </div>
           <Link href="/kontakt" className="btn btn-primary">
-            Poptat výrobu
+            Kontaktovat
           </Link>
         </div>
       </section>

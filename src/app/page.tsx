@@ -7,10 +7,7 @@ import { localBusinessJsonLd } from "@/lib/schema";
 import { home, services, site } from "@/lib/site";
 
 export default function HomePage() {
-  const experienceBody = home.experience.body.replace(
-    "{founded}",
-    String(site.company.founded),
-  );
+  const experienceBody = home.experience.body;
 
   return (
     <>
