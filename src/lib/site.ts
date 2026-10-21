@@ -219,40 +219,16 @@ export const faqItems = [
 
 export const certificates = [
   {
-    title: "ČSN EN ISO 9606-1",
+    title: "ČSN EN ISO 9001:2016",
     body:
-      "Zkouška svářečů — tavné svařování ocelí. Platné osvědčení pro všechny aktivní svářeče v podniku.",
-    tag: "Svařování",
-  },
-  {
-    title: "Metoda 135 / 138 (MIG/MAG)",
-    body:
-      "Certifikované obloukové svařování tavící se elektrodou v ochranné atmosféře plynu — pro ocel i nerez.",
-    tag: "Svařování",
-  },
-  {
-    title: "Metoda 141 (TIG)",
-    body:
-      "Obloukové svařování netavící se wolframovou elektrodou v ochranné atmosféře plynu — pro nerez, hliník a přesné spoje.",
-    tag: "Svařování",
-  },
-  {
-    title: "Metoda 111 (elektroda)",
-    body:
-      "Obloukové svařování obalenou elektrodou — pro konstrukční ocel a montáže v terénu.",
-    tag: "Svařování",
-  },
-  {
-    title: "Kalibrace měřidel",
-    body:
-      "Pravidelná kalibrace posuvných měřidel, mikrometrů a měřicích přístrojů akreditovanou laboratoří.",
-    tag: "Metrologie",
-  },
-  {
-    title: "Kontrolní protokoly",
-    body:
-      "Na vyžádání dodáváme protokoly o měření rozměrů a jakosti pro každou dávku.",
+      "Systém managementu kvality pro strojírenskou a zámečnickou výrobu a strojní obrábění na CNC soustruzích. Certifikát č. QMS-5039/2023, STAVCERT Praha. Platnost od 15. 7. 2023 do 14. 7. 2026. První certifikace: červenec 2011.",
     tag: "Kvalita",
+  },
+  {
+    title: "ISO 9001:2015",
+    body:
+      "Anglické znění téhož certifikátu. Rozsah: machine industry production and locksmithery, machine machining CNC lathes. Certificate No. QMS-5039/2023, platnost 15. 7. 2023 – 14. 7. 2026.",
+    tag: "EN",
   },
 ] as const;
 

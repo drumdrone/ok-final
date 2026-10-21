@@ -6,7 +6,7 @@ import { certificates, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Certifikáty",
   description:
-    "Certifikace svářečů podle ČSN EN ISO 9606-1 a další doklady kvality výroby OK FINAL s.r.o.",
+    "Systém managementu kvality OK FINAL s.r.o. podle ČSN EN ISO 9001:2016. Certifikát č. QMS-5039/2023, STAVCERT Praha.",
   alternates: { canonical: "/certifikaty" },
 };
 
@@ -15,20 +15,20 @@ export default function CertifikatyPage() {
     <>
       <PageHero
         eyebrow="Certifikáty"
-        title="Doklady kvality naší práce"
-        lead="Kvalitu neslibujeme — dokládáme ji. Naše svářeče pravidelně certifikujeme a měřidla necháváme kalibrovat akreditovanou laboratoří."
+        title="Systém managementu kvality"
+        lead="Zavedený a udržovaný systém managementu kvality pro strojírenskou a zámečnickou výrobu a strojní obrábění na CNC soustruzích. ČSN EN ISO 9001:2016, certifikát č. QMS-5039/2023."
       />
       <Section>
         <SectionHeader
-          eyebrow="Přehled"
-          title="Certifikáty a osvědčení"
-          lead="Kopie dokladů dodáváme na vyžádání s každou zakázkou."
+          eyebrow="STAVCERT"
+          title="ČSN EN ISO 9001:2016"
+          lead="Platnost od 15. 7. 2023 do 14. 7. 2026. První certifikace: červenec 2011."
         />
         <div className="mb-12 overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-4 sm:p-6">
           <div className="relative mx-auto aspect-[3/4] max-w-md">
             <Image
               src={site.assets.cert}
-              alt="Ukázka certifikátu OK FINAL"
+              alt="Certifikát ISO 9001:2015 pro OK FINAL s.r.o."
               fill
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 448px"
