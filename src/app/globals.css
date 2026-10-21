@@ -8,7 +8,6 @@
   }
   body {
     @apply bg-white text-steel-900 antialiased;
-    font-feature-settings: "cv02", "cv03", "cv11", "ss01";
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight text-steel-950;
