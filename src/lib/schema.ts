@@ -8,7 +8,7 @@ export const organizationJsonLd = {
   name: site.name,
   legalName: site.name,
   url: base,
-  logo: `${base}/icon.svg`,
+  logo: `${base}/favicon.svg`,
   description: site.description,
   address: {
     "@type": "PostalAddress",
@@ -38,7 +38,7 @@ export const localBusinessJsonLd = {
   "@type": "LocalBusiness",
   "@id": `${base}#business`,
   name: site.name,
-  image: `${base}/og.png`,
+  image: `${base}${site.assets.hero}`,
   url: base,
   telephone: site.contacts.phone,
   email: site.contacts.email,
@@ -55,14 +55,6 @@ export const localBusinessJsonLd = {
     latitude: site.address.lat,
     longitude: site.address.lng,
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "07:00",
-      closes: "15:30",
-    },
-  ],
 };
 
 export const servicesJsonLd = services.map((s) => ({

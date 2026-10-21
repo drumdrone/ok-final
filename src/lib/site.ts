@@ -24,17 +24,53 @@ export const site = {
       email: "jiri.divisek@okfinal.cz",
       phone: "+420 603 534 364",
     },
+    people: [
+      {
+        name: "Ing. Jiří Divíšek",
+        role: "Výkonný ředitel – jednatel",
+        phone: "+420 603 534 364",
+        email: "jiri.divisek@okfinal.cz",
+      },
+      {
+        name: "Pavel Divíšek",
+        role: "Jednatel",
+        phone: "+420 603 894 310",
+        email: "pavel.divisek@okfinal.cz",
+      },
+      {
+        name: "Michael Čammr",
+        role: "Mistr výroby",
+        phone: "+420 603 754 599",
+        email: "michael.cammr@okfinal.cz",
+      },
+      {
+        name: "Jana Dostálková",
+        role: "Kontrola jakosti",
+        phone: "+420 731 442 810",
+        email: "jana.dostalkova@okfinal.cz",
+      },
+      {
+        name: "Marie Grimová",
+        role: "Zásobování",
+        phone: "+420 731 443 452",
+        email: "marie.grimova@okfinal.cz",
+      },
+      {
+        name: "Kateřina Čammrová",
+        role: "Administrativní pracovnice-účetní",
+        phone: "+420 465 612 713",
+        email: "katerina.cammrova@okfinal.cz",
+      },
+    ],
     career: "info@okfinal.cz",
   },
   company: {
-    ico: "60934484",
-    dic: "CZ60934484",
+    ico: "46506578",
+    dic: "CZ46506578",
     founded: 1992,
+    court: "OR-C/2017 – Krajský soud Hradec Králové",
+    billingEmail: "uctarna@okfinal.cz",
   },
-  hours: [
-    { day: "Pondělí – Pátek", value: "7:00 – 15:30" },
-    { day: "Sobota – Neděle", value: "Zavřeno" },
-  ],
   social: {
     // doplnit až klient řekne
   },
