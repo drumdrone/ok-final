@@ -24,7 +24,7 @@ export const site = {
       email: "jiri.divisek@okfinal.cz",
       phone: "+420 603 534 364",
     },
-    career: "kariera@okfinal.cz",
+    career: "info@okfinal.cz",
   },
   company: {
     ico: "60934484",
