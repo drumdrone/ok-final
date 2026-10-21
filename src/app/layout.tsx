@@ -47,7 +47,13 @@ export const metadata: Metadata = {
     description: site.description,
     images: [site.assets.hero],
   },
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "cs-CZ": "/",
+      "en": "/en",
+    },
+  },
   robots: {
     index: true,
     follow: true,

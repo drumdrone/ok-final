@@ -42,9 +42,11 @@ export const site = {
     logo: "/brand/logo.jpg",
     logoMark: "/brand/logo-mark.jpg",
     hero: "/images/hero1_res.jpg",
-    workshop: "/images/workshop.jpg",
-    machine: "/images/manurhin.jpg",
-    cert: "/images/cert1.png",
+    workshop: "/images/foto-workshop.jpg",
+    machine: "/images/foto-soustruzeni.png",
+    cert: "/images/cert-iso-9001.jpg",
+    certPdfCs: "/docs/iso-9001-cz.pdf",
+    certPdfEn: "/docs/iso-9001-en.pdf",
   },
 } as const;
 
@@ -80,7 +82,7 @@ export const services: Array<{
       "Kusová výroba i série do 500 ks",
       "Tolerance IT6 – IT9",
     ],
-    image: "/images/manurhin.jpg",
+    image: "/images/foto-soustruzeni.png",
   },
   {
     slug: "svarovani",
@@ -94,7 +96,7 @@ export const services: Array<{
       "Certifikovaní svářeči ČSN EN ISO 9606-1",
       "Podniková svařovna s odsáváním",
     ],
-    image: "/images/svarec.jpg",
+    image: "/images/foto-svarovani.png",
   },
   {
     slug: "montaz",
@@ -108,9 +110,75 @@ export const services: Array<{
       "Balení, expedice, doprava",
       "Zajištění povrchových úprav",
     ],
-    image: "/images/kolo.jpg",
+    image: "/images/foto-montaz.png",
   },
 ];
+
+/** English landing-page copy (one-page EN variant at /en) */
+export const en = {
+  hero: {
+    eyebrow: "Precision metalworks · Czech Republic",
+    titleBefore: "Metal parts to your",
+    titleAccent: "engineering drawings",
+    lead:
+      "Precision turning, manual welding and assembly. One-off pieces and small-to-medium batches for machinery, energy and industrial automation. Reply to any inquiry within 24 hours.",
+    ctaPrimary: { href: "/en#contact", label: "Request a quote" },
+    ctaSecondary: { href: "/en#services", label: "Our services" },
+  },
+  stats: [
+    { value: "33", unit: "years", label: "on the market" },
+    { value: "500+", unit: "", label: "orders per year" },
+    { value: "IT6", unit: "", label: "finest tolerance" },
+    { value: "24 h", unit: "", label: "response time" },
+  ],
+  intro: {
+    title: "A family workshop that speaks engineering",
+    body:
+      "OK FINAL s.r.o. was founded in 1992 in Žamberk, Czech Republic. Over three decades we have delivered hundreds of thousands of parts to domestic trades, mid-size manufacturers and international clients across Germany and Austria. We keep a compact team and a personal approach — you talk to the technologist, not a call centre.",
+  },
+  services: {
+    eyebrow: "What we do",
+    title: "Three services, one supplier",
+    items: [
+      {
+        title: "Precision turning",
+        body:
+          "CNC and conventional lathe work. Diameters 5–250 mm, lengths up to 1 000 mm. Carbon steel, stainless, brass, aluminium. Tolerances IT6 – IT9. Prototypes and small-to-medium batches.",
+      },
+      {
+        title: "Manual welding",
+        body:
+          "MIG/MAG (135/138), TIG (141) and SMAW (111). Steel, stainless and aluminium. Welders certified to ČSN EN ISO 9606-1 for the relevant method/material/position combinations.",
+      },
+      {
+        title: "Assembly & finishing",
+        body:
+          "Component kitting, assembly of mechanical units, dimensional inspection, packaging and dispatch. Surface treatments (zinc plating, powder coating, pickling) arranged through verified partners.",
+      },
+    ],
+  },
+  quality: {
+    eyebrow: "Quality & certification",
+    title: "ISO 9001 and certified welders",
+    body:
+      "We operate under ISO 9001 (both CZ and EN versions available for download) and all active welders hold valid ČSN EN ISO 9606-1 certificates. Calibration of measuring tools by an accredited laboratory. Inspection reports supplied on request for every batch.",
+    downloadCs: "ISO 9001 (Czech)",
+    downloadEn: "ISO 9001 (English)",
+  },
+  contact: {
+    eyebrow: "Get in touch",
+    title: "Have a drawing? Let us see if we can make it.",
+    lead: "Reply within 24 hours. Consultation and price estimate free of charge.",
+    emailLabel: "Send us a drawing (PDF/DWG/DXF)",
+    emailAddress: "info@okfinal.cz",
+    phoneLabel: "Call",
+    addressLabel: "Address",
+    languagesNote: "Communication in English, German or Czech.",
+    note: "A full English site is in preparation. For now, the Czech version holds the full detail — technical specs, certificates and company history.",
+  },
+  switcherCzech: "Česká verze",
+  footerBack: "← Zpět na českou verzi",
+} as const;
 
 /** Homepage copy — single source of truth */
 export const home = {
