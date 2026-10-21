@@ -253,31 +253,37 @@ export const certificates = [
 ] as const;
 
 export const milestones = [
-  { year: "1992", text: "Založení firmy — první soustružnická dílna v Žamberku." },
-  { year: "2001", text: "Rozšíření o svařovnu a certifikaci svářečů." },
-  { year: "2010", text: "Instalace prvního CNC soustruhu, zvýšení kapacity." },
-  { year: "2018", text: "Rozšíření provozu, spolupráce se zahraničními klienty." },
-  { year: "2026", text: "Přes 33 let nepřetržité výroby a 500+ zakázek ročně." },
+  { year: "1992", text: "Založení jako specializovaný výrobce schodišť a ocelových konstrukcí." },
+  {
+    year: "Později",
+    text: "Rozdělení na OK FINAL s.r.o. Žamberk (výroba a montáž) a Schody OK s.r.o. Dobřichovice (konstrukce, design a statika).",
+  },
+  {
+    year: "2008",
+    text: "Výměna generací. Nová generace jednatelů se vydala směrem strojního obrábění.",
+  },
+  { year: "2011", text: "K 1.1. 2011 OK FINAL s.r.o. ukončil výrobu schodišť." },
 ] as const;
 
 export const about = {
   hero: {
     eyebrow: "O firmě",
-    title: "Rodinná dílna s třemi desetiletími praxe",
+    title: "Od výrobce schodišť ke specializovanému kovoobrábění",
     lead:
-      "Přesné soustružení, svařování a kompletace kovových dílců. OK FINAL s.r.o. sídlí v Žamberku a od roku 1992 dodává zákazníkům po celé České republice i do zahraničí.",
+      "Rodinná firma OK FINAL s.r.o. byla založena v roce 1992 jako specializovaný výrobce schodišť a ocelových konstrukcí.",
   },
   paragraphs: [
-    "OK FINAL s.r.o. byla založena v roce {founded} jako malá soustružnická dílna. Za tři desetiletí jsme vyrostli v spolehlivého dodavatele přesných kovových dílců pro tuzemské i zahraniční strojírenské firmy — a přesto jsme si zachovali osobní přístup, jaký velké závody nedokáží nabídnout.",
-    "Naše silná stránka je flexibilita. Vyrábíme kusově i sériově — od jednoho prototypu po několik stovek shodných dílů. Zpracováváme konstrukční ocel, nerez, mosaz, hliník i barevné kovy. Držíme tolerance IT6 – IT9 a všechny svařovací práce provádí certifikovaní svářeči podle ČSN EN ISO 9606-1.",
-    "Věříme, že strojařině se dá rozumět jen v dialogu — proto s vámi komunikuje přímo technolog, ne obchodník. Přijmeme výkres v PDF, DWG i papírově, poradíme s materiálem a technologií a do 24 hodin odešleme nabídku.",
+    "Jejím cílem vždy bylo nabídnout kompletní servis od konzultací přes zaměření stavebního prostoru, navržení řešení, výroby, povrchové ochrany, dopravy a montáže.",
+    "Postupem času v rámci užší specializace a zlepšení služeb pro zákazníky byla původní firma rozdělena na dva samostatné celky, kde firma OK FINAL s.r.o. Žamberk se specializovala na výrobu a montáž a nově vzniklá firma Schody OK s.r.o. Dobřichovice na část zaměřenou na konstrukci včetně designu a statiky.",
+    "V roce 2008 došlo vzhledem k pokročilému věku zakladatelů firmy k výměně generací a nová generace jednatelů se vydala směrem strojního obrábění. K 1.1. 2011 OK FINAL s.r.o. ukončil výrobu schodišť.",
   ],
-  workshopAlt: "Výrobní dílna OK FINAL",
-  milestonesTitle: "Milníky, kterými jsme prošli",
+  workshopAlt: "Výroba OK FINAL s.r.o.",
+  milestonesTitle: "Od roku 1992",
   cta: {
-    title: "Chcete vidět, co umíme?",
-    lead: "Přijeďte se podívat na provoz nebo nám pošlete výkres. Nezávazně probereme, jak dílec vyrobit.",
-    primary: { href: "/kontakt", label: "Nezávazná poptávka" },
+    title: "Sjednejte si schůzku s námi ještě dnes",
+    lead:
+      "Pokud máte zájem o případnou spolupráci, tak nám zašlete nezávaznou poptávku a my vám dílce bezplatně naceníme.",
+    primary: { href: "/kontakt", label: "Kontaktovat" },
     secondary: { href: "/nase-sluzby", label: "Naše služby" },
   },
 } as const;
