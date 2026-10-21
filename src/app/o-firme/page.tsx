@@ -7,14 +7,12 @@ import { about, milestones, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "O firmě",
   description:
-    "OK FINAL s.r.o. — rodinná strojírenská dílna z Žamberku. 33 let přesného soustružení, svařování a kompletace kovů.",
+    "Rodinná firma OK FINAL s.r.o. byla založena v roce 1992 jako specializovaný výrobce schodišť a ocelových konstrukcí. Dnes se věnuje strojnímu obrábění.",
   alternates: { canonical: "/o-firme" },
 };
 
 export default function OFirmePage() {
-  const paragraphs = about.paragraphs.map((p) =>
-    p.replace("{founded}", String(site.company.founded)),
-  );
+  const paragraphs = about.paragraphs;
 
   return (
     <>

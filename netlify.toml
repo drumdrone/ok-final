@@ -21,3 +21,138 @@
   for = "/api/*"
   [headers.values]
     Cache-Control = "no-store, max-age=0"
+
+# ---------- 301 redirects for old WordPress URLs ----------
+# All old English pages → one EN landing
+[[redirects]]
+  from = "/home_en"
+  to = "/en"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/home_en/*"
+  to = "/en"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/about-us"
+  to = "/en"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/about-us/*"
+  to = "/en"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/services"
+  to = "/en#services"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/services/*"
+  to = "/en#services"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/our-offer"
+  to = "/en#services"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/our-offer/*"
+  to = "/en#services"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/certificates"
+  to = "/en"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/certificates/*"
+  to = "/en"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/contact"
+  to = "/en#contact"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/contact/*"
+  to = "/en#contact"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/contacts"
+  to = "/en#contact"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/contacts/*"
+  to = "/en#contact"
+  status = 301
+  force = true
+
+# Old duplicate / demo pages → homepage
+[[redirects]]
+  from = "/about"
+  to = "/o-firme"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/about/*"
+  to = "/o-firme"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/portfolio"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/portfolio/*"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/single-event"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/single-event/*"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/service-single"
+  to = "/nase-sluzby"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/service-single/*"
+  to = "/nase-sluzby"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/sdfg"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/sdfg/*"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/blog/*"
+  to = "/"
+  status = 301
+  force = true

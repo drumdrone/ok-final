@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Kontaktní údaje OK FINAL s.r.o. — adresa Nádražní 608, Žamberk. Telefon, e-mail, nezávazná poptávka výroby.",
+    "OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713. IČ: 46506578, DIČ: CZ46506578.",
   alternates: { canonical: "/kontakt" },
 };
 
@@ -19,8 +19,8 @@ export default function KontaktPage() {
     <>
       <PageHero
         eyebrow="Kontakt"
-        title="Ozvěte se — konzultace zdarma"
-        lead="Nejrychlejší je poslat výkres přes formulář. Reagujeme do 24 hodin v pracovní dny."
+        title="Kontakt"
+        lead="ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713, mobil: +420 603 534 364."
       />
 
       <Section>
@@ -44,38 +44,28 @@ export default function KontaktPage() {
               </a>
             </ContactCard>
 
-            <ContactCard title="Kontaktní osoba">
-              <div className="font-semibold text-steel-950">
-                {site.contacts.contactPerson.name}
-              </div>
-              <div className="text-sm text-steel-500">
-                {site.contacts.contactPerson.role}
-              </div>
-              <div className="mt-2 space-y-1 text-sm">
-                <a href={`mailto:${site.contacts.contactPerson.email}`} className="block hover:text-accent-600">
-                  {site.contacts.contactPerson.email}
-                </a>
-                <a href={`tel:${site.contacts.contactPerson.phone.replace(/\s/g, "")}`} className="block hover:text-accent-600">
-                  {site.contacts.contactPerson.phone}
-                </a>
-              </div>
-            </ContactCard>
-
-            <ContactCard title="Otevírací doba">
-              <dl className="space-y-1 text-sm">
-                {site.hours.map((h) => (
-                  <div key={h.day} className="flex justify-between gap-4">
-                    <dt className="text-steel-600">{h.day}</dt>
-                    <dd className="font-medium text-steel-800">{h.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </ContactCard>
+            {site.contacts.people.map((person) => (
+              <ContactCard key={person.email} title={person.role}>
+                <div className="font-semibold text-steel-950">{person.name}</div>
+                <div className="mt-2 space-y-1 text-sm">
+                  <a href={`mailto:${person.email}`} className="block hover:text-accent-600">
+                    {person.email}
+                  </a>
+                  <a href={`tel:${person.phone.replace(/\s/g, "")}`} className="block hover:text-accent-600">
+                    {person.phone}
+                  </a>
+                </div>
+              </ContactCard>
+            ))}
 
             <ContactCard title="Fakturační údaje">
               <div className="text-sm">
                 <div>IČ: <span className="font-medium text-steel-800">{site.company.ico}</span></div>
                 <div>DIČ: <span className="font-medium text-steel-800">{site.company.dic}</span></div>
+                <div className="mt-2">{site.company.court}</div>
+                <a href={`mailto:${site.company.billingEmail}`} className="mt-2 block hover:text-accent-600">
+                  {site.company.billingEmail}
+                </a>
               </div>
             </ContactCard>
           </div>
@@ -83,7 +73,7 @@ export default function KontaktPage() {
           <div className="order-1 rounded-lg border border-steel-200 bg-white p-6 sm:p-8 lg:order-2">
             <h2 className="text-2xl font-bold">Nezávazná poptávka</h2>
             <p className="mt-2 text-steel-600">
-              Přiložte výkres, popište zakázku a my se ozveme.
+              Pokud máte zájem o případnou spolupráci, tak nám zašlete nezávaznou poptávku a my vám dílce bezplatně naceníme.
             </p>
             <div className="mt-6">
               <ContactForm />
@@ -94,7 +84,7 @@ export default function KontaktPage() {
 
       <section className="border-t border-steel-100 bg-steel-50">
         <div className="container py-12">
-          <h2 className="mb-4 text-2xl font-bold">Kde nás najdete</h2>
+          <h2 className="mb-4 text-2xl font-bold">Adresa firmy</h2>
           <div className="overflow-hidden rounded-lg border border-steel-200 bg-white">
             <iframe
               title="Mapa OK FINAL s.r.o."

@@ -64,7 +64,7 @@ export function ContactForm() {
       <div className="rounded-lg border border-accent-500/40 bg-accent-500/5 p-8 text-center">
         <h3 className="text-xl font-bold text-steel-950">Poptávka odeslána</h3>
         <p className="mt-3 text-steel-700">
-          Ozveme se do 24 hodin. Potvrzení jsme poslali i na váš e-mail.
+          Dílce vám bezplatně naceníme. Potvrzení jsme poslali i na váš e-mail.
         </p>
         <button
           type="button"
@@ -148,7 +148,7 @@ export function ContactForm() {
           {state === "sending" ? "Odesílám…" : "Odeslat poptávku"}
         </button>
         <span className="text-xs text-steel-500">
-          Odpovídáme do 24 hodin v pracovní dny.
+          Dílce vám bezplatně naceníme.
         </span>
       </div>
     </form>

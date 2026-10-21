@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
+import { LangSwitcher } from "./LangSwitcher";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-steel-100 bg-white/90 backdrop-blur">
-      <div className="container flex h-16 items-center justify-between gap-8">
+      <div className="container flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-2" aria-label={site.name}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -26,12 +27,15 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="/kontakt"
-          className="btn btn-primary hidden lg:inline-flex"
-        >
-          Poptávka
-        </Link>
+        <div className="flex items-center gap-3">
+          <LangSwitcher />
+          <Link
+            href="/kontakt"
+            className="btn btn-primary hidden lg:inline-flex"
+          >
+            Poptávka
+          </Link>
+        </div>
       </div>
       <MobileNav />
     </header>
