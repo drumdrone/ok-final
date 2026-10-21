@@ -96,6 +96,14 @@ export const nav = [
   { href: "/kontakt", label: "Kontakt" },
 ] as const;
 
+/** Nav shown on /en — in-page anchors to sections of the EN landing. */
+export const enNav = [
+  { href: "/en", label: "Home" },
+  { href: "/en#services", label: "Services" },
+  { href: "/en#quality", label: "Quality" },
+  { href: "/en#contact", label: "Contact" },
+] as const;
+
 export type ServiceKey = "soustruzeni" | "svarovani" | "montaz";
 
 export const services: Array<{

@@ -100,7 +100,7 @@ export default function EnLandingPage() {
       </section>
 
       {/* Quality */}
-      <section className="section bg-white">
+      <section id="quality" className="section bg-white">
         <div className="container-tight">
           <div className="eyebrow">{en.quality.eyebrow}</div>
           <h2 className="mt-2 font-display text-3xl font-bold text-steel-950 sm:text-4xl">

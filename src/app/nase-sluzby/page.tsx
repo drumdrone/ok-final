@@ -50,14 +50,27 @@ export default function ServicesPage() {
                 <p className="text-lg leading-relaxed text-steel-700">
                   {s.body}
                 </p>
-                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {s.bullets.map((b, bulletIndex) => (
-                    <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-500" />
-                      <span className="text-steel-700">{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                {s.slug === "soustruzeni" ? (
+                  <ol className="mt-6 space-y-3">
+                    {s.bullets.map((b, bulletIndex) => (
+                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
+                        <span className="w-6 flex-shrink-0 font-display font-bold text-accent-500">
+                          {bulletIndex + 1}.
+                        </span>
+                        <span className="text-steel-700">{b}</span>
+                      </li>
+                    ))}
+                  </ol>
+                ) : (
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {s.bullets.map((b, bulletIndex) => (
+                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-500" />
+                        <span className="text-steel-700">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </article>
           ))}
