@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { ArrowButton } from "./ArrowButton";
 
 type HeroCopy = {
   badge: string;
@@ -32,34 +32,16 @@ export function HomeHero({
             <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
             {hero.badge}
           </p>
-          <h1 className="mt-8 max-w-xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl xl:text-6xl">
+          <h1 className="mt-8 max-w-xl font-display text-4xl font-normal leading-[1.05] tracking-tight text-white sm:text-5xl xl:text-6xl">
             {hero.titleBefore} {hero.titleAccent}
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-steel-400 sm:text-lg">
             {hero.lead}
           </p>
-          <div className="mt-10 flex items-center gap-3">
-            <Link
-              href={hero.ctaPrimary.href}
-              className="rounded-full bg-steel-800 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-steel-700"
-            >
+          <div className="mt-10">
+            <ArrowButton href={hero.ctaPrimary.href} variant="dark">
               {hero.ctaPrimary.label}
-            </Link>
-            <Link
-              href={hero.ctaPrimary.href}
-              aria-label={hero.ctaPrimary.label}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-steel-950 transition-transform hover:translate-x-0.5"
-            >
-              <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" aria-hidden="true">
-                <path
-                  d="M5 15L15 5M15 5H7M15 5v8"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+            </ArrowButton>
           </div>
         </div>
 

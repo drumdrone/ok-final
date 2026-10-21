@@ -44,7 +44,7 @@ async function LoginForm({
               Nesprávné heslo.
             </div>
           ) : null}
-          <button className="btn btn-primary w-full">Přihlásit se</button>
+          <button className="btn btn-dark w-full">Přihlásit se</button>
         </form>
       </div>
     </div>

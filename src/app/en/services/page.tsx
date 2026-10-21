@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
 import { JsonLd } from "@/components/JsonLd";
 import { servicesJsonLd } from "@/lib/schema";
@@ -89,9 +89,9 @@ export default function EnServicesPage() {
             <h2 className="text-2xl font-bold sm:text-3xl">{t.ctaTitle}</h2>
             <p className="mt-2 text-steel-300">{t.ctaLead}</p>
           </div>
-          <Link href="/en/contact" className="btn btn-primary btn-arrow">
+          <ArrowButton href="/en/contact" variant="dark">
             {t.ctaButton}
-          </Link>
+          </ArrowButton>
         </div>
       </section>
 

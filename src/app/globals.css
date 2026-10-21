@@ -23,23 +23,61 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-md px-5 py-3
+    @apply inline-flex items-center justify-center rounded-full px-5 py-3
            text-sm font-semibold transition-colors;
   }
-  .btn-arrow::after {
-    content: "→";
-    margin-left: 0.45rem;
-    font-weight: 500;
-    transition: transform 0.15s ease;
-  }
-  .btn-arrow:hover::after {
-    transform: translateX(3px);
-  }
-  .btn-primary   { @apply bg-accent-500 text-white hover:bg-accent-600; }
-  .btn-ghost     { @apply border border-steel-300 text-steel-900 hover:bg-steel-50; }
-  .btn-dark      { @apply bg-steel-900 text-white hover:bg-steel-800; }
+  .btn-primary   { @apply bg-steel-950 text-white hover:bg-steel-800; }
+  .btn-ghost     { @apply border border-steel-300 bg-white text-steel-900 hover:bg-steel-50; }
+  .btn-dark      { @apply bg-steel-950 text-white hover:bg-steel-800; }
   .btn-onDark    { @apply border border-steel-700 text-white hover:bg-steel-900; }
-  .btn-onAccent  { @apply bg-white text-accent-600 hover:bg-steel-50; }
+  .btn-onAccent  { @apply bg-white text-steel-950 hover:bg-steel-100; }
+
+  .arrow-btn {
+    @apply inline-flex items-center rounded-full font-semibold transition-colors duration-200;
+  }
+  .arrow-btn-orb {
+    @apply ml-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all duration-200;
+  }
+  .arrow-btn-small .arrow-btn-orb {
+    @apply ml-2 h-7 w-7;
+  }
+  .arrow-btn-light .arrow-btn-orb {
+    @apply bg-white text-steel-950 shadow-sm;
+  }
+  .arrow-btn-dark .arrow-btn-orb,
+  .arrow-btn-small .arrow-btn-orb {
+    @apply bg-steel-950 text-white;
+  }
+  .arrow-btn:hover .arrow-btn-orb {
+    @apply ml-2 h-auto w-auto bg-transparent shadow-none;
+  }
+  .arrow-btn-light:hover .arrow-btn-orb {
+    @apply text-steel-950;
+  }
+  .arrow-btn-dark:hover .arrow-btn-orb,
+  .arrow-btn-small:hover .arrow-btn-orb {
+    @apply text-white;
+  }
+  .arrow-btn-diag,
+  .arrow-btn-line {
+    @apply h-4 w-4;
+  }
+  .arrow-btn-small .arrow-btn-diag,
+  .arrow-btn-small .arrow-btn-line {
+    @apply h-3.5 w-3.5;
+  }
+  .arrow-btn-line {
+    display: none;
+  }
+  .arrow-btn:hover .arrow-btn-diag {
+    display: none;
+  }
+  .arrow-btn:hover .arrow-btn-line {
+    display: block;
+  }
+  .arrow-btn:disabled {
+    @apply pointer-events-none cursor-not-allowed opacity-60;
+  }
 
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-widest text-accent-600;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
 import { convexClient } from "@/lib/convex";
 import { enContent, site } from "@/lib/site";
@@ -46,9 +47,9 @@ export default async function EnCareersPage() {
           <div className="rounded-lg border border-steel-200 bg-white p-10 text-center">
             <h2 className="text-2xl font-bold">{t.emptyTitle}</h2>
             <p className="mx-auto mt-3 max-w-xl text-steel-600">{t.emptyBody}</p>
-            <a href="tel:+420465612713" className="btn btn-primary mt-6">
+            <ArrowButton href="tel:+420465612713" variant="light" className="mt-6">
               {t.emptyCta}
-            </a>
+            </ArrowButton>
           </div>
         ) : (
           <ul className="space-y-4">
@@ -64,12 +65,12 @@ export default async function EnCareersPage() {
                       {j.location} · {j.type}
                     </div>
                   </div>
-                  <a
+                  <ArrowButton
                     href={`mailto:${site.contacts.career}?subject=${encodeURIComponent(j.title)}`}
-                    className="btn btn-primary"
+                    variant="small"
                   >
                     {t.respond}
-                  </a>
+                  </ArrowButton>
                 </div>
                 <p className="mt-4 text-steel-700">{j.body}</p>
               </li>

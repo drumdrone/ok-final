@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
 import { convexClient } from "@/lib/convex";
 import { site } from "@/lib/site";
@@ -54,12 +55,9 @@ export default async function KarieraPage() {
               OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. IČ: 46506578,
               DIČ: CZ46506578. Tel.: +420 465 612 713, mobil: +420 603 534 364.
             </p>
-            <a
-              href="tel:+420465612713"
-              className="btn btn-primary mt-6"
-            >
+            <ArrowButton href="tel:+420465612713" variant="light" className="mt-6">
               Zavolat +420 465 612 713
-            </a>
+            </ArrowButton>
           </div>
         ) : (
           <ul className="space-y-4">
@@ -75,12 +73,12 @@ export default async function KarieraPage() {
                       {j.location} · {j.type}
                     </div>
                   </div>
-                  <a
+                  <ArrowButton
                     href={`mailto:${site.contacts.career}?subject=${encodeURIComponent(j.title)}`}
-                    className="btn btn-primary"
+                    variant="small"
                   >
                     Reagovat
-                  </a>
+                  </ArrowButton>
                 </div>
                 <p className="mt-4 text-steel-700">{j.body}</p>
               </li>

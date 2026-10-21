@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ArrowButton } from "./ArrowButton";
 
 export function HeaderCta() {
   const pathname = usePathname() || "/";
@@ -10,8 +10,8 @@ export function HeaderCta() {
   const label = isEn ? "Request a quote" : "Poptávka";
 
   return (
-    <Link href={href} className="btn btn-primary btn-arrow hidden lg:inline-flex">
+    <ArrowButton href={href} variant="small" className="hidden lg:inline-flex">
       {label}
-    </Link>
+    </ArrowButton>
   );
 }

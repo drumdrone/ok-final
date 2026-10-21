@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ArrowButton } from "./ArrowButton";
 import { enNav, nav } from "@/lib/site";
 
 export function MobileNav() {
@@ -95,13 +96,14 @@ export function MobileNav() {
                   </Link>
                 );
               })}
-              <Link
+              <ArrowButton
                 href={isEn ? "/en/contact" : "/kontakt"}
+                variant="light"
+                className="mt-2"
                 onClick={() => setOpen(false)}
-                className="btn btn-primary btn-arrow mt-2"
               >
                 {isEn ? "Request a quote" : "Poptávka"}
-              </Link>
+              </ArrowButton>
             </div>
           </nav>
         </>

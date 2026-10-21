@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowButton } from "./ArrowButton";
 
 type State = "idle" | "sending" | "ok" | "err";
 
@@ -140,13 +141,13 @@ export function ContactForm() {
       ) : null}
 
       <div className="flex flex-wrap items-center gap-4">
-        <button
+        <ArrowButton
           type="submit"
+          variant="light"
           disabled={state === "sending"}
-          className="btn btn-primary btn-arrow disabled:cursor-not-allowed disabled:opacity-60"
         >
           {state === "sending" ? "Odesílám…" : "Odeslat poptávku"}
-        </button>
+        </ArrowButton>
         <span className="text-xs text-steel-500">
           Dílce vám bezplatně naceníme.
         </span>

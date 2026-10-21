@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowButton } from "@/components/ArrowButton";
 import { HomeHero } from "@/components/HomeHero";
 import { Section, SectionHeader } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
@@ -88,9 +89,9 @@ export default function HomePage() {
               {experienceBody}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href={home.experience.ctaPrimary.href} className="btn btn-primary">
+              <ArrowButton href={home.experience.ctaPrimary.href} variant="dark">
                 {home.experience.ctaPrimary.label}
-              </Link>
+              </ArrowButton>
               <Link href={home.experience.ctaSecondary.href} className="btn btn-onDark">
                 {home.experience.ctaSecondary.label}
               </Link>
@@ -135,9 +136,9 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold sm:text-3xl">{home.cta.title}</h2>
             <p className="mt-2 text-white/90">{home.cta.lead}</p>
           </div>
-          <Link href={home.cta.button.href} className="btn btn-onAccent btn-arrow">
+          <ArrowButton href={home.cta.button.href} variant="light">
             {home.cta.button.label}
-          </Link>
+          </ArrowButton>
         </div>
       </section>
 

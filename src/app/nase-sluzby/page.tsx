@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
 import { JsonLd } from "@/components/JsonLd";
 import { servicesJsonLd } from "@/lib/schema";
@@ -98,9 +98,9 @@ export default function ServicesPage() {
               Pokud máte zájem o případnou spolupráci, tak nám zašlete nezávaznou poptávku a my vám dílce bezplatně naceníme.
             </p>
           </div>
-          <Link href="/kontakt" className="btn btn-primary btn-arrow">
+          <ArrowButton href="/kontakt" variant="dark">
             Kontaktovat
-          </Link>
+          </ArrowButton>
         </div>
       </section>
 
