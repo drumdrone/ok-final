@@ -6,18 +6,12 @@ import { usePathname } from "next/navigation";
 export function HeaderCta() {
   const pathname = usePathname() || "/";
   const isEn = pathname === "/en" || pathname.startsWith("/en/");
-
-  if (isEn) {
-    return (
-      <Link href="/en#contact" className="btn btn-primary hidden lg:inline-flex">
-        Request a quote
-      </Link>
-    );
-  }
+  const href = isEn ? "/en/contact" : "/kontakt";
+  const label = isEn ? "Request a quote" : "Poptávka";
 
   return (
-    <Link href="/kontakt" className="btn btn-primary hidden lg:inline-flex">
-      Poptávka
+    <Link href={href} className="btn btn-primary hidden lg:inline-flex">
+      {label}
     </Link>
   );
 }

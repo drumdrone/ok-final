@@ -2,16 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { enNav, nav } from "@/lib/site";
+import { nav, enNav } from "@/lib/site";
 
-export function NavLinks({ variant }: { variant: "desktop" | "mobile" }) {
+type Props = { variant?: "desktop" | "mobile" };
+
+export function NavLinks({ variant = "desktop" }: Props) {
   const pathname = usePathname() || "/";
   const isEn = pathname === "/en" || pathname.startsWith("/en/");
   const items = isEn ? enNav : nav;
 
   if (variant === "desktop") {
     return (
-      <nav className="hidden items-center gap-1 lg:flex" aria-label={isEn ? "Main" : "Hlavní"}>
+      <nav
+        className="hidden items-center gap-1 lg:flex"
+        aria-label={isEn ? "Main" : "Hlavní"}
+      >
         {items.map((item) => (
           <Link
             key={item.href}

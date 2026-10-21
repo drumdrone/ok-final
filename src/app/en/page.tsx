@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { en, site } from "@/lib/site";
+import { Section, SectionHeader } from "@/components/Section";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
+import { localBusinessJsonLd } from "@/lib/schema";
+import { enContent, site } from "@/lib/site";
 
-export default function EnLandingPage() {
-  const mapQuery = encodeURIComponent(
-    `${site.address.street}, ${site.address.zip} ${site.address.city}`
-  );
+const home = enContent.home;
+const services = enContent.services;
+
+export default function EnHomePage() {
+  const experienceBody = home.experience.body;
 
   return (
     <>
@@ -21,37 +26,37 @@ export default function EnLandingPage() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-steel-950 via-steel-950/90 to-steel-950/55" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(200,16,46,0.25),transparent_60%)]" />
         </div>
         <div className="container relative grid gap-10 py-20 lg:grid-cols-[1.4fr_1fr] lg:py-28">
           <div>
-            <div className="eyebrow mb-4">{en.hero.eyebrow}</div>
+            <div className="eyebrow mb-4">{home.hero.eyebrow}</div>
             <h1 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-              {en.hero.titleBefore}{" "}
-              <span className="text-accent-500">{en.hero.titleAccent}</span>
+              {home.hero.titleBefore}{" "}
+              <span className="text-accent-500">{home.hero.titleAccent}</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-steel-200">
-              {en.hero.lead}
+              {home.hero.lead}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={en.hero.ctaPrimary.href} className="btn btn-primary">
-                {en.hero.ctaPrimary.label}
+              <Link href={home.hero.ctaPrimary.href} className="btn btn-primary">
+                {home.hero.ctaPrimary.label}
               </Link>
-              <Link href={en.hero.ctaSecondary.href} className="btn btn-onDark">
-                {en.hero.ctaSecondary.label}
+              <Link href={home.hero.ctaSecondary.href} className="btn btn-onDark">
+                {home.hero.ctaSecondary.label}
               </Link>
             </div>
             <dl className="mt-12 grid grid-cols-2 gap-6 border-t border-steel-800 pt-8 sm:grid-cols-4">
-              {en.stats.map((s) => (
+              {home.stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="sr-only">{s.label}</dt>
-                  <dd className="font-display text-3xl font-bold text-white sm:text-4xl">
+                  <dt className="font-display text-3xl font-bold text-white">
                     {s.value}
-                    {s.unit && (
-                      <span className="ml-1 text-base font-medium text-steel-300">
+                    {s.unit ? (
+                      <span className="ml-1 text-lg font-normal text-steel-400">
                         {s.unit}
                       </span>
-                    )}
-                  </dd>
+                    ) : null}
+                  </dt>
                   <dd className="mt-1 text-xs uppercase tracking-wider text-steel-400">
                     {s.label}
                   </dd>
@@ -59,146 +64,135 @@ export default function EnLandingPage() {
               ))}
             </dl>
           </div>
-        </div>
-      </section>
-
-      {/* Intro */}
-      <section className="section bg-white">
-        <div className="container-tight">
-          <h2 className="font-display text-3xl font-bold text-steel-950 sm:text-4xl">
-            {en.intro.title}
-          </h2>
-          <p className="mt-6 max-w-prose text-lg leading-relaxed text-steel-700">
-            {en.intro.body}
-          </p>
+          <div className="relative hidden lg:block">
+            <div className="relative ml-auto h-full min-h-[420px] max-w-md">
+              <div className="absolute inset-0 overflow-hidden rounded-lg shadow-2xl ring-1 ring-white/10">
+                <Image
+                  src={site.assets.machine}
+                  alt={home.hero.machineAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 0px, 420px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-steel-950/70 via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 rounded-lg border border-steel-700 bg-steel-900 px-6 py-4 shadow-xl">
+                <div className="text-xs uppercase tracking-wider text-steel-400">
+                  {home.hero.contactLabel}
+                </div>
+                <div className="mt-1 font-semibold text-white">
+                  {site.contacts.contactPerson.name}
+                </div>
+                <div className="text-sm text-steel-300">
+                  {site.contacts.contactPerson.phone}
+                </div>
+              </div>
+              <div className="absolute -right-4 top-8 rounded-lg border border-accent-500/40 bg-accent-500/10 px-4 py-3 text-sm text-accent-400 backdrop-blur">
+                {home.hero.badge}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Services */}
-      <section id="services" className="section bg-steel-50">
-        <div className="container">
-          <div className="eyebrow">{en.services.eyebrow}</div>
-          <h2 className="mt-2 font-display text-3xl font-bold text-steel-950 sm:text-4xl">
-            {en.services.title}
-          </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {en.services.items.map((s) => (
-              <article
-                key={s.title}
-                className="rounded-lg border border-steel-100 bg-white p-6 shadow-sm"
-              >
-                <h3 className="font-display text-xl font-semibold text-steel-950">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-steel-700">
-                  {s.body}
-                </p>
+      <Section>
+        <SectionHeader
+          eyebrow={home.services.eyebrow}
+          title={home.services.title}
+          lead={home.services.lead}
+        />
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {services.map((s) => (
+            <Reveal key={s.slug}>
+              <article className="group h-full rounded-lg border border-steel-200 bg-white p-6 transition-shadow hover:shadow-md">
+                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-md bg-steel-100">
+                  <Image
+                    src={s.image}
+                    alt={s.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <h3 className="text-xl font-bold">{s.title}</h3>
+                <p className="mt-2 text-sm text-steel-600">{s.short}</p>
+                <Link
+                  href={`/en/services#${s.slug}`}
+                  className="mt-4 inline-flex text-sm font-semibold text-accent-600 hover:text-accent-700"
+                >
+                  {home.services.detailLink}
+                </Link>
               </article>
-            ))}
-          </div>
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Quality */}
-      <section id="quality" className="section bg-white">
-        <div className="container-tight">
-          <div className="eyebrow">{en.quality.eyebrow}</div>
-          <h2 className="mt-2 font-display text-3xl font-bold text-steel-950 sm:text-4xl">
-            {en.quality.title}
-          </h2>
-          <p className="mt-6 max-w-prose text-lg leading-relaxed text-steel-700">
-            {en.quality.body}
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={site.assets.certPdfEn}
-              className="btn btn-ghost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {en.quality.downloadEn} (PDF)
-            </a>
-            <a
-              href={site.assets.certPdfCs}
-              className="btn btn-ghost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {en.quality.downloadCs} (PDF)
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="section bg-steel-950 text-white">
-        <div className="container-tight">
-          <div className="eyebrow">{en.contact.eyebrow}</div>
-          <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-            {en.contact.title}
-          </h2>
-          <p className="mt-6 text-lg text-steel-200">{en.contact.lead}</p>
-
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-steel-400">
-                {en.contact.emailLabel}
-              </div>
-              <a
-                href={`mailto:${en.contact.emailAddress}`}
-                className="mt-2 block text-lg font-semibold text-accent-500 hover:text-white"
-              >
-                {en.contact.emailAddress}
-              </a>
-
-              <div className="mt-6 text-xs uppercase tracking-widest text-steel-400">
-                {en.contact.phoneLabel}
-              </div>
-              <a
-                href={`tel:${site.contacts.phone.replace(/\s/g, "")}`}
-                className="mt-2 block text-lg font-semibold text-white hover:text-accent-500"
-              >
-                {site.contacts.phone}
-              </a>
-
-              <div className="mt-6 text-xs uppercase tracking-widest text-steel-400">
-                {en.contact.addressLabel}
-              </div>
-              <address className="mt-2 not-italic text-steel-200">
-                {site.name}
-                <br />
-                {site.address.street}
-                <br />
-                {site.address.zip} {site.address.city}
-                <br />
-                {site.address.country}
-              </address>
-
-              <p className="mt-6 text-sm text-steel-300">
-                {en.contact.languagesNote}
-              </p>
+      {/* Experience band */}
+      <section className="bg-steel-950 py-20 text-white">
+        <div className="container grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:items-center">
+          <div className="text-center lg:text-left">
+            <div className="font-display text-7xl font-bold text-accent-500 sm:text-8xl">
+              {home.experience.years}
             </div>
-            <div className="overflow-hidden rounded-lg border border-steel-800">
-              <iframe
-                title="OK Final location on map"
-                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-                width="100%"
-                height="320"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <div className="mt-2 text-sm uppercase tracking-widest text-steel-400">
+              {home.experience.yearsLabel}
             </div>
           </div>
-
-          <p className="mt-12 text-sm text-steel-400">{en.contact.note}</p>
-
-          <div className="mt-6">
-            <Link href="/" className="text-sm text-steel-300 hover:text-white">
-              {en.footerBack}
-            </Link>
+          <div>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl">
+              {home.experience.title}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-steel-300">
+              {experienceBody}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href={home.experience.ctaPrimary.href} className="btn btn-primary">
+                {home.experience.ctaPrimary.label}
+              </Link>
+              <Link href={home.experience.ctaSecondary.href} className="btn btn-onDark">
+                {home.experience.ctaSecondary.label}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Segments */}
+      <Section>
+        <SectionHeader
+          eyebrow={home.segments.eyebrow}
+          title={home.segments.title}
+          lead={home.segments.lead}
+        />
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {home.segments.items.map((seg) => (
+            <article key={seg.title} className="rounded-lg border border-steel-200 bg-white p-6">
+              <div className="relative mb-4 h-14 w-14 overflow-hidden">
+                <Image src={seg.icon} alt="" fill className="object-contain" sizes="56px" />
+              </div>
+              <h3 className="text-xl font-bold">{seg.title}</h3>
+              <p className="mt-2 text-steel-600">{seg.body}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      {/* CTA */}
+      <section className="bg-accent-500 py-12 text-white">
+        <div className="container flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+          <div>
+            <h2 className="text-2xl font-bold sm:text-3xl">{home.cta.title}</h2>
+            <p className="mt-1 text-sm text-white/90">{home.cta.lead}</p>
+          </div>
+          <Link href={home.cta.button.href} className="btn btn-onAccent">
+            {home.cta.button.label}
+          </Link>
+        </div>
+      </section>
+
+      <JsonLd data={localBusinessJsonLd} />
     </>
   );
 }

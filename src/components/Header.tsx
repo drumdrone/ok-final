@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { HeaderCta } from "./HeaderCta";
 import { LangSwitcher } from "./LangSwitcher";
 import { NavLinks } from "./NavLinks";
+import { HeaderCta } from "./HeaderCta";
 
 export function Header() {
   return (
