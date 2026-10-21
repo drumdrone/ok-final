@@ -22,7 +22,7 @@ export function Footer() {
             </span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-steel-300">
-            {site.tagline}. Kusová i sériová výroba pro tuzemské i zahraniční klienty.
+            {site.tagline}.
           </p>
         </div>
 

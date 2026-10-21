@@ -1,9 +1,9 @@
 export const site = {
   name: "OK FINAL s.r.o.",
   shortName: "OK FINAL",
-  tagline: "Přesné soustružení a svařování kovů",
+  tagline: "Přesné práce v oblasti soustružení a svařování kovů",
   description:
-    "Ruční i CNC soustružení, svařování a kompletace kovových dílců podle výkresové dokumentace. 33 let zkušeností. Žamberk, Pardubický kraj.",
+    "Firma OK FINAL s.r.o. provádí přesné práce v oblasti soustružení a svařování kovů. Jsme vybaveni moderními stroji, které zajišťují požadovanou přesnost a opakovatelnost výroby.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://okfinal.cz",
   locale: "cs_CZ",
   address: {
@@ -16,13 +16,13 @@ export const site = {
     lng: 16.469,
   },
   contacts: {
-    phone: "+420 465 611 111",
+    phone: "+420 465 612 713",
     email: "info@okfinal.cz",
     contactPerson: {
-      name: "Jiří Divíšek",
-      role: "Jednatel / technolog",
+      name: "Ing. Jiří Divíšek",
+      role: "Výkonný ředitel – jednatel",
       email: "jiri.divisek@okfinal.cz",
-      phone: "+420 602 355 555",
+      phone: "+420 603 534 364",
     },
     career: "kariera@okfinal.cz",
   },
@@ -115,59 +115,58 @@ export const services: Array<{
 /** Homepage copy — single source of truth */
 export const home = {
   hero: {
-    eyebrow: "Přesné strojírenství · Žamberk",
-    titleBefore: "Kovové dílce podle vaší",
-    titleAccent: "výkresové dokumentace",
-    lead:
-      "Přesné soustružení, ruční svařování a kompletace. Kusová i sériová výroba pro strojírenství, energetiku a průmyslovou automatizaci. Odezva na poptávku do 24 hodin.",
-    ctaPrimary: { href: "/kontakt", label: "Nezávazná poptávka" },
-    ctaSecondary: { href: "/nase-sluzby", label: "Naše služby" },
-    machineAlt: "CNC soustruh Manurhin K'MX 413",
-    contactLabel: "Kontaktní osoba",
-    badge: "ČSN EN ISO 9606-1",
+    eyebrow: "OK FINAL s.r.o.",
+    titleBefore: "Dílce vyrobené v tolerancích podle výrobní dokumentace",
+    titleAccent: "v krátkém časovém období",
+    lead: "Promluvte si s našimi specialisty.",
+    ctaPrimary: { href: "/kontakt", label: "Kontaktovat" },
+    ctaSecondary: { href: "tel:+420603534364", label: "Zavolejte nám na 603 534 364" },
+    machineAlt: "Dlouhotočný automat Manurhin K´MX 413",
+    contactLabel: "Výkonný ředitel – jednatel",
+    badge: "33 let",
   },
   stats: [
-    { value: "33", unit: "let", label: "na trhu" },
-    { value: "500+", unit: "", label: "dokončených zakázek ročně" },
-    { value: "IT6", unit: "", label: "nejvyšší dosahovaná tolerance" },
-    { value: "24 h", unit: "", label: "odezva na poptávku" },
+    { value: "33", unit: "let", label: "zkušeností a praxe v oboru" },
   ],
   services: {
-    eyebrow: "Co pro vás uděláme",
-    title: "Tři služby, jeden dodavatel",
-    lead: "Od výkresu k hotovému výrobku bez potřeby přeprodávat práci dalším dílnám.",
-    detailLink: "Detail služby →",
+    eyebrow: "Naše služby",
+    title: "Soustružení, ruční svařování a montážní práce",
+    lead:
+      "Naši pracovníci jsou profesionálové, kteří dokážou vyřešit složité technické problémy, a tím pádem uspokojit široké spektrum zákazníků od malých živnostníků až k požadavkům nadnárodních společností.",
+    detailLink: "Naše služby →",
   },
   experience: {
     years: "33",
-    yearsLabel: "let řemeslné praxe",
-    title: "Rodinná dílna, která rozumí strojařině",
+    yearsLabel: "let zkušeností a praxe v oboru",
+    title: "Vsadili jsme na moderní technologie",
     body:
-      "OK FINAL byla založena v roce {founded}. Za tři dekády jsme dodali statisíce dílců pro tuzemské živnostníky, střední strojírenské podniky i zahraniční klienty. Držíme si kompaktní tým a osobní přístup — s vaší poptávkou nekomunikujete s callcentrem, ale přímo s technologem.",
+      "Firma OK FINAL s.r.o. provádí přesné práce v oblasti soustružení a svařování kovů. Jsme vybaveni moderními stroji, které zajišťují požadovanou přesnost a opakovatelnost výroby.",
     ctaPrimary: { href: "/o-firme", label: "O firmě" },
     ctaSecondary: { href: "/certifikaty", label: "Certifikáty" },
   },
   segments: {
-    eyebrow: "Pro koho pracujeme",
-    title: "Živnostníci i mezinárodní firmy",
-    lead: "Škála zákazníků od jednotlivců po výrobní závody z Německa a Rakouska.",
+    eyebrow: "Kdo jsou naši zákazníci",
+    title: "Živnostníci a české firmy, zahraniční firmy",
+    lead:
+      "Naši zákazníci nás vyhledávají především z důvodu nízkých prodejních cen a rychlosti dodávek. O kvalitě není třeba mluvit, protože v našem oboru podnikání je kvalita na prvním místě a expedice vadných výrobků se prostě neomlouvá.",
     items: [
       {
-        title: "Živnostníci a malé dílny",
-        body: "Kusové zakázky, prototypy, náhradní díly. Vyrobíme i jeden kus podle vašeho výkresu nebo poškozeného originálu.",
+        title: "Živnostníci a české firmy",
+        body: "Od malých živnostníků.",
         icon: "/images/service-1.png",
       },
       {
-        title: "Zahraniční výrobci",
-        body: "Střední série pro exportní zákazníky. Rámcové smlouvy, pravidelné dodávky, jednotná kvalita, komunikace v angličtině a němčině.",
+        title: "Zahraniční firmy",
+        body: "Až k požadavkům nadnárodních společností.",
         icon: "/images/service-2.png",
       },
     ],
   },
   cta: {
-    title: "Máte výkres? Ozvěte se, ať vidíme, jestli to spolu vyrobíme.",
-    lead: "Odpovídáme do 24 hodin. Konzultace a odhad ceny zdarma.",
-    button: { href: "/kontakt", label: "Sjednat schůzku" },
+    title: "Sjednejte si schůzku s námi ještě dnes",
+    lead:
+      "Pokud máte zájem o případnou spolupráci, tak nám zašlete nezávaznou poptávku a my vám dílce bezplatně naceníme.",
+    button: { href: "/kontakt", label: "Kontaktovat" },
   },
 } as const;
 
