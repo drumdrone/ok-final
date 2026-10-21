@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description:
-    "Precision turning, manual welding and assembly to engineering drawings. Family workshop in Žamberk, Czech Republic. 33 years of practice, ISO 9001.",
+    "Precision turning, manual welding and assembly to engineering drawings. Family workshop in Žamberk, Czech Republic. 35 years of practice, ISO 9001.",
   openGraph: {
     type: "website",
     locale: "en_US",

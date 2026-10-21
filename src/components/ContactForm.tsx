@@ -143,7 +143,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={state === "sending"}
-          className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-60"
+          className="btn btn-primary btn-arrow disabled:cursor-not-allowed disabled:opacity-60"
         >
           {state === "sending" ? "Odesílám…" : "Odeslat poptávku"}
         </button>

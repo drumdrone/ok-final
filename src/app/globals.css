@@ -27,6 +27,15 @@
     @apply inline-flex items-center justify-center rounded-md px-5 py-3
            text-sm font-semibold transition-colors;
   }
+  .btn-arrow::after {
+    content: "→";
+    margin-left: 0.45rem;
+    font-weight: 500;
+    transition: transform 0.15s ease;
+  }
+  .btn-arrow:hover::after {
+    transform: translateX(3px);
+  }
   .btn-primary   { @apply bg-accent-500 text-white hover:bg-accent-600; }
   .btn-ghost     { @apply border border-steel-300 text-steel-900 hover:bg-steel-50; }
   .btn-dark      { @apply bg-steel-900 text-white hover:bg-steel-800; }

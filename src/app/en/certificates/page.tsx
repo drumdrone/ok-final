@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero, Section, SectionHeader } from "@/components/Section";
-import { enContent, site } from "@/lib/site";
+import { certificateScans, enContent, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: enContent.pages.certificates.metaTitle,
@@ -21,16 +21,26 @@ export default function EnCertificatesPage() {
           title={t.sectionTitle}
           lead={t.sectionLead}
         />
-        <div className="mb-12 overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-4 sm:p-6">
-          <div className="relative mx-auto aspect-[3/4] max-w-md">
-            <Image
-              src={site.assets.cert}
-              alt={t.certAlt}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 448px"
-            />
-          </div>
+        <div className="mb-12 grid gap-6 md:grid-cols-3">
+          {certificateScans.map((cert) => (
+            <a
+              key={cert.src}
+              href={cert.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-3 transition-shadow hover:shadow-lg"
+            >
+              <div className="relative aspect-[2084/2740]">
+                <Image
+                  src={cert.src}
+                  alt={cert.altEn}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+            </a>
+          ))}
         </div>
         <div className="mb-10 flex flex-wrap gap-3">
           <a

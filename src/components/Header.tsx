@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { LangSwitcher } from "./LangSwitcher";
-import { NavLinks } from "./NavLinks";
 import { HeaderCta } from "./HeaderCta";
+import { LangSwitcher } from "./LangSwitcher";
+import { MobileNav } from "./MobileNav";
+import { NavLinks } from "./NavLinks";
 
 export function Header() {
   return (
@@ -18,21 +19,13 @@ export function Header() {
             className="h-8 w-auto"
           />
         </Link>
-        <NavLinks variant="desktop" />
+        <NavLinks />
         <div className="flex items-center gap-3">
           <LangSwitcher />
           <HeaderCta />
+          <MobileNav />
         </div>
       </div>
-      <MobileNav />
     </header>
-  );
-}
-
-function MobileNav() {
-  return (
-    <div className="border-t border-steel-100 lg:hidden">
-      <NavLinks variant="mobile" />
-    </div>
   );
 }

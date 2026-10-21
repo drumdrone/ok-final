@@ -154,10 +154,10 @@ src/components/
 ## 6. Homepage — struktura
 
 1. **Hero** (dark) — H1 „Kovové dílce podle vaší výkresové dokumentace",
-   perex, CTA „Nezávazná poptávka" + „Naše služby", stat řada (33 let /
+   perex, CTA „Nezávazná poptávka" + „Naše služby", stat řada (35 let /
    500+ zakázek / IT6 / 24 h odezva)
 2. **Sekce služeb** — 3 karty (Soustružení / Svařování / Montáž)
-3. **Band „33 let"** — tmavá sekce, velké číslo, storytelling odstavec
+3. **Band „35 let"** — tmavá sekce, velké číslo, storytelling odstavec
 4. **Segmenty zákazníků** — 2 karty (živnostníci vs. zahraniční výrobci)
 5. **CTA band** — oranžový pás „Máte výkres? Ozvěte se."
 

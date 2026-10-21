@@ -108,7 +108,7 @@ Postav `src/app/page.tsx` podle PLAN.md §6:
    - H1: "Kovové dílce podle vaší <span text-accent-500>výkresové dokumentace</span>"
    - Perex (2 věty)
    - CTA "Nezávazná poptávka" (primary) + "Naše služby" (ghost, dark border)
-   - Stat řada: 33 let / 500+ zakázek / IT6 tolerance / 24 h odezva
+   - Stat řada: 35 let / 500+ zakázek / IT6 tolerance / 24 h odezva
 
 2. SEKCE SLUŽEB (světlá): 3 karty ze `services` array, každá jako
    <Link href="/nase-sluzby#slug">, s číslem 01/02/03 v tmavém čtverci.

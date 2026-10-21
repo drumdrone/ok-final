@@ -10,7 +10,7 @@ export function HeaderCta() {
   const label = isEn ? "Request a quote" : "Poptávka";
 
   return (
-    <Link href={href} className="btn btn-primary hidden lg:inline-flex">
+    <Link href={href} className="btn btn-primary btn-arrow hidden lg:inline-flex">
       {label}
     </Link>
   );

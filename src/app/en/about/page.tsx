@@ -62,7 +62,7 @@ export default function EnAboutPage() {
           <h2 className="text-2xl font-bold">{about.cta.title}</h2>
           <p className="mx-auto mt-3 max-w-xl text-steel-600">{about.cta.lead}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href={about.cta.primary.href} className="btn btn-primary">
+            <Link href={about.cta.primary.href} className="btn btn-primary btn-arrow">
               {about.cta.primary.label}
             </Link>
             <Link href={about.cta.secondary.href} className="btn btn-ghost">

@@ -80,7 +80,7 @@ export const site = {
     hero: "/images/hero1_res.jpg",
     workshop: "/images/foto-workshop.jpg",
     machine: "/images/foto-soustruzeni.png",
-    cert: "/images/cert-iso-9001.jpg",
+    cert: "/images/cert2.png",
     certPdfCs: "/docs/iso-9001-cz.pdf",
     certPdfEn: "/docs/iso-9001-en.pdf",
   },
@@ -122,8 +122,9 @@ export const services: Array<{
       "Dlouhotočný automat Manurhin K´MX 413, rok výroby 2021",
       "Dlouhotočný automat Manurhin K´MX 413, rok výroby 2021",
       "Dlouhotočný automat Manurhin K´MX 413, rok výroby 2024",
+      "Dlouhotočný automat Manurhin K´MX 520 rok výroby 2026",
     ],
-    image: "/images/foto-soustruzeni.png",
+    image: "/images/manurhin-kmx.png",
   },
   {
     slug: "svarovani",
@@ -178,10 +179,10 @@ export const enContent = {
       ctaSecondary: { href: "tel:+420603534364", label: "Call us at +420 603 534 364" },
       machineAlt: "Swiss-type CNC lathe Manurhin K´MX 413",
       contactLabel: "Executive director — managing partner",
-      badge: "33 years",
+      badge: "35 years",
     },
     stats: [
-      { value: "33", unit: "years", label: "of experience in the field" },
+      { value: "35", unit: "years", label: "of experience in the field" },
     ],
     services: {
       eyebrow: "Our services",
@@ -191,7 +192,7 @@ export const enContent = {
       detailLink: "Our services →",
     },
     experience: {
-      years: "33",
+      years: "35",
       yearsLabel: "years of experience in the field",
       title: "We rely on modern technology",
       body:
@@ -241,8 +242,9 @@ export const enContent = {
         "Swiss-type CNC lathe Manurhin K´MX 413, year 2021",
         "Swiss-type CNC lathe Manurhin K´MX 413, year 2021",
         "Swiss-type CNC lathe Manurhin K´MX 413, year 2024",
+        "Swiss-type CNC lathe Manurhin K´MX 520, year 2026",
       ],
-      image: "/images/foto-soustruzeni.png",
+      image: "/images/manurhin-kmx.png",
     },
     {
       slug: "welding",
@@ -450,10 +452,10 @@ export const home = {
     ctaSecondary: { href: "tel:+420603534364", label: "Zavolejte nám na 603 534 364" },
     machineAlt: "Dlouhotočný automat Manurhin K´MX 413",
     contactLabel: "Výkonný ředitel – jednatel",
-    badge: "33 let",
+    badge: "35 let",
   },
   stats: [
-    { value: "33", unit: "let", label: "zkušeností a praxe v oboru" },
+    { value: "35", unit: "let", label: "zkušeností a praxe v oboru" },
   ],
   services: {
     eyebrow: "Naše služby",
@@ -463,7 +465,7 @@ export const home = {
     detailLink: "Naše služby →",
   },
   experience: {
-    years: "33",
+    years: "35",
     yearsLabel: "let zkušeností a praxe v oboru",
     title: "Vsadili jsme na moderní technologie",
     body:
@@ -537,6 +539,25 @@ export const faqItems = [
   {
     q: "Jak se dostaneme k nabídce?",
     a: "Nejrychlejší je poslat výkres přes formulář na stránce Kontakt nebo e-mailem na info@okfinal.cz. Odpovídáme do 24 hodin s cenou a termínem.",
+  },
+] as const;
+
+/** Scans published on okfinal.cz (cert1–cert3). */
+export const certificateScans = [
+  {
+    src: "/images/cert1.png",
+    altCs: "Certifikát ISO 9001:2015 v angličtině pro OK FINAL s.r.o., STAVCERT, č. QMS-5039/2023",
+    altEn: "ISO 9001:2015 certificate in English for OK FINAL s.r.o., STAVCERT, No. QMS-5039/2023",
+  },
+  {
+    src: "/images/cert2.png",
+    altCs: "Certifikát ČSN EN ISO 9001:2016 pro OK FINAL s.r.o., STAVCERT, č. QMS-5039/2023",
+    altEn: "ČSN EN ISO 9001:2016 certificate in Czech for OK FINAL s.r.o., STAVCERT, No. QMS-5039/2023",
+  },
+  {
+    src: "/images/cert3.png",
+    altCs: "Certifikát ISO 9001:2015 v angličtině pro OK FINAL s.r.o., STAVCERT, č. QMS-5039/2023",
+    altEn: "ISO 9001:2015 certificate in English for OK FINAL s.r.o., STAVCERT, No. QMS-5039/2023",
   },
 ] as const;
 
