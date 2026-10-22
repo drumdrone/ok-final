@@ -23,23 +23,72 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full px-5 py-3
-           text-sm font-semibold transition-colors;
+    @apply relative isolate inline-flex items-center justify-center overflow-hidden
+           rounded-full px-5 py-3 text-sm font-semibold;
   }
-  .btn-primary   { @apply bg-steel-950 text-white hover:bg-steel-800; }
-  .btn-ghost     { @apply border border-steel-300 bg-white text-steel-900 hover:bg-steel-50; }
-  .btn-dark      { @apply bg-steel-950 text-white hover:bg-steel-800; }
-  .btn-onDark    { @apply border border-steel-700 text-white hover:bg-steel-900; }
-  .btn-onAccent  { @apply bg-white text-steel-950 hover:bg-steel-100; }
+  .btn::before {
+    content: "";
+    z-index: -1;
+    @apply pointer-events-none absolute inset-0 origin-right scale-x-0;
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .btn:hover::before {
+    @apply scale-x-100;
+  }
+  .btn:disabled:hover::before {
+    transform: scaleX(0);
+  }
+  .btn-primary::before,
+  .btn-dark::before { @apply bg-steel-800; }
+  .btn-ghost::before { @apply bg-steel-50; }
+  .btn-onDark::before { @apply bg-steel-900; }
+  .btn-onAccent::before { @apply bg-steel-100; }
+  .btn-primary   { @apply bg-steel-950 text-white; }
+  .btn-ghost     { @apply border border-steel-300 bg-white text-steel-900; }
+  .btn-dark      { @apply bg-steel-950 text-white; }
+  .btn-onDark    { @apply border border-steel-700 text-white; }
+  .btn-onAccent  { @apply bg-white text-steel-950; }
 
   .arrow-btn {
-    @apply inline-flex items-center rounded-full font-semibold transition-colors duration-200;
+    @apply relative isolate inline-flex items-center overflow-hidden rounded-full font-semibold;
+  }
+  .arrow-btn::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 origin-right scale-x-0;
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .arrow-btn:hover::before {
+    @apply scale-x-100;
+  }
+  .arrow-btn-light::before {
+    @apply bg-white;
+  }
+  .arrow-btn-dark::before,
+  .arrow-btn-small::before {
+    @apply bg-steel-950;
+  }
+  .arrow-btn-label {
+    @apply relative z-10;
+  }
+  .arrow-btn-label-hover {
+    @apply pointer-events-none absolute inset-0 text-white;
+    clip-path: inset(0 0 0 100%);
+    transition: clip-path 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .arrow-btn-dark:hover .arrow-btn-label-hover {
+    clip-path: inset(0 0 0 0);
   }
   .arrow-btn-orb {
-    @apply ml-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all duration-200;
+    @apply relative z-10 ml-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full;
+  }
+  .arrow-btn-orb svg {
+    @apply h-4 w-4;
   }
   .arrow-btn-small .arrow-btn-orb {
     @apply ml-2 h-7 w-7;
+  }
+  .arrow-btn-small .arrow-btn-orb svg {
+    @apply h-3.5 w-3.5;
   }
   .arrow-btn-light .arrow-btn-orb {
     @apply bg-white text-steel-950 shadow-sm;
@@ -48,35 +97,41 @@
   .arrow-btn-small .arrow-btn-orb {
     @apply bg-steel-950 text-white;
   }
-  .arrow-btn:hover .arrow-btn-orb {
-    @apply ml-2 h-auto w-auto bg-transparent shadow-none;
-  }
-  .arrow-btn-light:hover .arrow-btn-orb {
-    @apply text-steel-950;
-  }
-  .arrow-btn-dark:hover .arrow-btn-orb,
-  .arrow-btn-small:hover .arrow-btn-orb {
-    @apply text-white;
-  }
-  .arrow-btn-diag,
-  .arrow-btn-line {
-    @apply h-4 w-4;
-  }
-  .arrow-btn-small .arrow-btn-diag,
-  .arrow-btn-small .arrow-btn-line {
-    @apply h-3.5 w-3.5;
-  }
-  .arrow-btn-line {
-    display: none;
-  }
-  .arrow-btn:hover .arrow-btn-diag {
-    display: none;
-  }
-  .arrow-btn:hover .arrow-btn-line {
-    display: block;
-  }
   .arrow-btn:disabled {
     @apply pointer-events-none cursor-not-allowed opacity-60;
+  }
+  @keyframes intro-rise {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes intro-photo {
+    from { opacity: 0; transform: scale(1.08); }
+    to { opacity: 1; transform: none; }
+  }
+  .intro-rise {
+    animation: intro-rise 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .intro-photo {
+    animation: intro-photo 1.25s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .intro-d1 { animation-delay: 0.12s; }
+  .intro-d2 { animation-delay: 0.26s; }
+  .intro-d3 { animation-delay: 0.4s; }
+  .intro-d4 { animation-delay: 0.54s; }
+  .intro-d5 { animation-delay: 0.7s; }
+  .intro-d6 { animation-delay: 0.84s; }
+  .intro-d7 { animation-delay: 0.98s; }
+  .intro-d8 { animation-delay: 0.55s; }
+  @media (prefers-reduced-motion: reduce) {
+    .arrow-btn::before,
+    .arrow-btn-label-hover,
+    .btn::before {
+      transition: none;
+    }
+    .intro-rise,
+    .intro-photo {
+      animation: none;
+    }
   }
 
   .eyebrow {

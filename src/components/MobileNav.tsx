@@ -102,7 +102,7 @@ export function MobileNav() {
                 className="mt-2"
                 onClick={() => setOpen(false)}
               >
-                {isEn ? "Request a quote" : "Poptávka"}
+                {isEn ? "Request a quote" : "Domluvit spolupráci"}
               </ArrowButton>
             </div>
           </nav>

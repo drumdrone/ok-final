@@ -7,7 +7,7 @@ import { NavLinks } from "./NavLinks";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-steel-100 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-steel-100 bg-white">
       <div className="container flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-2" aria-label={site.name}>
           {/* eslint-disable-next-line @next/next/no-img-element */}

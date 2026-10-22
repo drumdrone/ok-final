@@ -77,7 +77,7 @@ export const site = {
   assets: {
     logo: "/brand/logo.jpg",
     logoMark: "/brand/logo-mark.jpg",
-    hero: "/images/hero1_res.jpg",
+    hero: "/images/svar.jpg",
     workshop: "/images/foto-workshop.jpg",
     machine: "/images/foto-soustruzeni.png",
     cert: "/images/cert2.png",
@@ -175,11 +175,17 @@ export const enContent = {
       titleBefore: "Parts machined to drawing tolerances",
       titleAccent: "within short lead times",
       lead: "Talk to our specialists.",
+      detail: "We manufacture parts to drawing tolerances within short lead times.",
       ctaPrimary: { href: "/en/contact", label: "Get in touch" },
       ctaSecondary: { href: "tel:+420603534364", label: "Call us at +420 603 534 364" },
-      machineAlt: "Swiss-type CNC lathe Manurhin K´MX 413",
+      machineAlt: "Manual TIG welding",
       contactLabel: "Executive director — managing partner",
-      badge: "35 years",
+      badge: "Open for new orders",
+      stats: [
+        { value: "340+", label: "Projects" },
+        { value: "35", label: "Years" },
+        { value: "5 years", label: "Warranty" },
+      ],
     },
     stats: [
       { value: "35", unit: "years", label: "of experience in the field" },
@@ -445,14 +451,21 @@ export const enContent = {
 export const home = {
   hero: {
     eyebrow: "OK FINAL s.r.o.",
-    titleBefore: "Dílce vyrobené v tolerancích podle výrobní dokumentace",
-    titleAccent: "v krátkém časovém období",
-    lead: "Promluvte si s našimi specialisty.",
-    ctaPrimary: { href: "/kontakt", label: "Kontaktovat" },
+    titleBefore: "Dobře promyšlené.",
+    titleAccent: "Precizně dokončené.",
+    lead: "Každý projekt si zaslouží jasný plán, pečlivé provedení a výsledek, který obstojí v čase.",
+    detail:
+      "Vyrábíme dílce v tolerancích podle výrobní dokumentace v krátkém časovém období.",
+    ctaPrimary: { href: "/nase-sluzby", label: "Objevte, co děláme" },
     ctaSecondary: { href: "tel:+420603534364", label: "Zavolejte nám na 603 534 364" },
-    machineAlt: "Dlouhotočný automat Manurhin K´MX 413",
+    machineAlt: "Ruční svařování TIG",
     contactLabel: "Výkonný ředitel – jednatel",
-    badge: "35 let",
+    badge: "OK Final · od záměru k výsledku",
+    stats: [
+      { value: "340+", label: "Realizací" },
+      { value: "35", label: "Let praxe" },
+      { value: "5 let", label: "Záruka" },
+    ],
   },
   stats: [
     { value: "35", unit: "let", label: "zkušeností a praxe v oboru" },

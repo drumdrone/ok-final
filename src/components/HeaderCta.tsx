@@ -7,7 +7,7 @@ export function HeaderCta() {
   const pathname = usePathname() || "/";
   const isEn = pathname === "/en" || pathname.startsWith("/en/");
   const href = isEn ? "/en/contact" : "/kontakt";
-  const label = isEn ? "Request a quote" : "Poptávka";
+  const label = isEn ? "Request a quote" : "Domluvit spolupráci";
 
   return (
     <ArrowButton href={href} variant="small" className="hidden lg:inline-flex">
