@@ -10,7 +10,7 @@ type HeroCopy = {
   ctaPrimary: { href: string; label: string };
   contactLabel: string;
   machineAlt: string;
-  stats: Array<{ value: string; label: string }>;
+  stats: ReadonlyArray<{ readonly value: string; readonly label: string }>;
 };
 
 export function HomeHero({
