@@ -1,59 +1,80 @@
+"use client";
+
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { usePathname } from "next/navigation";
+import { enNav, nav, site } from "@/lib/site";
 
 export function Footer() {
+  const pathname = usePathname() || "/";
+  const isEn = pathname === "/en" || pathname.startsWith("/en/");
+  const items = isEn ? enNav : nav;
   const year = new Date().getFullYear();
   const phoneHref = "tel:" + site.contacts.phone.replace(/\s/g, "");
+
+  const t = isEn
+    ? {
+        tagline: "Precision turning and welding of metals.",
+        contact: "Contact",
+        sitemap: "Sitemap",
+        home: "/en",
+      }
+    : {
+        tagline: `${site.tagline}.`,
+        contact: "Kontakt",
+        sitemap: "Mapa webu",
+        home: "/",
+      };
+
   return (
-    <footer className="border-t border-steel-800 bg-steel-950 text-steel-200">
-      <div className="container grid gap-10 py-14 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-3">
+    <footer className="bg-[#141619] pt-20 text-zinc-400">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 lg:grid-cols-12 lg:px-8">
+        <div className="lg:col-span-5">
+          <Link href={t.home} className="flex items-center" aria-label={site.name}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={site.assets.logoMark}
-              alt=""
-              width={36}
-              height={36}
-              className="h-9 w-9 rounded-md"
+              src={site.assets.logoOnDark}
+              alt={site.shortName}
+              width={218}
+              height={38}
+              className="h-8 w-auto"
             />
-            <span className="font-display text-lg font-bold tracking-tight text-white">
-              {site.shortName}
-            </span>
-          </div>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-steel-300">
-            {site.tagline}.
-          </p>
+          </Link>
+          <p className="mt-5 max-w-xs text-sm leading-relaxed">{t.tagline}</p>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-widest text-white">
-            Kontakt
-          </h3>
-          <address className="mt-4 space-y-2 text-sm not-italic text-steel-300">
-            <div>{site.address.street}</div>
-            <div>{site.address.zip} {site.address.city}</div>
-            <div className="pt-2">
-              <a href={phoneHref} className="hover:text-white">
+        <div className="lg:col-span-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            {t.contact}
+          </p>
+          <address className="mt-5 space-y-2 text-sm not-italic">
+            <p>{site.address.street}</p>
+            <p>
+              {site.address.zip} {site.address.city}
+            </p>
+            <p className="pt-3">
+              <a href={phoneHref} className="transition hover:text-white">
                 {site.contacts.phone}
               </a>
-            </div>
-            <div>
-              <a href={`mailto:${site.contacts.email}`} className="hover:text-white">
+            </p>
+            <p>
+              <a
+                href={`mailto:${site.contacts.email}`}
+                className="transition hover:text-white"
+              >
                 {site.contacts.email}
               </a>
-            </div>
+            </p>
           </address>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-widest text-white">
-            Mapa webu
-          </h3>
-          <ul className="mt-4 grid grid-cols-2 gap-y-2 text-sm">
-            {nav.map((item) => (
+        <div className="lg:col-span-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            {t.sitemap}
+          </p>
+          <ul className="mt-5 grid grid-cols-2 gap-y-2 text-sm">
+            {items.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-steel-300 hover:text-white">
+                <Link href={item.href} className="transition hover:text-white">
                   {item.label}
                 </Link>
               </li>
@@ -62,14 +83,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-steel-800">
-        <div className="container flex flex-col items-center justify-between gap-2 py-6 text-xs text-steel-400 md:flex-row">
-          <div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-6 text-xs sm:flex-row sm:items-center sm:justify-between lg:px-8">
+          <p>
             © {year} {site.name} · IČ {site.company.ico} · DIČ {site.company.dic}
-          </div>
-          <div>
-            <Link href="/admin" className="hover:text-steel-200">Admin</Link>
-          </div>
+          </p>
+          <Link href="/admin" className="transition hover:text-white">
+            Admin
+          </Link>
         </div>
       </div>
     </footer>
