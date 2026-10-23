@@ -80,7 +80,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#141619]/90 backdrop-blur-xl">
+    <header className="okf-header sticky top-0 z-50 border-b border-white/10 bg-[#141619]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 lg:px-8">
         <Logo href={homeHref} />
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageTransition } from "@/components/PageTransition";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationJsonLd } from "@/lib/schema";
 import { site } from "@/lib/site";
@@ -75,7 +76,9 @@ export default function RootLayout({
     <html lang="cs" className={manrope.variable}>
       <body className="flex min-h-screen flex-col font-sans">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
         <JsonLd data={organizationJsonLd} />
       </body>

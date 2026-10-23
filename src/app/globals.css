@@ -206,3 +206,62 @@
     }
   }
 }
+
+/* Page crossfade. Header and footer are named so they stay put. */
+.okf-page { view-transition-name: okf-page; }
+.okf-header { view-transition-name: okf-header; }
+.okf-footer { view-transition-name: okf-footer; }
+
+::view-transition { pointer-events: none; }
+
+::view-transition-group(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(okf-header),
+::view-transition-group(okf-footer),
+::view-transition-group(okf-page) {
+  animation: none;
+}
+::view-transition-group(okf-header) { z-index: 100; }
+::view-transition-group(okf-footer) { z-index: 40; }
+
+::view-transition-old(okf-header),
+::view-transition-old(okf-footer) {
+  display: none;
+}
+::view-transition-new(okf-header),
+::view-transition-new(okf-footer) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(okf-page) {
+  mix-blend-mode: normal;
+  object-fit: none;
+  object-position: top left;
+  animation: 180ms cubic-bezier(0.4, 0, 1, 1) both okf-page-out;
+}
+::view-transition-new(okf-page) {
+  mix-blend-mode: normal;
+  object-fit: none;
+  object-position: top left;
+  animation: 240ms cubic-bezier(0.2, 0.7, 0.2, 1) 100ms both okf-page-in;
+}
+
+@keyframes okf-page-out {
+  to { opacity: 0; }
+}
+@keyframes okf-page-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(okf-page),
+  ::view-transition-new(okf-page) {
+    animation: none;
+  }
+}

@@ -26,7 +26,7 @@ export function Footer() {
       };
 
   return (
-    <footer className="bg-[#141619] pt-20 text-zinc-400">
+    <footer className="okf-footer bg-[#141619] pt-20 text-zinc-400">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 lg:grid-cols-12 lg:px-8">
         <div className="lg:col-span-5">
           <Link href={t.home} className="flex items-center" aria-label={site.name}>
