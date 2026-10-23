@@ -6,7 +6,7 @@ export default function KarieraAdminPage() {
           <h1 className="text-2xl font-bold text-steel-950">Kariéra</h1>
           <p className="mt-2 text-steel-600">Správa otevřených pozic.</p>
         </div>
-        <button disabled className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-60">
+        <button disabled className="btn btn-dark disabled:cursor-not-allowed disabled:opacity-60">
           Přidat pozici
         </button>
       </div>

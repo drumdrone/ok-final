@@ -2,7 +2,7 @@
 
 import { internalAction } from "./_generated/server";
 import { v } from "convex/values";
-import { internal } from "./_generated/api";
+import { api } from "./_generated/api";
 
 /**
  * Pošle e-mail s poptávkou přes Resend API na info@okfinal.cz +
@@ -11,7 +11,7 @@ import { internal } from "./_generated/api";
 export const sendInquiryMail = internalAction({
   args: { inquiryId: v.id("inquiries") },
   handler: async (ctx, { inquiryId }) => {
-    const inquiry = await ctx.runQuery(internal.inquiries.get, { id: inquiryId });
+    const inquiry = await ctx.runQuery(api.inquiries.get, { id: inquiryId });
     if (!inquiry) return;
 
     const apiKey = process.env.RESEND_API_KEY;

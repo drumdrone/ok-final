@@ -6,37 +6,55 @@ export default {
     extend: {
       colors: {
         // PLAN.md §2 steel + cool crimson accent (logo-adjacent)
+        // Průmyslový Design Systém — charcoal neutrals (#F5F7F9 → #1C2023)
         steel: {
-          50: "#f5f7fa",
-          100: "#e4e9f0",
-          200: "#c9d3df",
-          300: "#a1b1c4",
-          400: "#7288a2",
-          500: "#526a87",
-          600: "#3f536d",
-          700: "#354458",
-          800: "#2d394a",
-          900: "#1c2431",
-          950: "#111721",
+          50: "#f5f7f9",
+          100: "#e8ebee",
+          200: "#d1d5d8",
+          300: "#b3b9be",
+          400: "#898f94",
+          500: "#666c70",
+          600: "#4d5256",
+          700: "#3a3f43",
+          800: "#2a2e31",
+          900: "#1f2225",
+          950: "#1c2023",
         },
+        // signal / brand red #CC1827 with deep-crimson hover #A80118
         accent: {
-          50: "#fff1f3",
-          100: "#ffe0e4",
-          400: "#e83a52",
-          500: "#c8102e",
-          600: "#a50d26",
-          700: "#860b1f",
+          50: "#fdeaec",
+          100: "#fbced3",
+          400: "#e2404f",
+          500: "#cc1827",
+          600: "#a80118",
+          700: "#880314",
+        },
+        // technical blue (indicators, EDM technology)
+        tech: {
+          50: "#eaf2fb",
+          100: "#cfe1f5",
+          500: "#2171cc",
+          600: "#1a5aa6",
+          700: "#154984",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        display: ["var(--font-manrope)", "system-ui", "sans-serif"],
       },
       container: {
         center: true,
+        // Cap at max-w-7xl (1280px) so .container matches the homepage,
+        // header and footer at every breakpoint, including 2xl.
+        screens: {
+          sm: "100%",
+          md: "100%",
+          lg: "100%",
+          xl: "1280px",
+          "2xl": "1280px",
+        },
         padding: {
-          DEFAULT: "1rem",
-          sm: "1.5rem",
+          DEFAULT: "1.25rem",
           lg: "2rem",
         },
       },

@@ -1,13 +1,13 @@
 /**
  * Placeholder — nahradí se automaticky při `npx convex dev`.
- * Convex generuje typované wrappery; před inicializací re-exportujeme
- * netypované builtin z `convex/server`.
+ * Convex 1.43+ exportuje factory funkce pod *Generic jménem; po inicializaci
+ * jsou vygenerovány typované wrappery. Před init re-exportujeme bez typů.
  */
 export {
-  mutation,
-  query,
-  action,
-  internalMutation,
-  internalQuery,
-  internalAction,
+  mutationGeneric as mutation,
+  queryGeneric as query,
+  actionGeneric as action,
+  internalMutationGeneric as internalMutation,
+  internalQueryGeneric as internalQuery,
+  internalActionGeneric as internalAction,
 } from "convex/server";

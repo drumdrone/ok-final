@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
 import { about, milestones, site } from "@/lib/site";
 
@@ -61,9 +62,9 @@ export default function OFirmePage() {
           <h2 className="text-2xl font-bold">{about.cta.title}</h2>
           <p className="mx-auto mt-3 max-w-xl text-steel-600">{about.cta.lead}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href={about.cta.primary.href} className="btn btn-primary">
+            <ArrowButton href={about.cta.primary.href} variant="light">
               {about.cta.primary.label}
-            </Link>
+            </ArrowButton>
             <Link href={about.cta.secondary.href} className="btn btn-ghost">
               {about.cta.secondary.label}
             </Link>

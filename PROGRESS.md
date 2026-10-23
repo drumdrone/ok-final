@@ -34,7 +34,7 @@ Zaškrtávej během práce. Když je celá sekce hotová, přesuň ji dolů pod
 - [ ] `JsonLd` komponenta
 
 ### 2.3 Obsah — stránky
-- [ ] Homepage — hero, služby, „33 let" band, segmenty, CTA
+- [ ] Homepage — hero, služby, „35 let" band, segmenty, CTA
 - [ ] `/o-firme` — timeline, storytelling
 - [ ] `/nase-sluzby` — 3 sekce s kotvami
 - [ ] `/certifikaty` — grid osvědčení

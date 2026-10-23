@@ -23,7 +23,7 @@
     Cache-Control = "no-store, max-age=0"
 
 # ---------- 301 redirects for old WordPress URLs ----------
-# All old English pages → one EN landing
+# Old English pages → their new EN equivalents
 [[redirects]]
   from = "/home_en"
   to = "/en"
@@ -36,62 +36,62 @@
   force = true
 [[redirects]]
   from = "/about-us"
-  to = "/en"
+  to = "/en/about"
   status = 301
   force = true
 [[redirects]]
   from = "/about-us/*"
-  to = "/en"
+  to = "/en/about"
   status = 301
   force = true
 [[redirects]]
   from = "/services"
-  to = "/en#services"
+  to = "/en/services"
   status = 301
   force = true
 [[redirects]]
   from = "/services/*"
-  to = "/en#services"
+  to = "/en/services"
   status = 301
   force = true
 [[redirects]]
   from = "/our-offer"
-  to = "/en#services"
+  to = "/en/services"
   status = 301
   force = true
 [[redirects]]
   from = "/our-offer/*"
-  to = "/en#services"
+  to = "/en/services"
   status = 301
   force = true
 [[redirects]]
   from = "/certificates"
-  to = "/en"
+  to = "/en/certificates"
   status = 301
   force = true
 [[redirects]]
   from = "/certificates/*"
-  to = "/en"
+  to = "/en/certificates"
   status = 301
   force = true
 [[redirects]]
   from = "/contact"
-  to = "/en#contact"
+  to = "/en/contact"
   status = 301
   force = true
 [[redirects]]
   from = "/contact/*"
-  to = "/en#contact"
+  to = "/en/contact"
   status = 301
   force = true
 [[redirects]]
   from = "/contacts"
-  to = "/en#contact"
+  to = "/en/contact"
   status = 301
   force = true
 [[redirects]]
   from = "/contacts/*"
-  to = "/en#contact"
+  to = "/en/contact"
   status = 301
   force = true
 

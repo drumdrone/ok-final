@@ -5,7 +5,7 @@ async function loadCounts() {
   const cvx = convexClient();
   if (!cvx) return null;
   try {
-    const { api } = await import("../../../convex/_generated/api");
+    const { api } = await import("../../../../convex/_generated/api");
     return await cvx.query(api.inquiries.counts, {});
   } catch {
     return null;

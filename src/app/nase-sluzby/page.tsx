@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
 import { JsonLd } from "@/components/JsonLd";
 import { servicesJsonLd } from "@/lib/schema";
@@ -31,12 +31,12 @@ export default function ServicesPage() {
               className="grid gap-8 border-t border-steel-200 pt-12 lg:grid-cols-[1fr_2fr] lg:gap-16"
             >
               <div>
-                <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-lg bg-steel-100">
+                <div className={`relative mb-6 aspect-[4/3] overflow-hidden rounded-lg ${s.slug === "soustruzeni" ? "bg-white" : "bg-steel-100"}`}>
                   <Image
                     src={s.image}
                     alt={s.title}
                     fill
-                    className="object-cover"
+                    className={s.slug === "soustruzeni" ? "object-contain" : "object-cover"}
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </div>
@@ -50,14 +50,38 @@ export default function ServicesPage() {
                 <p className="text-lg leading-relaxed text-steel-700">
                   {s.body}
                 </p>
-                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {s.bullets.map((b, bulletIndex) => (
-                    <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-500" />
-                      <span className="text-steel-700">{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                {s.slug === "soustruzeni" ? (
+                  <ol className="mt-6 space-y-3">
+                    {s.bullets.map((b, bulletIndex) => (
+                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
+                        <span className="w-9 flex-shrink-0 font-display font-bold tabular-nums text-accent-500">
+                          {bulletIndex + 1}.
+                        </span>
+                        <span className="text-steel-700">{b}</span>
+                      </li>
+                    ))}
+                  </ol>
+                ) : s.slug === "svarovani" ? (
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {s.bullets.map((b, bulletIndex) => (
+                      <li
+                        key={`${s.slug}-${bulletIndex}`}
+                        className="rounded-xl border border-steel-200 bg-white p-5 shadow-sm"
+                      >
+                        <p className="font-semibold leading-snug text-steel-950">{b}</p>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {s.bullets.map((b, bulletIndex) => (
+                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-500" />
+                        <span className="text-steel-700">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </article>
           ))}
@@ -74,9 +98,9 @@ export default function ServicesPage() {
               Pokud máte zájem o případnou spolupráci, tak nám zašlete nezávaznou poptávku a my vám dílce bezplatně naceníme.
             </p>
           </div>
-          <Link href="/kontakt" className="btn btn-primary">
+          <ArrowButton href="/kontakt" variant="dark">
             Kontaktovat
-          </Link>
+          </ArrowButton>
         </div>
       </section>
 
