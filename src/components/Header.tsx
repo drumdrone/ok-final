@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { enNav, nav } from "@/lib/site";
+import { enNav, nav, site } from "@/lib/site";
 
 // Mirror map CZ → EN slugs (shared with LangSwitcher logic).
 const CZ_TO_EN: Record<string, string> = {
@@ -21,15 +21,15 @@ const EN_TO_CZ: Record<string, string> = Object.fromEntries(
 
 function Logo({ href }: { href: string }) {
   return (
-    <Link href={href} className="flex items-center gap-3" aria-label="OK FINAL">
-      <svg className="h-8 w-8" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <rect width={32} height={32} rx={6} fill="#dc2626" />
-        <path d="M7 22 L18 8 H25 L14 22 Z" fill="#141619" />
-        <circle cx={22} cy={21} r={3} fill="#fff" />
-      </svg>
-      <span className="font-display text-lg font-bold tracking-tight text-white">
-        OK FINAL
-      </span>
+    <Link href={href} className="flex items-center" aria-label={site.name}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={site.assets.logoOnDark}
+        alt={site.shortName}
+        width={218}
+        height={38}
+        className="h-8 w-auto"
+      />
     </Link>
   );
 }

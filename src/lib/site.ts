@@ -76,6 +76,7 @@ export const site = {
   },
   assets: {
     logo: "/brand/logo.jpg",
+    logoOnDark: "/brand/logo-on-dark.svg",
     logoMark: "/brand/logo-mark.jpg",
     hero: "/images/svar.jpg",
     workshop: "/images/foto-workshop.jpg",
