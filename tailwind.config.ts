@@ -44,9 +44,17 @@ export default {
       },
       container: {
         center: true,
+        // Cap at max-w-7xl (1280px) so .container matches the homepage,
+        // header and footer at every breakpoint, including 2xl.
+        screens: {
+          sm: "100%",
+          md: "100%",
+          lg: "100%",
+          xl: "1280px",
+          "2xl": "1280px",
+        },
         padding: {
-          DEFAULT: "1rem",
-          sm: "1.5rem",
+          DEFAULT: "1.25rem",
           lg: "2rem",
         },
       },
