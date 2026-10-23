@@ -34,7 +34,7 @@ export default function EnHomePage() {
               </span>
               <span>{home.hero.badge}</span>
             </div>
-            <h1 className="okf-reveal mt-8 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl xl:text-7xl">
+            <h1 className="okf-reveal mt-8 font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl xl:text-7xl">
               <span className="block">Well planned.</span>
               <span className="block text-zinc-500">Precisely</span>
               <span className="block">
@@ -183,7 +183,7 @@ export default function EnHomePage() {
                   01 / TURNING
                 </span>
                 <div>
-                  <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                  <h3 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                     Turning to tolerances
                   </h3>
                   <p className="mt-4 max-w-md leading-relaxed text-zinc-300">
@@ -256,7 +256,7 @@ export default function EnHomePage() {
                   </svg>
                 </span>
               </div>
-              <h3 className="mt-10 font-display text-2xl font-semibold tracking-tight">
+              <h3 className="mt-10 font-display text-2xl font-semibold tracking-tight text-white">
                 Assembly work
               </h3>
               <p className="mt-3 leading-relaxed text-zinc-400">
@@ -304,7 +304,7 @@ export default function EnHomePage() {
             </p>
           </div>
           <div className="okf-reveal lg:col-span-6 lg:col-start-7">
-            <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
               {home.experience.title}
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-zinc-300">
@@ -421,7 +421,7 @@ export default function EnHomePage() {
                     <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
                   </svg>
                 </span>
-                <h3 className="mt-8 font-display text-xl font-semibold">
+                <h3 className="mt-8 font-display text-xl font-semibold text-white">
                   {home.segments.items[1].title}
                 </h3>
                 <p className="mt-2 text-sm text-zinc-400">
@@ -440,7 +440,7 @@ export default function EnHomePage() {
           <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
                 {home.cta.title}
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-red-100">
