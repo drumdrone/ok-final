@@ -11,7 +11,6 @@ const marqueeItems = [
   "Manufactured to drawing",
   "Short lead times",
   "Output inspection",
-  "5-year warranty",
 ] as const;
 
 export default function EnHomePage() {
@@ -29,8 +28,8 @@ export default function EnHomePage() {
           <div className="flex flex-col justify-center lg:col-span-6">
             <div className="okf-reveal inline-flex w-fit items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs text-zinc-300">
               <span className="relative flex h-2 w-2">
-                <span className="okf-pulse absolute inset-0 rounded-full bg-red-500" />
-                <span className="relative h-2 w-2 rounded-full bg-red-500" />
+                <span className="okf-pulse absolute inset-0 rounded-full bg-emerald-400" />
+                <span className="relative h-2 w-2 rounded-full bg-emerald-400" />
               </span>
               <span>{home.hero.badge}</span>
             </div>
@@ -72,34 +71,14 @@ export default function EnHomePage() {
                 {site.contacts.phone}
               </a>
             </div>
-            <dl className="okf-reveal okf-d600 mt-14 grid max-w-lg grid-cols-3 border-t border-white/10 pt-8">
+            <dl className="okf-reveal okf-d600 mt-14 w-fit border-t border-white/10 pt-8">
               <div>
-                <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                  Projects
-                </dt>
-                <dd className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
-                  <span className="okf-count" data-count={340} data-suffix="+">
-                    340+
-                  </span>
-                </dd>
-              </div>
-              <div className="border-l border-white/10 pl-5">
                 <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
                   Years
                 </dt>
                 <dd className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
                   <span className="okf-count" data-count={35} data-suffix="">
                     35
-                  </span>
-                </dd>
-              </div>
-              <div className="border-l border-white/10 pl-5">
-                <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                  Warranty
-                </dt>
-                <dd className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
-                  <span className="okf-count" data-count={5} data-suffix=" years">
-                    5 years
                   </span>
                 </dd>
               </div>

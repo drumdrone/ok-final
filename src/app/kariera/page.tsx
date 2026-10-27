@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Kariéra",
   description:
-    "Kariéra v OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713, mobil: +420 603 534 364.",
+    "Kariéra v OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 603 534 364.",
   alternates: { canonical: "/kariera" },
 };
 
@@ -44,7 +44,7 @@ export default async function KarieraPage() {
       <PageHero
         eyebrow="Kariéra"
         title="Kariéra"
-        lead="OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713, mobil: +420 603 534 364."
+        lead="OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 603 534 364."
       />
 
       <Section tight>
@@ -53,10 +53,10 @@ export default async function KarieraPage() {
             <h2 className="text-2xl font-bold">Adresa a telefony</h2>
             <p className="mx-auto mt-3 max-w-xl text-steel-600">
               OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. IČ: 46506578,
-              DIČ: CZ46506578. Tel.: +420 465 612 713, mobil: +420 603 534 364.
+              DIČ: CZ46506578. Tel.: +420 603 534 364.
             </p>
-            <ArrowButton href="tel:+420465612713" variant="light" className="mt-6">
-              Zavolat +420 465 612 713
+            <ArrowButton href="tel:+420603534364" variant="light" className="mt-6">
+              Zavolat +420 603 534 364
             </ArrowButton>
           </div>
         ) : (

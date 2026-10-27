@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713. IČ: 46506578, DIČ: CZ46506578.",
+    "OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 603 534 364. IČ: 46506578, DIČ: CZ46506578.",
   alternates: { canonical: "/kontakt" },
 };
 
@@ -20,7 +20,7 @@ export default function KontaktPage() {
       <PageHero
         eyebrow="Kontakt"
         title="Kontakt"
-        lead="ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 465 612 713, mobil: +420 603 534 364."
+        lead="ul. Nádražní 608, 564 01 Žamberk. Tel.: +420 603 534 364."
       />
 
       <Section>

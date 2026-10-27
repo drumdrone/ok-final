@@ -46,10 +46,10 @@ export default function StylePage() {
           <div className="flex flex-col justify-center lg:col-span-6">
             <div className="inline-flex w-fit items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs text-zinc-300">
               <span className="relative flex h-2 w-2">
-                <span className="okf-pulse absolute inset-0 rounded-full bg-accent-500" />
-                <span className="relative h-2 w-2 rounded-full bg-accent-500" />
+                <span className="okf-pulse absolute inset-0 rounded-full bg-emerald-400" />
+                <span className="relative h-2 w-2 rounded-full bg-emerald-400" />
               </span>
-              <span>OK Final · od záměru k výsledku</span>
+              <span>Otevřeni pro nové zakázky</span>
             </div>
             <h2 className="font-display mt-8 text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl xl:text-7xl">
               <span className="block">Dobře promyšlené.</span>
@@ -86,35 +86,19 @@ export default function StylePage() {
                 </svg>
               </a>
               <a
-                href="tel:+420465612713"
+                href="tel:+420603534364"
                 className="text-sm text-zinc-400 underline decoration-white/20 underline-offset-4 transition hover:text-white"
               >
-                +420 465 612 713
+                +420 603 534 364
               </a>
             </div>
-            <dl className="mt-14 grid max-w-lg grid-cols-3 border-t border-white/10 pt-8">
+            <dl className="mt-14 w-fit border-t border-white/10 pt-8">
               <div>
-                <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                  Realizací
-                </dt>
-                <dd className="font-display mt-2 text-3xl font-semibold sm:text-4xl">
-                  340+
-                </dd>
-              </div>
-              <div className="border-l border-white/10 pl-5">
                 <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
                   Let praxe
                 </dt>
                 <dd className="font-display mt-2 text-3xl font-semibold sm:text-4xl">
                   35
-                </dd>
-              </div>
-              <div className="border-l border-white/10 pl-5">
-                <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                  Záruka
-                </dt>
-                <dd className="font-display mt-2 text-3xl font-semibold sm:text-4xl">
-                  5 let
                 </dd>
               </div>
             </dl>
@@ -304,10 +288,10 @@ export default function StylePage() {
                 Kontaktovat
               </a>
               <a
-                href="tel:+420465612713"
+                href="tel:+420603534364"
                 className="text-sm text-zinc-400 underline decoration-white/20 underline-offset-4 hover:text-white"
               >
-                nebo volejte +420 465 612 713
+                nebo volejte +420 603 534 364
               </a>
             </div>
           </div>
