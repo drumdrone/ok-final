@@ -16,7 +16,7 @@ export const site = {
     lng: 16.469,
   },
   contacts: {
-    phone: "+420 465 612 713",
+    phone: "+420 603 534 364",
     email: "info@okfinal.cz",
     contactPerson: {
       name: "Ing. Jiří Divíšek",
@@ -58,7 +58,7 @@ export const site = {
       {
         name: "Kateřina Čammrová",
         role: "Administrativní pracovnice-účetní",
-        phone: "+420 465 612 713",
+        phone: "+420 603 534 364",
         email: "katerina.cammrova@okfinal.cz",
       },
     ],
@@ -81,9 +81,9 @@ export const site = {
     hero: "/images/svar.jpg",
     workshop: "/images/foto-workshop.jpg",
     machine: "/images/foto-soustruzeni.png",
-    cert: "/images/cert2.png",
-    certPdfCs: "/docs/iso-9001-cz.pdf",
-    certPdfEn: "/docs/iso-9001-en.pdf",
+    cert: "/images/cer3.jpg",
+    certPdfCs: "/docs/cer3.pdf",
+    certPdfEn: "/docs/cer2.pdf",
   },
 } as const;
 
@@ -182,11 +182,7 @@ export const enContent = {
       machineAlt: "Manual TIG welding",
       contactLabel: "Executive director — managing partner",
       badge: "Open for new orders",
-      stats: [
-        { value: "340+", label: "Projects" },
-        { value: "35", label: "Years" },
-        { value: "5 years", label: "Warranty" },
-      ],
+      stats: [{ value: "35", label: "Years" }],
     },
     stats: [
       { value: "35", unit: "years", label: "of experience in the field" },
@@ -319,13 +315,13 @@ export const enContent = {
     {
       title: "ČSN EN ISO 9001:2016",
       body:
-        "Quality management system for engineering and locksmithing production and machine machining on CNC lathes. Certificate No. QMS-5039/2023, STAVCERT Praha. Valid from 15 July 2023 until 14 July 2026. First certification: July 2011.",
+        "Quality management system for engineering and locksmithing production and machine machining on CNC lathes. Certificate No. QMS-5385/2026, STAVCERT Praha. Valid from 15 July 2026 until 14 July 2029. First certification: July 2011.",
       tag: "Quality",
     },
     {
       title: "ISO 9001:2015",
       body:
-        "English version of the same certificate. Scope: machine industry production and locksmithery, machine machining CNC lathes. Certificate No. QMS-5039/2023, valid 15 July 2023 – 14 July 2026.",
+        "English version of the same certificate. Scope: mechanical engineering and metalworking, CNC turning. Certificate No. QMS-5385/2026, valid 15 July 2026 – 14 July 2029.",
       tag: "EN",
     },
   ],
@@ -335,28 +331,12 @@ export const enContent = {
       a: "In turning we routinely hold IT7 – IT9; for precision parts with a finishing operation we achieve down to IT6. The specific tolerance is always confirmed based on the drawing and material.",
     },
     {
-      q: "Do you also take one-off orders?",
-      a: "Yes — one-off production and prototypes are a significant part of our output. We have no minimum order quantity; we will make a single part from your drawing or from a damaged original.",
-    },
-    {
       q: "What materials do you work with?",
       a: "Structural steel, stainless (304, 316), brass, aluminium and non-ferrous metals. For special materials (titanium, heat-resistant steels) we agree on the specific requirement.",
     },
     {
-      q: "What welding methods do you use?",
-      a: "MIG/MAG (135/138), TIG (141) and SMAW (111). We weld steel, stainless and aluminium.",
-    },
-    {
-      q: "Are your welders certified?",
-      a: "Yes — all active welders hold a valid certificate under ČSN EN ISO 9606-1 for the relevant method/material/position combinations. Copies of certificates are supplied on request.",
-    },
-    {
       q: "How long does a typical order take?",
-      a: "Smaller one-off batches typically 1 – 2 weeks from order confirmation, medium series 3 – 5 weeks. The exact lead time is confirmed with the quote based on current workshop load.",
-    },
-    {
-      q: "In what format do you accept drawings?",
-      a: "Ideally PDF or DWG/DXF. We also accept paper drawings — we will scan them and confirm legibility. A 3D model (STEP, IGES) is welcome for more complex parts.",
+      a: "3 – 5 weeks. The exact lead time is confirmed with the quote based on current workshop load.",
     },
     {
       q: "Do you provide surface treatments?",
@@ -364,7 +344,7 @@ export const enContent = {
     },
     {
       q: "Do you ship abroad?",
-      a: "We regularly supply customers in Germany and Austria. Communication in English or German; shipping by agreement.",
+      a: "We regularly supply customers in Germany. Communication in English or German; shipping by agreement.",
     },
     {
       q: "How do we get a quote?",
@@ -393,14 +373,14 @@ export const enContent = {
     certificates: {
       metaTitle: "Certificates",
       metaDescription:
-        "Quality management system of OK FINAL s.r.o. under ČSN EN ISO 9001:2016. Certificate No. QMS-5039/2023, STAVCERT Praha.",
+        "Quality management system of OK FINAL s.r.o. under ČSN EN ISO 9001:2016. Certificate No. QMS-5385/2026, STAVCERT Praha.",
       heroEyebrow: "Certificates",
       heroTitle: "Quality management system",
       heroLead:
-        "An established and maintained quality management system for engineering and locksmithing production and machine machining on CNC lathes. ČSN EN ISO 9001:2016, certificate No. QMS-5039/2023.",
+        "An established and maintained quality management system for engineering and locksmithing production and machine machining on CNC lathes. ČSN EN ISO 9001:2016, certificate No. QMS-5385/2026.",
       sectionEyebrow: "STAVCERT",
       sectionTitle: "ČSN EN ISO 9001:2016",
-      sectionLead: "Valid from 15 July 2023 until 14 July 2026. First certification: July 2011.",
+      sectionLead: "Valid from 15 July 2026 until 14 July 2029. First certification: July 2011.",
       certAlt: "ISO 9001:2015 certificate for OK FINAL s.r.o.",
       downloadCs: "Download certificate (Czech)",
       downloadEn: "Download certificate (English)",
@@ -408,25 +388,25 @@ export const enContent = {
     careers: {
       metaTitle: "Careers",
       metaDescription:
-        "Careers at OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 465 612 713.",
+        "Careers at OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 603 534 364.",
       heroEyebrow: "Careers",
       heroTitle: "Careers",
       heroLead:
-        "OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 465 612 713, mobile: +420 603 534 364.",
+        "OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 603 534 364.",
       emptyTitle: "Address and phones",
       emptyBody:
-        "OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Company ID (IČ): 46506578, VAT ID (DIČ): CZ46506578. Phone: +420 465 612 713, mobile: +420 603 534 364.",
-      emptyCta: "Call +420 465 612 713",
+        "OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Company ID (IČ): 46506578, VAT ID (DIČ): CZ46506578. Phone: +420 603 534 364.",
+      emptyCta: "Call +420 603 534 364",
       respond: "Apply",
     },
     contact: {
       metaTitle: "Contact",
       metaDescription:
-        "OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 465 612 713. Company ID: 46506578, VAT ID: CZ46506578.",
+        "OK FINAL s.r.o., Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 603 534 364. Company ID: 46506578, VAT ID: CZ46506578.",
       heroEyebrow: "Contact",
       heroTitle: "Contact",
       heroLead:
-        "Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 465 612 713, mobile: +420 603 534 364.",
+        "Nádražní 608, 564 01 Žamberk, Czech Republic. Phone: +420 603 534 364.",
       cardAddress: "Address",
       cardPhone: "Phone",
       cardEmail: "E-mail",
@@ -461,12 +441,8 @@ export const home = {
     ctaSecondary: { href: "tel:+420603534364", label: "Zavolejte nám na 603 534 364" },
     machineAlt: "Ruční svařování TIG",
     contactLabel: "Výkonný ředitel – jednatel",
-    badge: "OK Final · od záměru k výsledku",
-    stats: [
-      { value: "340+", label: "Realizací" },
-      { value: "35", label: "Let praxe" },
-      { value: "5 let", label: "Záruka" },
-    ],
+    badge: "Otevřeni pro nové zakázky",
+    stats: [{ value: "35", label: "Let praxe" }],
   },
   stats: [
     { value: "35", unit: "let", label: "zkušeností a praxe v oboru" },
@@ -519,28 +495,12 @@ export const faqItems = [
     a: "U soustružení běžně držíme IT7 – IT9, u přesných dílců s dokončovací operací dosahujeme až IT6. Konkrétní tolerance vždy potvrdíme podle výkresu a použitého materiálu.",
   },
   {
-    q: "Vyrábíte i kusové zakázky?",
-    a: "Ano — kusová výroba a prototypy tvoří významnou část naší produkce. Nemáme minimální množství, vyrobíme i jeden kus podle výkresu nebo poškozeného originálu.",
-  },
-  {
     q: "Jaké materiály zpracováváte?",
     a: "Konstrukční ocel, nerez (304, 316), mosaz, hliník i barevné kovy. U speciálních materiálů (titan, žáropevné oceli) se domluvíme podle konkrétního požadavku.",
   },
   {
-    q: "Jaké svařovací metody používáte?",
-    a: "MIG/MAG (135/138), TIG (141) a obalenou elektrodou (111). Zvládáme svařování oceli, nerezu i hliníku.",
-  },
-  {
-    q: "Máte certifikované svářeče?",
-    a: "Ano, všichni aktivní svářeči drží platné osvědčení podle ČSN EN ISO 9606-1 pro konkrétní kombinace metoda / materiál / poloha. Kopie certifikátů dodáme na vyžádání.",
-  },
-  {
     q: "Jak dlouho trvá výroba typické zakázky?",
-    a: "Menší kusovky zpravidla 1 – 2 týdny od potvrzení objednávky, střední série 3 – 5 týdnů. Přesný termín potvrdíme s nabídkou podle aktuální vytíženosti dílny.",
-  },
-  {
-    q: "V jaké formě přijímáte výkresovou dokumentaci?",
-    a: "Ideálně PDF nebo DWG/DXF. Přijmeme i papírový výkres — načteme si ho a potvrdíme, že je čitelný. Model 3D (STEP, IGES) uvítáme u složitějších dílců.",
+    a: "3 – 5 týdnů. Přesný termín potvrdíme s nabídkou podle aktuální vytíženosti dílny.",
   },
   {
     q: "Zajišťujete i povrchové úpravy?",
@@ -548,7 +508,7 @@ export const faqItems = [
   },
   {
     q: "Dodáváte do zahraničí?",
-    a: "Pravidelně dodáváme do Německa a Rakouska. Komunikace v angličtině nebo němčině, doprava po dohodě.",
+    a: "Pravidelně dodáváme do Německa. Komunikace v angličtině nebo němčině, doprava po dohodě.",
   },
   {
     q: "Jak se dostaneme k nabídce?",
@@ -556,22 +516,25 @@ export const faqItems = [
   },
 ] as const;
 
-/** Scans published on okfinal.cz (cert1–cert3). */
+/** Certificate scans. cer1 and cer2 are the English ISO 9001:2015 issue, cer3 is the Czech ČSN EN ISO 9001:2016 issue. */
 export const certificateScans = [
   {
-    src: "/images/cert1.png",
-    altCs: "Certifikát ISO 9001:2015 v angličtině pro OK FINAL s.r.o., STAVCERT, č. QMS-5039/2023",
-    altEn: "ISO 9001:2015 certificate in English for OK FINAL s.r.o., STAVCERT, No. QMS-5039/2023",
+    src: "/images/cer1.jpg",
+    href: "/docs/cer1.pdf",
+    altCs: "Certifikát ISO 9001:2015 v angličtině pro OK FINAL s.r.o., STAVCERT, č. QMS-5385/2026",
+    altEn: "ISO 9001:2015 certificate in English for OK FINAL s.r.o., STAVCERT, No. QMS-5385/2026",
   },
   {
-    src: "/images/cert2.png",
-    altCs: "Certifikát ČSN EN ISO 9001:2016 pro OK FINAL s.r.o., STAVCERT, č. QMS-5039/2023",
-    altEn: "ČSN EN ISO 9001:2016 certificate in Czech for OK FINAL s.r.o., STAVCERT, No. QMS-5039/2023",
+    src: "/images/cer2.jpg",
+    href: "/docs/cer2.pdf",
+    altCs: "Certifikát ISO 9001:2015 v angličtině s pečetí pro OK FINAL s.r.o., STAVCERT, č. QMS-5385/2026",
+    altEn: "ISO 9001:2015 certificate in English with seal for OK FINAL s.r.o., STAVCERT, No. QMS-5385/2026",
   },
   {
-    src: "/images/cert3.png",
-    altCs: "Certifikát ISO 9001:2015 v angličtině pro OK FINAL s.r.o., STAVCERT, č. QMS-5039/2023",
-    altEn: "ISO 9001:2015 certificate in English for OK FINAL s.r.o., STAVCERT, No. QMS-5039/2023",
+    src: "/images/cer3.jpg",
+    href: "/docs/cer3.pdf",
+    altCs: "Certifikát ČSN EN ISO 9001:2016 pro OK FINAL s.r.o., STAVCERT, č. QMS-5385/2026",
+    altEn: "ČSN EN ISO 9001:2016 certificate in Czech for OK FINAL s.r.o., STAVCERT, No. QMS-5385/2026",
   },
 ] as const;
 
@@ -579,13 +542,13 @@ export const certificates = [
   {
     title: "ČSN EN ISO 9001:2016",
     body:
-      "Systém managementu kvality pro strojírenskou a zámečnickou výrobu a strojní obrábění na CNC soustruzích. Certifikát č. QMS-5039/2023, STAVCERT Praha. Platnost od 15. 7. 2023 do 14. 7. 2026. První certifikace: červenec 2011.",
+      "Systém managementu kvality pro strojírenskou a zámečnickou výrobu a strojní obrábění na CNC soustruzích. Certifikát č. QMS-5385/2026, STAVCERT Praha. Platnost od 15. 7. 2026 do 14. 7. 2029. První certifikace: červenec 2011.",
     tag: "Kvalita",
   },
   {
     title: "ISO 9001:2015",
     body:
-      "Anglické znění téhož certifikátu. Rozsah: machine industry production and locksmithery, machine machining CNC lathes. Certificate No. QMS-5039/2023, platnost 15. 7. 2023 – 14. 7. 2026.",
+      "Anglické znění téhož certifikátu. Rozsah: mechanical engineering and metalworking, CNC turning. Certificate No. QMS-5385/2026, platnost 15. 7. 2026 – 14. 7. 2029.",
     tag: "EN",
   },
 ] as const;

@@ -25,12 +25,12 @@ export default function EnCertificatesPage() {
           {certificateScans.map((cert) => (
             <a
               key={cert.src}
-              href={cert.src}
+              href={cert.href}
               target="_blank"
               rel="noopener noreferrer"
               className="overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-3 transition-shadow hover:shadow-lg"
             >
-              <div className="relative aspect-[2084/2740]">
+              <div className="relative aspect-[1298/1840]">
                 <Image
                   src={cert.src}
                   alt={cert.altEn}

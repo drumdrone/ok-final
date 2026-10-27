@@ -6,7 +6,7 @@ import { certificateScans, certificates } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Certifikáty",
   description:
-    "Systém managementu kvality OK FINAL s.r.o. podle ČSN EN ISO 9001:2016. Certifikát č. QMS-5039/2023, STAVCERT Praha.",
+    "Systém managementu kvality OK FINAL s.r.o. podle ČSN EN ISO 9001:2016. Certifikát č. QMS-5385/2026, STAVCERT Praha.",
   alternates: { canonical: "/certifikaty" },
 };
 
@@ -16,24 +16,24 @@ export default function CertifikatyPage() {
       <PageHero
         eyebrow="Certifikáty"
         title="Systém managementu kvality"
-        lead="Zavedený a udržovaný systém managementu kvality pro strojírenskou a zámečnickou výrobu a strojní obrábění na CNC soustruzích. ČSN EN ISO 9001:2016, certifikát č. QMS-5039/2023."
+        lead="Zavedený a udržovaný systém managementu kvality pro strojírenskou a zámečnickou výrobu a strojní obrábění na CNC soustruzích. ČSN EN ISO 9001:2016, certifikát č. QMS-5385/2026."
       />
       <Section>
         <SectionHeader
           eyebrow="STAVCERT"
           title="ČSN EN ISO 9001:2016"
-          lead="Platnost od 15. 7. 2023 do 14. 7. 2026. První certifikace: červenec 2011."
+          lead="Platnost od 15. 7. 2026 do 14. 7. 2029. První certifikace: červenec 2011."
         />
         <div className="mb-12 grid gap-6 md:grid-cols-3">
           {certificateScans.map((cert) => (
             <a
               key={cert.src}
-              href={cert.src}
+              href={cert.href}
               target="_blank"
               rel="noopener noreferrer"
               className="overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-3 transition-shadow hover:shadow-lg"
             >
-              <div className="relative aspect-[2084/2740]">
+              <div className="relative aspect-[1298/1840]">
                 <Image
                   src={cert.src}
                   alt={cert.altCs}
