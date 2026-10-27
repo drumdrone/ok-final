@@ -32,18 +32,18 @@ export default function HomePage() {
               </span>
               <span>{home.hero.badge}</span>
             </div>
-            <h1 className="okf-reveal mt-8 font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl xl:text-7xl">
+            <h1 className="okf-reveal okf-d150 mt-8 font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl xl:text-7xl">
               <span className="block">Dobře promyšlené.</span>
               <span className="block text-zinc-500">Precizně</span>
               <span className="block">
                 dokončené<span className="text-red-500">.</span>
               </span>
             </h1>
-            <div className="okf-reveal mt-8 max-w-md space-y-3 text-base leading-relaxed text-zinc-400">
+            <div className="okf-reveal okf-d300 mt-8 max-w-md space-y-3 text-base leading-relaxed text-zinc-400">
               <p className="text-zinc-200">{home.hero.detail}</p>
               <p>{home.hero.lead}</p>
             </div>
-            <div className="okf-reveal mt-10 flex flex-wrap items-center gap-4">
+            <div className="okf-reveal okf-d450 mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="#sluzby"
                 className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-5 pr-2 text-sm font-semibold text-zinc-900 transition duration-200 hover:bg-zinc-200 active:scale-[0.97]"
@@ -67,7 +67,7 @@ export default function HomePage() {
                 {site.contacts.phone}
               </a>
             </div>
-            <dl className="okf-reveal mt-14 grid max-w-lg grid-cols-3 border-t border-white/10 pt-8">
+            <dl className="okf-reveal okf-d600 mt-14 grid max-w-lg grid-cols-3 border-t border-white/10 pt-8">
               <div>
                 <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
                   Realizací
@@ -100,7 +100,7 @@ export default function HomePage() {
               </div>
             </dl>
           </div>
-          <div className="lg:col-span-6 [perspective:1400px]">
+          <div className="okf-reveal okf-right okf-d300 lg:col-span-6 [perspective:1400px]">
             <div className="okf-tilt relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/10 shadow-2xl shadow-black/60 lg:aspect-auto lg:h-full lg:min-h-[620px]">
               <Image
                 src={site.assets.hero}
@@ -147,7 +147,7 @@ export default function HomePage() {
         <div className="okf-grid-light pointer-events-none absolute inset-x-0 top-0 h-96" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-            <div className="okf-reveal lg:col-span-7">
+            <div className="okf-reveal okf-fade lg:col-span-7">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-red-600">
                 {home.services.eyebrow}
               </p>
@@ -155,7 +155,7 @@ export default function HomePage() {
                 {home.services.title}
               </h2>
             </div>
-            <p className="okf-reveal text-base leading-relaxed text-zinc-600 lg:col-span-5">
+            <p className="okf-reveal okf-fade okf-d150 text-base leading-relaxed text-zinc-600 lg:col-span-5">
               {home.services.lead}
             </p>
           </div>
@@ -163,7 +163,7 @@ export default function HomePage() {
           <div className="mt-16 grid gap-5 lg:grid-cols-12">
             <Link
               href="/nase-sluzby#soustruzeni"
-              className="okf-reveal group relative min-h-[440px] overflow-hidden rounded-[28px] bg-zinc-900 text-white shadow-xl shadow-zinc-900/20 lg:col-span-7 lg:row-span-2"
+              className="okf-reveal okf-d300 group relative min-h-[440px] overflow-hidden rounded-[28px] bg-zinc-900 text-white shadow-xl shadow-zinc-900/20 lg:col-span-7 lg:row-span-2"
             >
               <Image
                 src={site.assets.machine}
@@ -202,7 +202,7 @@ export default function HomePage() {
 
             <Link
               href="/nase-sluzby#svarovani"
-              className="okf-reveal group relative overflow-hidden rounded-[28px] border border-zinc-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-900/10 lg:col-span-5"
+              className="okf-reveal okf-d450 group relative overflow-hidden rounded-[28px] border border-zinc-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-900/10 lg:col-span-5"
             >
               <div className="flex items-start justify-between">
                 <span className="font-mono text-xs tracking-widest text-zinc-400">
@@ -232,7 +232,7 @@ export default function HomePage() {
 
             <Link
               href="/nase-sluzby#montaz"
-              className="okf-reveal group relative overflow-hidden rounded-[28px] bg-[#1b1d21] p-8 text-white shadow-lg shadow-zinc-900/20 transition duration-300 hover:-translate-y-1 lg:col-span-5"
+              className="okf-reveal okf-d600 group relative overflow-hidden rounded-[28px] bg-[#1b1d21] p-8 text-white shadow-lg shadow-zinc-900/20 transition duration-300 hover:-translate-y-1 lg:col-span-5"
             >
               <div className="flex items-start justify-between">
                 <span className="font-mono text-xs tracking-widest text-zinc-500">

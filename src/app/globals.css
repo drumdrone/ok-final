@@ -170,10 +170,25 @@
     rgb(255 255 255 / 0.16), transparent 60%);
 }
 .okf-reveal {
-  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--okf-delay, 0ms);
 }
 .okf-reveal.okf-hidden { opacity: 0; transform: translateY(36px); }
+/* Variants: pick one on the element in addition to .okf-reveal.
+   .okf-fade is a pure opacity fade (no translate) — more elegant for
+   headings and body copy. .okf-left/-right slide in horizontally. */
+.okf-reveal.okf-fade.okf-hidden { opacity: 0; transform: none; }
+.okf-reveal.okf-left.okf-hidden { opacity: 0; transform: translateX(-40px); }
+.okf-reveal.okf-right.okf-hidden { opacity: 0; transform: translateX(40px); }
+.okf-reveal.okf-scale.okf-hidden { opacity: 0; transform: scale(0.96); }
+/* Stagger helpers — add alongside .okf-reveal on sibling items so they
+   fade in one after another (mirrors Nicepage's data-animation-delay 0 /
+   200 / 250 / 500 pattern, retimed to our 150 ms rhythm). */
+.okf-d150 { --okf-delay: 150ms; }
+.okf-d300 { --okf-delay: 300ms; }
+.okf-d450 { --okf-delay: 450ms; }
+.okf-d600 { --okf-delay: 600ms; }
 .okf-tilt { transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
 .okf-outline {
   color: transparent;
