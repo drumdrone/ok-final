@@ -289,7 +289,10 @@ export const enContent = {
       "Over time, through specialisation and improved customer service, the original company was split into two separate entities: OK FINAL s.r.o. Žamberk specialised in manufacturing and assembly, and the newly founded Schody OK s.r.o. Dobřichovice focused on design, aesthetics and structural engineering.",
       "In 2008, due to the age of the company founders, there was a generational change and the new generation of managing partners moved towards machine machining. On 1 January 2011, OK FINAL s.r.o. ended staircase manufacturing.",
     ],
-    workshopAlt: "OK FINAL s.r.o. production floor",
+    workshopAlt: "Straight staircase with open treads and a steel cable railing",
+    galleryTitle: "Staircases from our history",
+    galleryLead:
+      "A selection of staircases the company built before it moved into machine machining.",
     milestonesTitle: "Since 1992",
     cta: {
       title: "Schedule a meeting with us today",
@@ -566,6 +569,40 @@ export const milestones = [
   { year: "2011", text: "K 1.1. 2011 OK FINAL s.r.o. ukončil výrobu schodišť." },
 ] as const;
 
+export const aboutGallery = [
+  {
+    src: "/images/about/schodiste-2.jpg",
+    altCs: "Otevřené točité schodiště s tmavým dřevěným madlem a nerezovými tyčemi",
+    altEn: "Open spiral staircase with a dark wood handrail and stainless steel bars",
+    feature: true,
+  },
+  {
+    src: "/images/about/jehlove.jpg",
+    altCs: "Točité schodiště se světlými dřevěnými stupni a ocelovým zábradlím",
+    altEn: "Spiral staircase with light wood treads and a steel railing, seen from above",
+  },
+  {
+    src: "/images/about/schodiste-3.jpg",
+    altCs: "Dřevěné točité schodiště s nerezovým zábradlím",
+    altEn: "Wooden spiral staircase with a stainless steel railing",
+  },
+  {
+    src: "/images/about/schodiste-4.jpg",
+    altCs: "Přímé schodiště s otevřenými stupni a ocelovým lankovým zábradlím",
+    altEn: "Straight staircase with open treads and a steel cable railing",
+  },
+  {
+    src: "/images/about/schodiste-1.jpg",
+    altCs: "Pohled zespodu na točité schodiště s dřevěnými stupni na ocelových konzolách",
+    altEn: "Underside of a spiral staircase with wooden treads on steel brackets",
+  },
+  {
+    src: "/images/about/schodiste-5.jpg",
+    altCs: "Venkovní ocelové točité schodiště s mřížovým pláštěm",
+    altEn: "Exterior steel spiral staircase with a mesh cage",
+  },
+] as const;
+
 export const about = {
   hero: {
     eyebrow: "O firmě",
@@ -578,7 +615,10 @@ export const about = {
     "Postupem času v rámci užší specializace a zlepšení služeb pro zákazníky byla původní firma rozdělena na dva samostatné celky, kde firma OK FINAL s.r.o. Žamberk se specializovala na výrobu a montáž a nově vzniklá firma Schody OK s.r.o. Dobřichovice na část zaměřenou na konstrukci včetně designu a statiky.",
     "V roce 2008 došlo vzhledem k pokročilému věku zakladatelů firmy k výměně generací a nová generace jednatelů se vydala směrem strojního obrábění. K 1.1. 2011 OK FINAL s.r.o. ukončil výrobu schodišť.",
   ],
-  workshopAlt: "Výroba OK FINAL s.r.o.",
+  workshopAlt: "Přímé schodiště s otevřenými stupni a ocelovým lankovým zábradlím",
+  galleryTitle: "Schodiště z naší historie",
+  galleryLead:
+    "Ukázky schodišť, která firma vyráběla, než přešla na strojní obrábění.",
   milestonesTitle: "Od roku 1992",
   cta: {
     title: "Sjednejte si schůzku s námi ještě dnes",
