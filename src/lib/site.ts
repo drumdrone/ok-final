@@ -75,9 +75,9 @@ export const site = {
     // doplnit až klient řekne
   },
   assets: {
-    logo: "/brand/logo.jpg",
-    logoOnDark: "/brand/logo-on-dark.svg",
-    logoMark: "/brand/logo-mark.jpg",
+    logo: "/brand/logo.png",
+    logoOnDark: "/brand/logo-on-dark.png",
+    logoMark: "/brand/logo-mark.png",
     hero: "/images/svar.jpg",
     workshop: "/images/foto-workshop.jpg",
     machine: "/images/foto-soustruzeni.png",

@@ -26,8 +26,8 @@ function Logo({ href }: { href: string }) {
       <img
         src={site.assets.logoOnDark}
         alt={site.shortName}
-        width={218}
-        height={38}
+        width={962}
+        height={140}
         className="h-8 w-auto"
       />
     </Link>
