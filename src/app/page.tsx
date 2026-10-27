@@ -284,7 +284,7 @@ export default function HomePage() {
             <p className="mt-6 text-lg leading-relaxed text-zinc-300">
               {home.experience.body}
             </p>
-            <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
+            <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
               <div className="bg-[#141619]/80 p-5 backdrop-blur">
                 <p className="font-display text-2xl font-semibold">Přesnost</p>
                 <p className="mt-1 text-sm text-zinc-400">
@@ -352,8 +352,7 @@ export default function HomePage() {
             <blockquote className="okf-reveal border-l-2 border-red-600 pl-6">
               <p className="font-display text-2xl font-medium leading-snug tracking-tight text-zinc-800 sm:text-3xl">
                 O kvalitě není třeba mluvit, protože v našem oboru podnikání je
-                kvalita na prvním místě a expedice vadných výrobků se prostě
-                neomlouvá.
+                kvalita na prvním místě.
               </p>
             </blockquote>
             <p className="okf-reveal mt-8 leading-relaxed text-zinc-600">

@@ -207,7 +207,7 @@ export const enContent = {
       eyebrow: "Who are our customers",
       title: "Czech sole traders and companies, international customers",
       lead:
-        "Our customers choose us primarily for competitive prices and fast delivery. Quality goes without saying — in our line of business there is simply no excuse for shipping defective parts.",
+        "Our customers choose us primarily for competitive prices and fast delivery. Quality goes without saying — in our line of business quality comes first.",
       items: [
         {
           title: "Sole traders and Czech companies",
@@ -470,7 +470,7 @@ export const home = {
     eyebrow: "Kdo jsou naši zákazníci",
     title: "Živnostníci a české firmy, zahraniční firmy",
     lead:
-      "Naši zákazníci nás vyhledávají především z důvodu nízkých prodejních cen a rychlosti dodávek. O kvalitě není třeba mluvit, protože v našem oboru podnikání je kvalita na prvním místě a expedice vadných výrobků se prostě neomlouvá.",
+      "Naši zákazníci nás vyhledávají především z důvodu nízkých prodejních cen a rychlosti dodávek. O kvalitě není třeba mluvit, protože v našem oboru podnikání je kvalita na prvním místě.",
     items: [
       {
         title: "Živnostníci a české firmy",

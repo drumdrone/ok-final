@@ -199,6 +199,37 @@ export function Header() {
               </li>
             ))}
           </ul>
+          <div
+            className="mt-4 grid grid-cols-2 gap-2"
+            aria-label="Jazyk / Language"
+          >
+            <Link
+              href={czHref}
+              onClick={() => setOpen(false)}
+              aria-current={isEn ? undefined : "page"}
+              className={
+                "rounded-full py-2.5 text-center text-sm font-medium transition " +
+                (isEn
+                  ? "border border-white/15 text-zinc-300 hover:text-white"
+                  : "bg-white text-zinc-900")
+              }
+            >
+              CZ
+            </Link>
+            <Link
+              href={enHref}
+              onClick={() => setOpen(false)}
+              aria-current={isEn ? "page" : undefined}
+              className={
+                "rounded-full py-2.5 text-center text-sm font-medium transition " +
+                (isEn
+                  ? "bg-white text-zinc-900"
+                  : "border border-white/15 text-zinc-300 hover:text-white")
+              }
+            >
+              EN
+            </Link>
+          </div>
           <Link
             href={contactHref}
             onClick={() => setOpen(false)}
