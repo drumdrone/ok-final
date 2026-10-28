@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { enNav, nav, site } from "@/lib/site";
@@ -30,12 +31,13 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 lg:grid-cols-12 lg:px-8">
         <div className="lg:col-span-5">
           <Link href={t.home} className="flex items-center" aria-label={site.name}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={site.assets.logoOnDark}
               alt={site.shortName}
-              width={218}
-              height={38}
+              width={962}
+              height={140}
+              sizes="220px"
+              quality={90}
               className="h-8 w-auto"
             />
           </Link>

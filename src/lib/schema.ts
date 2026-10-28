@@ -8,7 +8,7 @@ export const organizationJsonLd = {
   name: site.name,
   legalName: site.name,
   url: base,
-  logo: `${base}/favicon.svg`,
+  logo: `${base}/brand/logo-mark.png`,
   description: site.description,
   address: {
     "@type": "PostalAddress",

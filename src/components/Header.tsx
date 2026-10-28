@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,12 +23,14 @@ const EN_TO_CZ: Record<string, string> = Object.fromEntries(
 function Logo({ href }: { href: string }) {
   return (
     <Link href={href} className="flex items-center" aria-label={site.name}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={site.assets.logoOnDark}
         alt={site.shortName}
-        width={218}
-        height={38}
+        width={962}
+        height={140}
+        sizes="220px"
+        quality={90}
+        priority
         className="h-8 w-auto"
       />
     </Link>
@@ -199,6 +202,37 @@ export function Header() {
               </li>
             ))}
           </ul>
+          <div
+            className="mt-4 grid grid-cols-2 gap-2"
+            aria-label="Jazyk / Language"
+          >
+            <Link
+              href={czHref}
+              onClick={() => setOpen(false)}
+              aria-current={isEn ? undefined : "page"}
+              className={
+                "rounded-full py-2.5 text-center text-sm font-medium transition " +
+                (isEn
+                  ? "border border-white/15 text-zinc-300 hover:text-white"
+                  : "bg-white text-zinc-900")
+              }
+            >
+              CZ
+            </Link>
+            <Link
+              href={enHref}
+              onClick={() => setOpen(false)}
+              aria-current={isEn ? "page" : undefined}
+              className={
+                "rounded-full py-2.5 text-center text-sm font-medium transition " +
+                (isEn
+                  ? "bg-white text-zinc-900"
+                  : "border border-white/15 text-zinc-300 hover:text-white")
+              }
+            >
+              EN
+            </Link>
+          </div>
           <Link
             href={contactHref}
             onClick={() => setOpen(false)}

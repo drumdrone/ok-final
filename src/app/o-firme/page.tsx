@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
-import { about, milestones, site } from "@/lib/site";
+import { PhotoGallery } from "@/components/PhotoGallery";
+import { about, aboutGallery, milestones } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "O firmě",
@@ -32,13 +33,27 @@ export default function OFirmePage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-steel-100">
             <Image
-              src={site.assets.workshop}
+              src="/images/about/schodiste-4.jpg"
               alt={about.workshopAlt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
           </div>
+        </div>
+      </Section>
+
+      <Section>
+        <h2 className="text-3xl font-bold sm:text-4xl">{about.galleryTitle}</h2>
+        <p className="mt-4 max-w-2xl text-lg text-steel-600">{about.galleryLead}</p>
+        <div className="mt-8">
+          <PhotoGallery
+            photos={aboutGallery.map((photo) => ({
+              src: photo.src,
+              alt: photo.altCs,
+              feature: "feature" in photo ? photo.feature : false,
+            }))}
+          />
         </div>
       </Section>
 
