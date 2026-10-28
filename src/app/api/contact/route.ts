@@ -90,6 +90,22 @@ export async function POST(req: Request) {
       .filter(Boolean)
       .join("\n");
 
+    // Příloha: pokud uživatel přiložil výkres, přibalíme ji k e-mailu
+    // jako base64 (Resend podporuje attachments v JSON payloadu).
+    const file = form.get("file") as File | null;
+    const attachments: Array<{ filename: string; content: string }> = [];
+    if (file && file.size > 0) {
+      try {
+        const buf = Buffer.from(await file.arrayBuffer());
+        attachments.push({
+          filename: file.name || "priloha",
+          content: buf.toString("base64"),
+        });
+      } catch (err) {
+        console.error("[contact] attachment encode failed", err);
+      }
+    }
+
     try {
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -103,6 +119,7 @@ export async function POST(req: Request) {
           reply_to: email ? [email] : undefined,
           subject,
           text: bodyLines,
+          ...(attachments.length ? { attachments } : {}),
         }),
       });
       if (!res.ok) {
