@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,12 +23,14 @@ const EN_TO_CZ: Record<string, string> = Object.fromEntries(
 function Logo({ href }: { href: string }) {
   return (
     <Link href={href} className="flex items-center" aria-label={site.name}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={site.assets.logoOnDark}
         alt={site.shortName}
         width={962}
         height={140}
+        sizes="220px"
+        quality={90}
+        priority
         className="h-8 w-auto"
       />
     </Link>

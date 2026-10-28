@@ -86,7 +86,7 @@ export default function HomePage() {
                 alt={home.hero.machineAlt}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 46vw"
+                sizes="(max-width: 1024px) 100vw, 590px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#141619] via-[#141619]/20 to-transparent" />
