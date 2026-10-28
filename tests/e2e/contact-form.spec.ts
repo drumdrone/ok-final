@@ -16,7 +16,9 @@ test.describe("Kontakt — formulář", () => {
 
   test("prázdný submit ukáže validaci", async ({ page }) => {
     await page.getByRole("button", { name: "Odeslat poptávku" }).click();
-    await expect(page.getByRole("alert")).toContainText(/e-mail|telefon/i);
+    await expect(
+      page.getByText(/Vyplňte prosím alespoň e-mail nebo telefon/i)
+    ).toBeVisible({ timeout: 8000 });
   });
 
   test("krátká zpráva ukáže validaci", async ({ page }) => {
@@ -24,7 +26,9 @@ test.describe("Kontakt — formulář", () => {
     await page.getByLabel("Popis poptávky *").fill("krátká");
     await page.getByLabel(/Souhlasím/).check();
     await page.getByRole("button", { name: "Odeslat poptávku" }).click();
-    await expect(page.getByRole("alert")).toContainText(/20 znaků/i);
+    await expect(page.getByText(/alespoň 20 znaků/i)).toBeVisible({
+      timeout: 8000,
+    });
   });
 
   test("valid submission jde do success stavu", async ({ page }) => {
