@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 
 const routes = [
-  { path: "/",             expectHeading: /Kovové dílce/i },
-  { path: "/o-firme",      expectHeading: /Rodinná dílna/i },
-  { path: "/nase-sluzby",  expectHeading: /Od výkresu/i },
-  { path: "/certifikaty",  expectHeading: /Doklady kvality/i },
-  { path: "/kariera",      expectHeading: /Práce, kde/i },
-  { path: "/kontakt",      expectHeading: /Ozvěte se/i },
+  { path: "/",             expectHeading: /Dobře promyšlené/i },
+  { path: "/o-firme",      expectHeading: /Od výrobce schodišť/i },
+  { path: "/nase-sluzby",  expectHeading: /Soustružení/i },
+  { path: "/certifikaty",  expectHeading: /Systém managementu kvality/i },
+  { path: "/kariera",      expectHeading: /Kariéra/i },
+  { path: "/kontakt",      expectHeading: /Kontakt/i },
   { path: "/faq",          expectHeading: /Otázky/i },
 ];
 
