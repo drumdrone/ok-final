@@ -31,3 +31,10 @@ export const upsert = mutation({
     return await ctx.db.insert("contacts", data);
   },
 });
+
+export const remove = mutation({
+  args: { id: v.id("contacts") },
+  handler: async (ctx, { id }) => {
+    await ctx.db.delete(id);
+  },
+});
