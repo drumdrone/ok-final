@@ -1,6 +1,44 @@
+import { convexClient } from "@/lib/convex";
 import { site } from "@/lib/site";
+import { ContactsManager, type Contact } from "./ContactsManager";
+import { seedContacts } from "./actions";
 
-export default function KontaktyAdminPage() {
+async function loadContacts(): Promise<Contact[] | null> {
+  const cvx = convexClient();
+  if (!cvx) return null;
+  try {
+    const { api } = await import("../../../../../convex/_generated/api");
+    return (await cvx.query(api.contacts.list, { locale: "cs" })) as Contact[];
+  } catch {
+    return null;
+  }
+}
+
+export default async function KontaktyAdminPage() {
+  const contacts = await loadContacts();
+
+  // Convex napojený → plná správa kontaktních osob.
+  if (contacts) {
+    return (
+      <div>
+        {contacts.length === 0 ? (
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-steel-200 bg-white p-4">
+            <p className="text-sm text-steel-600">
+              Tabulka <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">contacts</code>{" "}
+              je prázdná. Můžete ji naplnit lidmi ze stávajícího{" "}
+              <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">site.ts</code>.
+            </p>
+            <form action={seedContacts}>
+              <button className="btn btn-dark">Načíst ze site.ts</button>
+            </form>
+          </div>
+        ) : null}
+        <ContactsManager contacts={contacts} />
+      </div>
+    );
+  }
+
+  // Fallback bez Convexu — statická data ze site.ts (jen pro čtení).
   const rows = [
     { key: "Adresa", value: `${site.address.street}, ${site.address.zip} ${site.address.city}` },
     { key: "Telefon", value: site.contacts.phone },
@@ -12,13 +50,16 @@ export default function KontaktyAdminPage() {
     { key: "IČ", value: site.company.ico },
     { key: "DIČ", value: site.company.dic },
   ];
+
   return (
     <div>
       <h1 className="text-2xl font-bold text-steel-950">Kontakty</h1>
       <p className="mt-2 text-steel-600">
-        Aktuálně zobrazujeme hodnoty z <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">src/lib/site.ts</code>.
-        Po připojení Convexu (tabulka <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">contacts</code>) půjde
-        editovat rovnou zde.
+        Convex zatím není napojený — zobrazujeme hodnoty z{" "}
+        <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">src/lib/site.ts</code>{" "}
+        (jen ke čtení). Po spuštění{" "}
+        <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">npx convex dev</code>{" "}
+        půjde kontaktní osoby editovat rovnou zde.
       </p>
 
       <div className="mt-8 overflow-hidden rounded-lg border border-steel-200 bg-white">

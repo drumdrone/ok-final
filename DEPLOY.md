@@ -55,13 +55,15 @@ se ve chvíli, kdy budeš mít klíče).
 
 1. `app.netlify.com` → Add new site → Import from GitHub
 2. Repo: `drumdrone/ok-final`, branch: `main` (po merge do main)
-3. Build appears from `netlify.toml` — nechat výchozí
+3. Build appears from `netlify.toml` — nechat výchozí. Build příkaz je
+   `npx convex deploy --cmd-url-env-var-name NEXT_PUBLIC_CONVEX_URL --cmd 'npm run build'`,
+   takže každý Netlify build zároveň nahraje Convex funkce do produkce a
+   `NEXT_PUBLIC_CONVEX_URL` se **doplní automaticky** — ručně ho nastavovat nemusíš.
 4. Site settings → Environment variables:
 
 ```
 NEXT_PUBLIC_SITE_URL=https://okfinal.cz
-NEXT_PUBLIC_CONVEX_URL=<z Convex --prod>
-CONVEX_DEPLOY_KEY=<z Convex --prod>
+CONVEX_DEPLOY_KEY=<Production Deploy Key z Convex dashboardu>   # NUTNÉ (jinak build spadne)
 ADMIN_PASSWORD=<vygeneruj něco silného>
 ADMIN_JWT_SECRET=<`openssl rand -hex 32`>
 RESEND_API_KEY=<z Resendu>
@@ -71,8 +73,13 @@ NEXT_PUBLIC_TURNSTILE_SITE_KEY=<z Cloudflare>
 TURNSTILE_SECRET_KEY=<z Cloudflare>
 ```
 
+> `CONVEX_DEPLOY_KEY` vytvoříš na `dashboard.convex.dev` → projekt → Settings →
+> Deploy Keys → **Generate Production Deploy Key**. Build příkaz z něj sám odvodí
+> produkční URL a vstříkne ji jako `NEXT_PUBLIC_CONVEX_URL`.
+
 5. Deploy → dostaneš preview URL `xyz.netlify.app`
-6. Ověřit: projít 6 URL, poslat testovací poptávku, počkat na e-mail
+6. Ověřit: projít 6 URL, poslat testovací poptávku, počkat na e-mail,
+   přihlásit se do `/admin` a zkusit přidat pozici v Kariéře
 
 ## Krok 5 — DNS přepnutí (den X)
 
