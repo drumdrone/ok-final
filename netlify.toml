@@ -1,5 +1,9 @@
+# `convex deploy` nahraje schéma + funkce do produkčního Convexu (čte
+# CONVEX_DEPLOY_KEY z env), vygeneruje reálné `convex/_generated/*` a pak
+# spustí `npm run build` s NEXT_PUBLIC_CONVEX_URL nastaveným na URL té
+# produkční deployment. Vyžaduje CONVEX_DEPLOY_KEY v Netlify env.
 [build]
-  command = "npm run build"
+  command = "npx convex deploy --cmd-url-env-var-name NEXT_PUBLIC_CONVEX_URL --cmd 'npm run build'"
   publish = ".next"
 
 [build.environment]
