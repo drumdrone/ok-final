@@ -1,32 +1,17 @@
 /**
- * Placeholder — nahradí se automaticky při `npx convex dev`.
- * Před inicializací Convexu tento modul volání odmítne (chybová
- * hláška je informativní); po inicializaci Convex vygeneruje reálný
- * typed handle.
+ * Convex API handle.
+ *
+ * `anyApi` sestaví FunctionReference podle přístupové cesty za runtime
+ * (např. `api.jobs.listAll` → "jobs:listAll"), nezávisle na konkrétním
+ * deploymentu. ConvexHttpClient / ConvexReactClient je pak zavolá proti
+ * URL z `NEXT_PUBLIC_CONVEX_URL`. Funkce samotné nahrává `npx convex
+ * deploy` (na Netlify z build commandu) nebo `npx convex dev` lokálně.
+ *
+ * Tím odpadá závislost na vygenerovaném kódu z `convex dev`/`deploy`,
+ * který se v produkčním buildu nemusel objevit — `anyApi` je oficiální
+ * Convex utilita přesně pro tento případ.
  */
-const notInitialized = (path) => {
-  throw new Error(
-    `Convex není inicializovaný — nemohu zavolat ${path}. Spusť 'npx convex dev'.`,
-  );
-};
+import { anyApi } from "convex/server";
 
-const proxy = (prefix) =>
-  new Proxy(
-    {},
-    {
-      get(_, key) {
-        const path = `${prefix}.${String(key)}`;
-        return new Proxy(() => notInitialized(path), {
-          get() {
-            return notInitialized(path);
-          },
-          apply() {
-            notInitialized(path);
-          },
-        });
-      },
-    },
-  );
-
-export const api = proxy("api");
-export const internal = proxy("internal");
+export const api = anyApi;
+export const internal = anyApi;
