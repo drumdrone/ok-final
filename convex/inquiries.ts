@@ -1,6 +1,5 @@
 import { mutation, query, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
-import { internal } from "./_generated/api";
 
 /**
  * Vytvoří nový záznam poptávky.
@@ -28,9 +27,10 @@ export const create = mutation({
       createdAt: Date.now(),
     });
 
-    // Odeslání e-mailu je action (může volat externí služby).
-    await ctx.scheduler.runAfter(0, internal.email.sendInquiryMail, { inquiryId: id });
-
+    // E-mail NEodesíláme z Convexu — doručení řeší Next.js API route
+    // /api/contact přes Resend (včetně přílohy výkresu). Convex tu
+    // slouží jen jako datová vrstva pro admin. Tím se vyhneme dvojitým
+    // e-mailům, jakmile je Convex aktivní.
     return id;
   },
 });

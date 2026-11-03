@@ -1,5 +1,8 @@
 [build]
-  command = "npm run build"
+  # Když je nastavený CONVEX_DEPLOY_KEY, nasadíme Convex funkce a build
+  # proběhne s injektnutým NEXT_PUBLIC_CONVEX_URL (datová vrstva aktivní).
+  # Bez klíče jen běžný build — web běží dál, formulář doručuje přes Resend.
+  command = "if [ -n \"$CONVEX_DEPLOY_KEY\" ]; then npx convex deploy --cmd 'npm run build'; else npm run build; fi"
   publish = ".next"
 
 [build.environment]
