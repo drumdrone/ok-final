@@ -1,3 +1,8 @@
+/** Rok založení firmy. Roky praxe se z něj dopočítávají, ať čísla na webu
+ *  nikdy nezastarají a nemusí se ručně přepisovat. */
+export const FOUNDED_YEAR = 1992;
+export const yearsInBusiness = new Date().getFullYear() - FOUNDED_YEAR;
+
 export const site = {
   name: "OK FINAL s.r.o.",
   shortName: "OK FINAL",
@@ -182,10 +187,10 @@ export const enContent = {
       machineAlt: "Manual TIG welding",
       contactLabel: "Executive director — managing partner",
       badge: "Open for new orders",
-      stats: [{ value: "35", label: "Years" }],
+      stats: [{ value: String(yearsInBusiness), label: "Years" }],
     },
     stats: [
-      { value: "35", unit: "years", label: "of experience in the field" },
+      { value: String(yearsInBusiness), unit: "years", label: "of experience in the field" },
     ],
     services: {
       eyebrow: "Our services",
@@ -195,7 +200,7 @@ export const enContent = {
       detailLink: "Our services →",
     },
     experience: {
-      years: "35",
+      years: String(yearsInBusiness),
       yearsLabel: "years of experience in the field",
       title: "We rely on modern technology",
       body:
@@ -445,10 +450,10 @@ export const home = {
     machineAlt: "Ruční svařování TIG",
     contactLabel: "Výkonný ředitel – jednatel",
     badge: "Otevřeni pro nové zakázky",
-    stats: [{ value: "35", label: "Let praxe" }],
+    stats: [{ value: String(yearsInBusiness), label: "Let praxe" }],
   },
   stats: [
-    { value: "35", unit: "let", label: "zkušeností a praxe v oboru" },
+    { value: String(yearsInBusiness), unit: "let", label: "zkušeností a praxe v oboru" },
   ],
   services: {
     eyebrow: "Naše služby",
@@ -458,7 +463,7 @@ export const home = {
     detailLink: "Naše služby →",
   },
   experience: {
-    years: "35",
+    years: String(yearsInBusiness),
     yearsLabel: "let zkušeností a praxe v oboru",
     title: "Vsadili jsme na moderní technologie",
     body:

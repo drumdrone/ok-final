@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HomeMotion } from "@/components/HomeMotion";
 import { JsonLd } from "@/components/JsonLd";
 import { localBusinessJsonLd } from "@/lib/schema";
-import { enContent, services, site } from "@/lib/site";
+import { enContent, FOUNDED_YEAR, services, site, yearsInBusiness } from "@/lib/site";
 
 const home = enContent.home;
 
@@ -77,8 +77,8 @@ export default function EnHomePage() {
                   Years
                 </dt>
                 <dd className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
-                  <span className="okf-count" data-count={35} data-suffix="">
-                    35
+                  <span className="okf-count" data-count={yearsInBusiness} data-suffix="">
+                    {yearsInBusiness}
                   </span>
                 </dd>
               </div>
@@ -273,13 +273,13 @@ export default function EnHomePage() {
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:items-center lg:px-8">
           <div className="okf-reveal lg:col-span-5">
             <p className="font-display text-[8rem] font-bold leading-none tracking-tighter sm:text-[11rem]">
-              <span className="okf-count text-red-500" data-count={35} data-suffix="">
-                35
+              <span className="okf-count text-red-500" data-count={yearsInBusiness} data-suffix="">
+                {yearsInBusiness}
               </span>
             </p>
             <p className="mt-2 text-lg text-zinc-400">{home.experience.yearsLabel}</p>
             <p className="okf-outline mt-6 hidden font-display text-6xl font-bold tracking-tight lg:block">
-              1991 — 2026
+              {FOUNDED_YEAR} — {new Date().getFullYear()}
             </p>
           </div>
           <div className="okf-reveal lg:col-span-6 lg:col-start-7">

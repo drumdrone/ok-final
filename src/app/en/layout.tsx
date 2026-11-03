@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { site, yearsInBusiness } from "@/lib/site";
 
 // Layout-level metadata applies to all /en/* pages; individual pages override
 // title/description/canonical via their own generateMetadata or metadata exports.
@@ -8,8 +8,7 @@ export const metadata: Metadata = {
     default: `${site.name} — Precision metalworks, Czech Republic`,
     template: `%s | ${site.name}`,
   },
-  description:
-    "Precision turning, manual welding and assembly to engineering drawings. Family workshop in Žamberk, Czech Republic. 35 years of practice, ISO 9001.",
+  description: `Precision turning, manual welding and assembly to engineering drawings. Family workshop in Žamberk, Czech Republic. ${yearsInBusiness} years of practice, ISO 9001.`,
   openGraph: {
     type: "website",
     locale: "en_US",
