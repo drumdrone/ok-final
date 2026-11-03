@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ArrowButton } from "@/components/ArrowButton";
 import { PageHero, Section } from "@/components/Section";
 import { convexClient } from "@/lib/convex";
-import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kariéra",
@@ -11,29 +10,31 @@ export const metadata: Metadata = {
   alternates: { canonical: "/kariera" },
 };
 
-// Fallback, když ještě není Convex.
-const fallbackJobs: Array<{
-  title: string; location: string; type: string; body: string;
-}> = [];
-
-type Job = { title: string; location: string; type: string; body: string };
+type Job = {
+  title: string;
+  location: string;
+  type: string;
+  summary: string;
+  body: string;
+};
 
 async function loadJobs(): Promise<Job[]> {
   const cvx = convexClient();
-  if (!cvx) return fallbackJobs;
+  if (!cvx) return [];
   try {
     const { api } = await import("../../../convex/_generated/api");
     const rows = (await cvx.query(api.jobs.listActive, { locale: "cs" })) as Array<{
-      title: string; location: string; type: string; summary: string;
+      title: string; location: string; type: string; summary: string; body: string;
     }>;
     return rows.map((j) => ({
       title: j.title,
       location: j.location,
       type: j.type,
-      body: j.summary,
+      summary: j.summary ?? "",
+      body: j.body ?? "",
     }));
   } catch {
-    return fallbackJobs;
+    return [];
   }
 }
 
@@ -70,17 +71,22 @@ export default async function KarieraPage() {
                   <div>
                     <h3 className="text-xl font-bold">{j.title}</h3>
                     <div className="mt-1 text-sm text-steel-500">
-                      {j.location} · {j.type}
+                      {[j.location, j.type].filter(Boolean).join(" · ")}
                     </div>
                   </div>
                   <ArrowButton
-                    href={`mailto:${site.contacts.career}?subject=${encodeURIComponent(j.title)}`}
+                    href={`/kontakt?pozice=${encodeURIComponent(j.title)}`}
                     variant="small"
                   >
                     Reagovat
                   </ArrowButton>
                 </div>
-                <p className="mt-4 text-steel-700">{j.body}</p>
+                {j.summary ? (
+                  <p className="mt-4 font-medium text-steel-800">{j.summary}</p>
+                ) : null}
+                {j.body ? (
+                  <p className="mt-2 whitespace-pre-line text-steel-700">{j.body}</p>
+                ) : null}
               </li>
             ))}
           </ul>

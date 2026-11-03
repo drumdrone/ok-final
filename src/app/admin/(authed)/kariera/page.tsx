@@ -2,20 +2,12 @@ import { convexClient } from "@/lib/convex";
 import { api } from "../../../../../convex/_generated/api";
 import { JobsManager, type Job } from "./JobsManager";
 
-// DEBUG: dočasně vracíme i konkrétní chybu, ať vidíme, co přesně padá.
-let lastError = "";
-
 async function loadJobs(): Promise<Job[] | null> {
-  lastError = "";
   const cvx = convexClient();
-  if (!cvx) {
-    lastError = `convexClient() je null — NEXT_PUBLIC_CONVEX_URL za runtime = ${JSON.stringify(process.env.NEXT_PUBLIC_CONVEX_URL)}`;
-    return null;
-  }
+  if (!cvx) return null;
   try {
     return (await cvx.query(api.jobs.listAll, {})) as Job[];
-  } catch (e) {
-    lastError = `${(e as Error)?.name ?? "Error"}: ${(e as Error)?.message ?? String(e)} · URL=${JSON.stringify(process.env.NEXT_PUBLIC_CONVEX_URL)}`;
+  } catch {
     return null;
   }
 }
@@ -38,12 +30,6 @@ export default async function KarieraAdminPage() {
             Přidat pozici
           </button>
         </div>
-
-        {lastError ? (
-          <div className="mt-6 rounded-lg border border-red-300 bg-red-50 p-4 text-left font-mono text-xs text-red-800">
-            <strong>DEBUG:</strong> {lastError}
-          </div>
-        ) : null}
 
         <div className="mt-8 rounded-lg border border-dashed border-steel-300 bg-white p-10 text-center">
           <h2 className="text-lg font-semibold text-steel-950">

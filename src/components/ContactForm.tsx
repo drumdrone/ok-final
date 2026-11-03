@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowButton } from "./ArrowButton";
 
 type State = "idle" | "sending" | "ok" | "err";
@@ -12,6 +12,21 @@ export function ContactForm() {
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [message, setMessage] = useState("");
+
+  // Předvyplnění zprávy, když přijde z /kariera přes ?pozice=…
+  useEffect(() => {
+    try {
+      const pozice = new URLSearchParams(window.location.search).get("pozice");
+      if (pozice) {
+        setMessage(
+          `Dobrý den, mám zájem o pozici „${pozice}". V příloze/níže posílám svoje údaje.\n\n`
+        );
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -110,6 +125,8 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           className="field-input"
           placeholder="Materiál, tolerance, množství, termín, případně další požadavky."
         />
