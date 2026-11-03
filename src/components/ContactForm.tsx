@@ -62,10 +62,24 @@ export function ContactForm() {
 
   if (state === "ok") {
     return (
-      <div className="rounded-lg border border-accent-500/40 bg-accent-500/5 p-8 text-center">
-        <h3 className="text-xl font-bold text-steel-950">Poptávka odeslána</h3>
-        <p className="mt-3 text-steel-700">
-          Dílce vám bezplatně naceníme. Potvrzení jsme poslali i na váš e-mail.
+      <div className="rounded-lg border border-emerald-500/40 bg-emerald-50 p-8 text-center">
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white">
+          <svg
+            className="h-6 w-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold text-emerald-900">Poptávka odeslána</h3>
+        <p className="mt-3 text-emerald-800">
+          Děkujeme. Dílce vám bezplatně naceníme a ozveme se co nejdříve.
         </p>
         <button
           type="button"

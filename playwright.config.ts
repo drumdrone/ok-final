@@ -29,8 +29,17 @@ export default defineConfig({
   },
   projects: [
     {
+      // Pixel 5 (Android Chrome) místo iPhone 13 — iPhone 13 má
+      // defaultBrowserType "webkit", který se v CI neinstaluje (jen
+      // chromium), takže se prohlížeč vůbec nespustil. Pixel 5 dává
+      // stejnou mobilní emulaci (isMobile, hasTouch) na chromiu.
       name: "mobile-375",
-      use: { ...devices["iPhone 13"], viewport: { width: 375, height: 812 }, launchOptions: launch },
+      use: {
+        ...devices["Pixel 5"],
+        browserName: "chromium",
+        viewport: { width: 375, height: 812 },
+        launchOptions: launch,
+      },
     },
     {
       name: "tablet-768",

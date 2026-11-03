@@ -5,12 +5,12 @@ import { convexClient } from "@/lib/convex";
  * POST /api/contact
  *
  * Přijme FormData z ContactForm, zvaliduje, ověří Turnstile (pokud je
- * nastavený), zkontroluje rate limit, uloží poptávku do Convexu a
- * pošle e-maily přes Resend (asynchronně scheduler z Convex mutace).
+ * nastavený), odešle e-mail přes Resend a — pokud je Convex plně
+ * nasazený — zároveň uloží poptávku do DB pro admin.
  *
- * Když Convex/Resend/Turnstile nejsou nakonfigurovány, funguje jako
- * stub — jen zaloguje na server. To umožňuje běh UI toku i před
- * plným nasazením backendu.
+ * Doručení e-mailu je primární (RESEND_API_KEY). Convex je volitelná
+ * druhá vrstva: pokud ještě není inicializovaný nebo mutace selže,
+ * uživatel to nepozná — pouze se vynechá záznam v adminu.
  */
 export async function POST(req: Request) {
   const contentType = req.headers.get("content-type") || "";
@@ -22,6 +22,8 @@ export async function POST(req: Request) {
   }
 
   const form = await req.formData();
+  const name = String(form.get("name") ?? "").trim();
+  const company = String(form.get("company") ?? "").trim();
   const email = String(form.get("email") ?? "").trim();
   const phone = String(form.get("phone") ?? "").trim();
   const message = String(form.get("message") ?? "").trim();
@@ -39,7 +41,7 @@ export async function POST(req: Request) {
   // ── Cloudflare Turnstile (pokud nastavený) ─────────────────────
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
   const turnstileToken = String(form.get("cf-turnstile-response") ?? "");
-  let turnstileOk = !turnstileSecret; // když není nastavený, přeskakujeme
+  let turnstileOk = !turnstileSecret;
   if (turnstileSecret) {
     try {
       const verify = await fetch(
@@ -67,11 +69,81 @@ export async function POST(req: Request) {
     }
   }
 
-  // ── Convex path ────────────────────────────────────────────────
+  // ── E-mail přes Resend (primární doručení) ─────────────────────
+  const resendKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM ?? "noreply@okfinal.cz";
+  const to = process.env.RESEND_TO_INQUIRIES ?? "info@okfinal.cz";
+  let emailSent = false;
+
+  if (resendKey) {
+    const subject = `Nová poptávka: ${name || company || email || phone || "bez jména"}`;
+    const bodyLines = [
+      name && `Jméno: ${name}`,
+      company && `Firma: ${company}`,
+      email && `E-mail: ${email}`,
+      phone && `Telefon: ${phone}`,
+      `IP: ${ip}`,
+      "",
+      "Popis:",
+      message,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    // Příloha: pokud uživatel přiložil výkres, přibalíme ji k e-mailu
+    // jako base64 (Resend podporuje attachments v JSON payloadu).
+    const file = form.get("file") as File | null;
+    const attachments: Array<{ filename: string; content: string }> = [];
+    if (file && file.size > 0) {
+      try {
+        const buf = Buffer.from(await file.arrayBuffer());
+        attachments.push({
+          filename: file.name || "priloha",
+          content: buf.toString("base64"),
+        });
+      } catch (err) {
+        console.error("[contact] attachment encode failed", err);
+      }
+    }
+
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${resendKey}`,
+        },
+        body: JSON.stringify({
+          from,
+          to: [to],
+          reply_to: email ? [email] : undefined,
+          subject,
+          text: bodyLines,
+          ...(attachments.length ? { attachments } : {}),
+        }),
+      });
+      if (!res.ok) {
+        const errBody = await res.text();
+        console.error("[contact] Resend failed", res.status, errBody);
+      } else {
+        emailSent = true;
+      }
+    } catch (err) {
+      console.error("[contact] Resend request threw", err);
+    }
+  } else {
+    console.warn(
+      "[contact] RESEND_API_KEY missing — inquiry not delivered by e-mail",
+      { name, company, email, phone, ip, messageLength: message.length }
+    );
+  }
+
+  // ── Convex (volitelná DB vrstva pro admin) ─────────────────────
+  // Nefatální: pokud projekt ještě není inicializovaný nebo mutace
+  // selže, uživatel to nepozná a e-mail přesto dojde.
   const cvx = convexClient();
   if (cvx) {
     try {
-      // Rate limit check
       const { api } = await import("../../../../convex/_generated/api");
       const rl = await cvx.mutation(api.ratelimits.check, { key: `ip:${ip}` });
       if (!rl.ok) {
@@ -81,7 +153,6 @@ export async function POST(req: Request) {
         );
       }
 
-      // Nahrání souboru, pokud je
       const file = form.get("file") as File | null;
       let fileId: string | undefined;
       if (file && file.size > 0) {
@@ -91,14 +162,15 @@ export async function POST(req: Request) {
           headers: { "Content-Type": file.type },
           body: file,
         });
-        if (!uploadRes.ok) throw new Error("File upload failed");
-        const { storageId } = (await uploadRes.json()) as { storageId: string };
-        fileId = storageId;
+        if (uploadRes.ok) {
+          const { storageId } = (await uploadRes.json()) as { storageId: string };
+          fileId = storageId;
+        }
       }
 
       await cvx.mutation(api.inquiries.create, {
-        name: String(form.get("name") ?? "") || undefined,
-        company: String(form.get("company") ?? "") || undefined,
+        name: name || undefined,
+        company: company || undefined,
         email: email || undefined,
         phone: phone || undefined,
         message,
@@ -107,25 +179,28 @@ export async function POST(req: Request) {
         turnstileOk,
         ip,
       });
-
-      return NextResponse.json({ ok: true, mode: "convex" });
     } catch (err) {
-      console.error("[contact] convex path failed", err);
-      return NextResponse.json(
-        { ok: false, error: "Nepodařilo se uložit poptávku. Napište prosím na info@okfinal.cz." },
-        { status: 500 }
-      );
+      // Convex ještě nebyl deployed / mutace selhala — nevadí, e-mail
+      // je naše primární doručení.
+      console.warn("[contact] Convex path skipped:", (err as Error)?.message);
     }
   }
 
-  // ── Stub path (bez Convexu) ────────────────────────────────────
-  console.warn("[contact] Convex not configured — logging inquiry only.", {
-    name: form.get("name"),
-    company: form.get("company"),
-    email, phone,
-    messageLength: message.length,
-    fileName: (form.get("file") as File | null)?.name ?? null,
-    ip,
-  });
-  return NextResponse.json({ ok: true, mode: "stub" });
+  // ── Response ───────────────────────────────────────────────────
+  // Pokud máme Resend a mail prošel: ok. Pokud Resend není
+  // nakonfigurován: logujeme a vracíme ok (poptávka je v server logu,
+  // doručení e-mailu je operations task). Pokud Resend byl nastavený
+  // ale selhal: user by měl vědět.
+  if (resendKey && !emailSent) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "Odeslání se nepodařilo. Napište prosím přímo na info@okfinal.cz nebo zavolejte +420 465 612 713.",
+      },
+      { status: 502 }
+    );
+  }
+
+  return NextResponse.json({ ok: true });
 }
