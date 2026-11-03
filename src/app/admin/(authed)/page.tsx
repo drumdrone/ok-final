@@ -25,7 +25,7 @@ export default async function AdminHome() {
       badge: counts?.new,
     },
     { href: "/admin/kariera", title: "Kariéra", body: "Správa otevřených pozic." },
-    { href: "/admin/kontakty", title: "Kontakty", body: "Telefony, e-maily, otevírací doba." },
+    // Kontakty (správa zaměstnanců) dočasně skryté z přehledu.
   ];
 
   return (

@@ -12,7 +12,9 @@ const adminNav = [
   { href: "/admin", label: "Přehled" },
   { href: "/admin/poptavky", label: "Poptávky" },
   { href: "/admin/kariera", label: "Kariéra" },
-  { href: "/admin/kontakty", label: "Kontakty" },
+  // Kontakty (správa zaměstnanců) dočasně skryté — stránka zůstává na
+  // /admin/kontakty, jen není v menu. Pro zobrazení řádek odkomentuj.
+  // { href: "/admin/kontakty", label: "Kontakty" },
 ];
 
 export default async function AdminLayout({
