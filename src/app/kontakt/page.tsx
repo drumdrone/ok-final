@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/Section";
 import { ContactForm } from "@/components/ContactForm";
+import { convexClient } from "@/lib/convex";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,7 +15,37 @@ const mapQuery = encodeURIComponent(
   `${site.address.street}, ${site.address.zip} ${site.address.city}`
 );
 
-export default function KontaktPage() {
+type Person = { name: string; role: string; email: string; phone: string };
+
+// Tým z Convexu (editovatelný v adminu), s fallbackem na site.ts.
+async function loadPeople(): Promise<Person[]> {
+  const fallback = site.contacts.people as unknown as Person[];
+  const cvx = convexClient();
+  if (!cvx) return fallback;
+  try {
+    const { api } = await import("../../../convex/_generated/api");
+    const rows = (await cvx.query(api.contacts.list, { locale: "cs" })) as Array<{
+      name?: string;
+      role?: string;
+      email?: string;
+      phone?: string;
+    }>;
+    const people = rows
+      .filter((r) => r.name)
+      .map((r) => ({
+        name: r.name ?? "",
+        role: r.role ?? "",
+        email: r.email ?? "",
+        phone: r.phone ?? "",
+      }));
+    return people.length > 0 ? people : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+export default async function KontaktPage() {
+  const people = await loadPeople();
   return (
     <>
       <PageHero
@@ -44,16 +75,20 @@ export default function KontaktPage() {
               </a>
             </ContactCard>
 
-            {site.contacts.people.map((person) => (
-              <ContactCard key={person.email} title={person.role}>
+            {people.map((person) => (
+              <ContactCard key={person.email || person.name} title={person.role}>
                 <div className="font-semibold text-steel-950">{person.name}</div>
                 <div className="mt-2 space-y-1 text-sm">
-                  <a href={`mailto:${person.email}`} className="block hover:text-accent-600">
-                    {person.email}
-                  </a>
-                  <a href={`tel:${person.phone.replace(/\s/g, "")}`} className="block hover:text-accent-600">
-                    {person.phone}
-                  </a>
+                  {person.email ? (
+                    <a href={`mailto:${person.email}`} className="block hover:text-accent-600">
+                      {person.email}
+                    </a>
+                  ) : null}
+                  {person.phone ? (
+                    <a href={`tel:${person.phone.replace(/\s/g, "")}`} className="block hover:text-accent-600">
+                      {person.phone}
+                    </a>
+                  ) : null}
                 </div>
               </ContactCard>
             ))}

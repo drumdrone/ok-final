@@ -27,6 +27,7 @@ export declare const api: {
   contacts: {
     list: AnyFn;
     upsert: AnyFn;
+    remove: AnyFn;
   };
   ratelimits: {
     check: AnyFn;
