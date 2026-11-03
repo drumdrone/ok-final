@@ -98,7 +98,7 @@ export default function StylePage() {
                   Let praxe
                 </dt>
                 <dd className="font-display mt-2 text-3xl font-semibold sm:text-4xl">
-                  35
+                  {new Date().getFullYear() - 1992}
                 </dd>
               </div>
             </dl>
