@@ -25,7 +25,7 @@ export default function FaqPage() {
         <dl className="divide-y divide-steel-200 border-y border-steel-200">
           {faqItems.map((item) => (
             <div key={item.q} className="grid gap-4 py-6 md:grid-cols-[1fr_2fr]">
-              <dt className="text-lg font-bold text-steel-950">{item.q}</dt>
+              <dt className="text-lg font-bold leading-6 text-steel-950">{item.q}</dt>
               <dd className="text-steel-700">{item.a}</dd>
             </div>
           ))}

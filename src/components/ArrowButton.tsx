@@ -4,8 +4,8 @@ type Variant = "light" | "dark" | "small";
 
 const variantClass: Record<Variant, string> = {
   light:
-    "bg-steel-100 py-1.5 pl-5 pr-1.5 text-sm text-steel-500 transition-colors duration-500 hover:text-steel-950",
-  dark: "bg-steel-300 py-1.5 pl-5 pr-1.5 text-sm text-steel-950",
+    "bg-steel-100 py-1 pl-6 pr-1 text-sm text-steel-500 transition-colors duration-500 hover:text-steel-950",
+  dark: "bg-steel-300 py-1 pl-6 pr-1 text-sm text-steel-950",
   small: "bg-steel-800 py-1 pl-4 pr-1 text-sm text-white",
 };
 

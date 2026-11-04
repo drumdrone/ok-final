@@ -22,30 +22,30 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-[#141619] pb-20 pt-14 text-white lg:pb-28 lg:pt-20">
         <div className="okf-grid pointer-events-none absolute inset-0" />
         <div className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-red-700/20 blur-3xl" />
-        <div className="relative mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-12 lg:gap-10 lg:px-8">
+        <div className="relative mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-12 lg:gap-10 lg:px-8">
           <div className="flex flex-col justify-center lg:col-span-6">
-            <div className="okf-reveal inline-flex w-fit items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs text-zinc-300">
+            <div className="okf-reveal inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-zinc-300">
               <span className="relative flex h-2 w-2">
                 <span className="okf-pulse absolute inset-0 rounded-full bg-emerald-400" />
                 <span className="relative h-2 w-2 rounded-full bg-emerald-400" />
               </span>
               <span>{home.hero.badge}</span>
             </div>
-            <h1 className="okf-reveal okf-d150 mt-8 font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl xl:text-7xl">
+            <h1 className="okf-reveal okf-d150 mt-8 font-display text-5xl font-semibold leading-none tracking-tight text-white sm:text-6xl xl:text-7xl">
               <span className="block">Dobře promyšlené.</span>
               <span className="block text-zinc-500">Precizně</span>
               <span className="block">
                 dokončené<span className="text-red-500">.</span>
               </span>
             </h1>
-            <div className="okf-reveal okf-d300 mt-8 max-w-md space-y-3 text-base leading-relaxed text-zinc-400">
+            <div className="okf-reveal okf-d300 mt-8 max-w-md space-y-4 text-base text-zinc-400">
               <p className="text-zinc-200">{home.hero.detail}</p>
               <p>{home.hero.lead}</p>
             </div>
             <div className="okf-reveal okf-d450 mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="#sluzby"
-                className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-5 pr-2 text-sm font-semibold text-zinc-900 transition duration-200 hover:bg-zinc-200 active:scale-[0.97]"
+                className="group inline-flex items-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-zinc-900 transition duration-200 hover:bg-zinc-200 active:scale-[0.97]"
               >
                 <span>{home.hero.ctaPrimary.label}</span>
                 <svg
@@ -68,7 +68,7 @@ export default function HomePage() {
             </div>
             <dl className="okf-reveal okf-d600 mt-14 w-fit border-t border-white/10 pt-8">
               <div>
-                <dt className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+                <dt className="text-xs uppercase tracking-[0.2em] text-zinc-500">
                   Let praxe
                 </dt>
                 <dd className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
@@ -80,7 +80,7 @@ export default function HomePage() {
             </dl>
           </div>
           <div className="okf-reveal okf-right okf-d300 lg:col-span-6 [perspective:1400px]">
-            <div className="okf-tilt relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/10 shadow-2xl shadow-black/60 lg:aspect-auto lg:h-full lg:min-h-[620px]">
+            <div className="okf-tilt relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/10 shadow-2xl shadow-black/60 lg:aspect-auto lg:h-full lg:min-h-[624px]">
               <Image
                 src={site.assets.hero}
                 alt={home.hero.machineAlt}
@@ -91,15 +91,15 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#141619] via-[#141619]/20 to-transparent" />
               <div className="okf-tilt-glare pointer-events-none absolute inset-0" />
-              <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/30 px-3 py-1 font-mono text-[11px] tracking-widest text-zinc-200 backdrop-blur-md">
+              <div className="absolute left-6 top-6 rounded-full border border-white/15 bg-black/30 px-4 py-1 font-mono text-xs tracking-widest text-zinc-200 backdrop-blur-md">
                 TOL ±0,01 MM
               </div>
-              <div className="absolute inset-x-5 bottom-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-xl">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-300">
+              <div className="absolute inset-x-6 bottom-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+                  <p className="text-xs uppercase tracking-[0.2em] text-zinc-300">
                     {director.role}
                   </p>
-                  <p className="mt-2 font-display text-lg font-semibold">
+                  <p className="mt-2 font-display text-lg font-semibold leading-6">
                     {director.name}
                   </p>
                   <a
@@ -109,7 +109,7 @@ export default function HomePage() {
                     {director.phone}
                   </a>
                 </div>
-                <p className="max-w-[14rem] text-sm leading-relaxed text-zinc-300">
+                <p className="max-w-[14rem] text-sm text-zinc-300">
                   Soustružení, svařování a montáž pod jednou střechou v Žamberku.
                 </p>
               </div>
@@ -124,22 +124,22 @@ export default function HomePage() {
         className="relative overflow-hidden bg-[#f3f2ef] py-24 lg:py-32"
       >
         <div className="okf-grid-light pointer-events-none absolute inset-x-0 top-0 h-96" />
-        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="okf-reveal okf-fade lg:col-span-7">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-red-600">
                 {home.services.eyebrow}
               </p>
-              <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-zinc-900 sm:text-5xl">
+              <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">
                 {home.services.title}
               </h2>
             </div>
-            <p className="okf-reveal okf-fade okf-d150 text-base leading-relaxed text-zinc-600 lg:col-span-5">
+            <p className="okf-reveal okf-fade okf-d150 text-base text-zinc-600 lg:col-span-5">
               {home.services.lead}
             </p>
           </div>
 
-          <div className="mt-16 grid gap-5 lg:grid-cols-12">
+          <div className="mt-16 grid gap-6 lg:grid-cols-12">
             <Link
               href="/nase-sluzby#soustruzeni"
               className="okf-reveal okf-d300 group relative min-h-[440px] overflow-hidden rounded-[28px] bg-zinc-900 text-white shadow-xl shadow-zinc-900/20 lg:col-span-7 lg:row-span-2"
@@ -160,18 +160,18 @@ export default function HomePage() {
                   <h3 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                     Soustružení v tolerancích
                   </h3>
-                  <p className="mt-4 max-w-md leading-relaxed text-zinc-300">
+                  <p className="mt-4 max-w-md text-zinc-300">
                     Rotační dílce přesně podle výrobní dokumentace – od prototypu
                     po opakovanou sériovou výrobu s kontrolou rozměrů.
                   </p>
                   <ul className="mt-6 flex flex-wrap gap-2 text-xs text-zinc-200">
-                    <li className="rounded-full border border-white/20 bg-white/5 px-3 py-1 backdrop-blur">
+                    <li className="rounded-full border border-white/20 bg-white/5 px-4 py-1 backdrop-blur">
                       Kusová výroba
                     </li>
-                    <li className="rounded-full border border-white/20 bg-white/5 px-3 py-1 backdrop-blur">
+                    <li className="rounded-full border border-white/20 bg-white/5 px-4 py-1 backdrop-blur">
                       Série
                     </li>
-                    <li className="rounded-full border border-white/20 bg-white/5 px-3 py-1 backdrop-blur">
+                    <li className="rounded-full border border-white/20 bg-white/5 px-4 py-1 backdrop-blur">
                       Ocel, nerez, hliník
                     </li>
                   </ul>
@@ -203,7 +203,7 @@ export default function HomePage() {
               <h3 className="mt-10 font-display text-2xl font-semibold tracking-tight text-zinc-900">
                 Ruční svařování
               </h3>
-              <p className="mt-3 leading-relaxed text-zinc-600">
+              <p className="mt-4 text-zinc-600">
                 Svarky a konstrukce s čistými spoji, které drží tvar i pod
                 zátěží. Každý svar prochází vizuální kontrolou.
               </p>
@@ -233,14 +233,14 @@ export default function HomePage() {
               <h3 className="mt-10 font-display text-2xl font-semibold tracking-tight text-white">
                 Montážní práce
               </h3>
-              <p className="mt-3 leading-relaxed text-zinc-400">
+              <p className="mt-4 text-zinc-400">
                 Kompletace podsestav a finální montáž, abyste dostali hotový
                 celek připravený k použití.
               </p>
             </Link>
           </div>
 
-          <div className="mt-16 overflow-hidden border-y border-zinc-300/70 py-5">
+          <div className="mt-16 overflow-hidden border-y border-zinc-300/70 py-6">
             <div className="okf-marquee flex w-max gap-12 whitespace-nowrap font-display text-xl font-medium text-zinc-400">
               {[...marqueeItems, ...marqueeItems].map((item, i) => (
                 <span key={i} className="flex items-center gap-12">
@@ -265,7 +265,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#141619] via-[#141619]/85 to-[#141619]/60" />
         </div>
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:items-center lg:px-8">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:items-center lg:px-8">
           <div className="okf-reveal lg:col-span-5">
             <p className="font-display text-[8rem] font-bold leading-none tracking-tighter sm:text-[11rem]">
               <span className="okf-count text-red-500" data-count={35} data-suffix="">
@@ -278,20 +278,20 @@ export default function HomePage() {
             </p>
           </div>
           <div className="okf-reveal lg:col-span-6 lg:col-start-7">
-            <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
+            <h2 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
               {home.experience.title}
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-zinc-300">
+            <p className="mt-6 text-lg text-zinc-300">
               {home.experience.body}
             </p>
             <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
-              <div className="bg-[#141619]/80 p-5 backdrop-blur">
+              <div className="bg-[#141619]/80 p-6 backdrop-blur">
                 <p className="font-display text-2xl font-semibold">Přesnost</p>
                 <p className="mt-1 text-sm text-zinc-400">
                   Dílce v požadovaných tolerancích
                 </p>
               </div>
-              <div className="bg-[#141619]/80 p-5 backdrop-blur">
+              <div className="bg-[#141619]/80 p-6 backdrop-blur">
                 <p className="font-display text-2xl font-semibold">Opakovatelnost</p>
                 <p className="mt-1 text-sm text-zinc-400">
                   Stejná kvalita v každé sérii
@@ -301,7 +301,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href={home.experience.ctaPrimary.href}
-                className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-5 pr-2 text-sm font-semibold text-zinc-900 transition duration-200 hover:bg-zinc-200 active:scale-[0.97]"
+                className="group inline-flex items-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-zinc-900 transition duration-200 hover:bg-zinc-200 active:scale-[0.97]"
               >
                 <span>{home.experience.ctaPrimary.label}</span>
                 <svg
@@ -317,7 +317,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href={home.experience.ctaSecondary.href}
-                className="inline-flex items-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition duration-200 hover:border-white/50 hover:bg-white/5 active:scale-[0.97]"
+                className="inline-flex items-center rounded-full border border-white/20 px-6 py-4 text-sm font-semibold text-white transition duration-200 hover:border-white/50 hover:bg-white/5 active:scale-[0.97]"
               >
                 {home.experience.ctaSecondary.label}
               </Link>
@@ -328,12 +328,12 @@ export default function HomePage() {
 
       {/* 04 — Zákazníci / segmenty */}
       <section className="bg-[#f3f2ef] py-24 lg:py-32">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:px-8">
           <div className="okf-reveal lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-red-600">
               {home.segments.eyebrow}
             </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-zinc-900 sm:text-5xl">
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">
               {home.segments.title}
             </h2>
             <div className="relative mt-10 overflow-hidden rounded-[24px]">
@@ -350,17 +350,17 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col justify-end lg:col-span-6 lg:col-start-7">
             <blockquote className="okf-reveal border-l-2 border-red-600 pl-6">
-              <p className="font-display text-2xl font-medium leading-snug tracking-tight text-zinc-800 sm:text-3xl">
+              <p className="font-display text-2xl font-medium tracking-tight text-zinc-800 sm:text-3xl">
                 O kvalitě není třeba mluvit, protože v našem oboru podnikání je
                 kvalita na prvním místě.
               </p>
             </blockquote>
-            <p className="okf-reveal mt-8 leading-relaxed text-zinc-600">
+            <p className="okf-reveal mt-8 text-zinc-600">
               Naši zákazníci nás vyhledávají především z důvodu nízkých prodejních
               cen a rychlosti dodávek.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              <div className="okf-reveal rounded-[24px] border border-zinc-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-900/10">
+              <div className="okf-reveal rounded-[24px] border border-zinc-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-900/10">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-900 text-white">
                   <svg
                     className="h-6 w-6"
@@ -380,7 +380,7 @@ export default function HomePage() {
                   {home.segments.items[0].body}
                 </p>
               </div>
-              <div className="okf-reveal rounded-[24px] bg-zinc-900 p-7 text-white shadow-lg shadow-zinc-900/20 transition duration-300 hover:-translate-y-1 sm:mt-10">
+              <div className="okf-reveal rounded-[24px] bg-zinc-900 p-8 text-white shadow-lg shadow-zinc-900/20 transition duration-300 hover:-translate-y-1 sm:mt-10">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-600 text-white">
                   <svg
                     className="h-6 w-6"
@@ -407,27 +407,27 @@ export default function HomePage() {
       </section>
 
       {/* 05 — CTA */}
-      <section id="kontakt" className="bg-[#f3f2ef] px-5 pb-24 lg:px-8 lg:pb-32">
-        <div className="okf-reveal relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-gradient-to-br from-red-600 via-red-700 to-red-800 px-7 py-14 text-white shadow-2xl shadow-red-900/30 sm:px-12 lg:py-20">
+      <section id="kontakt" className="bg-[#f3f2ef] px-6 pb-24 lg:px-8 lg:pb-32">
+        <div className="okf-reveal relative mx-auto max-w-7xl overflow-hidden rounded-[32px] bg-gradient-to-br from-red-600 via-red-700 to-red-800 px-8 py-14 text-white shadow-2xl shadow-red-900/30 sm:px-12 lg:py-20">
           <div className="okf-grid pointer-events-none absolute inset-0 opacity-60" />
           <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
+              <h2 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                 {home.cta.title}
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-red-100">
+              <p className="mt-6 max-w-2xl text-lg text-red-100">
                 {home.cta.lead}
               </p>
             </div>
-            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+            <div className="flex flex-col gap-4 lg:col-span-4 lg:items-end">
               <Link
                 href={home.cta.button.href}
-                className="group inline-flex w-fit items-center gap-3 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-zinc-900 shadow-lg shadow-red-950/30 transition duration-200 hover:bg-zinc-100 active:scale-[0.97]"
+                className="group inline-flex w-fit items-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-zinc-900 shadow-lg shadow-red-950/30 transition duration-200 hover:bg-zinc-100 active:scale-[0.97]"
               >
                 <span>{home.cta.button.label}</span>
                 <svg
-                  className="h-9 w-9 rounded-full bg-red-600 p-2.5 text-white transition-transform duration-300 group-hover:rotate-45"
+                  className="h-10 w-10 rounded-full bg-red-600 p-2 text-white transition-transform duration-300 group-hover:rotate-45"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"

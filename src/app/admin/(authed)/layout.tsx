@@ -36,7 +36,7 @@ export default async function AdminLayout({
                 <Link
                   key={n.href}
                   href={n.href}
-                  className="rounded-md px-3 py-1.5 text-sm text-steel-700 hover:bg-steel-50 hover:text-steel-950"
+                  className="rounded-md px-4 py-2 text-sm text-steel-700 hover:bg-steel-50 hover:text-steel-950"
                 >
                   {n.label}
                 </Link>

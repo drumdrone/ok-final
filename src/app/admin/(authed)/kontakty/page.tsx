@@ -22,11 +22,11 @@ export default async function KontaktyAdminPage() {
     return (
       <div>
         {contacts.length === 0 ? (
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-steel-200 bg-white p-4">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-lg border border-steel-200 bg-white p-4">
             <p className="text-sm text-steel-600">
-              Tabulka <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">contacts</code>{" "}
+              Tabulka <code className="rounded bg-steel-100 px-2 py-1 text-xs">contacts</code>{" "}
               je prázdná. Můžete ji naplnit lidmi ze stávajícího{" "}
-              <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">site.ts</code>.
+              <code className="rounded bg-steel-100 px-2 py-1 text-xs">site.ts</code>.
             </p>
             <form action={seedContacts}>
               <button className="btn btn-dark">Načíst ze site.ts</button>
@@ -56,9 +56,9 @@ export default async function KontaktyAdminPage() {
       <h1 className="text-2xl font-bold text-steel-950">Kontakty</h1>
       <p className="mt-2 text-steel-600">
         Convex zatím není napojený — zobrazujeme hodnoty z{" "}
-        <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">src/lib/site.ts</code>{" "}
+        <code className="rounded bg-steel-100 px-2 py-1 text-xs">src/lib/site.ts</code>{" "}
         (jen ke čtení). Po spuštění{" "}
-        <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">npx convex dev</code>{" "}
+        <code className="rounded bg-steel-100 px-2 py-1 text-xs">npx convex dev</code>{" "}
         půjde kontaktní osoby editovat rovnou zde.
       </p>
 
@@ -66,15 +66,15 @@ export default async function KontaktyAdminPage() {
         <table className="w-full text-sm">
           <thead className="bg-steel-50 text-left text-xs uppercase tracking-wider text-steel-500">
             <tr>
-              <th className="px-4 py-3">Klíč</th>
-              <th className="px-4 py-3">Hodnota</th>
+              <th className="px-4 py-4">Klíč</th>
+              <th className="px-4 py-4">Hodnota</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-steel-100">
             {rows.map((r) => (
               <tr key={r.key}>
-                <td className="w-52 px-4 py-3 font-medium text-steel-700">{r.key}</td>
-                <td className="px-4 py-3 text-steel-900">{r.value}</td>
+                <td className="w-52 px-4 py-4 font-medium text-steel-700">{r.key}</td>
+                <td className="px-4 py-4 text-steel-900">{r.value}</td>
               </tr>
             ))}
           </tbody>

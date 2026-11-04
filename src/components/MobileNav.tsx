@@ -76,7 +76,7 @@ export function MobileNav() {
             className="absolute inset-x-0 top-full z-40 border-b border-steel-100 bg-white shadow-lg lg:hidden"
             aria-label={isEn ? "Main" : "Hlavní"}
           >
-            <div className="container flex flex-col gap-1 py-3">
+            <div className="container flex flex-col gap-1 py-4">
               {items.map((item) => {
                 const active = pathname === item.href;
                 return (
@@ -86,7 +86,7 @@ export function MobileNav() {
                     aria-current={active ? "page" : undefined}
                     onClick={() => setOpen(false)}
                     className={
-                      "rounded-md px-3 py-3 text-base font-medium transition-colors " +
+                      "rounded-md px-4 py-4 text-base font-medium transition-colors " +
                       (active
                         ? "bg-steel-50 text-steel-950"
                         : "text-steel-700 hover:bg-steel-50 hover:text-steel-950")

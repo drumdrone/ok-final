@@ -43,12 +43,12 @@ export default async function PoptavkyPage() {
       <div>
         <h1 className="text-2xl font-bold text-steel-950">Poptávky</h1>
         <div className="mt-8 rounded-lg border border-dashed border-steel-300 bg-white p-10 text-center">
-          <h2 className="text-lg font-semibold text-steel-950">
+          <h2 className="text-lg font-semibold leading-6 text-steel-950">
             Convex zatím není napojený
           </h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-steel-600">
-            Nastavte <code className="rounded bg-steel-50 px-1.5 py-0.5 text-xs">NEXT_PUBLIC_CONVEX_URL</code>{" "}
-            a spusťte <code className="rounded bg-steel-50 px-1.5 py-0.5 text-xs">npx convex dev</code>.
+            Nastavte <code className="rounded bg-steel-50 px-2 py-1 text-xs">NEXT_PUBLIC_CONVEX_URL</code>{" "}
+            a spusťte <code className="rounded bg-steel-50 px-2 py-1 text-xs">npx convex dev</code>.
             Pak se sem začnou objevovat odeslané poptávky.
           </p>
         </div>
@@ -68,22 +68,22 @@ export default async function PoptavkyPage() {
           <p className="text-steel-600">Zatím žádná poptávka nebyla odeslána.</p>
         </div>
       ) : (
-        <ul className="mt-6 space-y-3">
+        <ul className="mt-6 space-y-4">
           {rows.map((r) => (
-            <li key={r._id} className="rounded-lg border border-steel-200 bg-white p-5">
-              <div className="flex flex-wrap items-start justify-between gap-3">
+            <li key={r._id} className="rounded-lg border border-steel-200 bg-white p-6">
+              <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <div className="font-semibold text-steel-950">
                     {r.name ?? "(bez jména)"}
                     {r.company ? <span className="ml-2 text-steel-500">· {r.company}</span> : null}
                   </div>
-                  <div className="mt-1 space-x-3 text-sm text-steel-600">
+                  <div className="mt-1 space-x-4 text-sm text-steel-600">
                     {r.email ? <a href={`mailto:${r.email}`} className="hover:text-accent-600">{r.email}</a> : null}
                     {r.phone ? <a href={`tel:${r.phone}`} className="hover:text-accent-600">{r.phone}</a> : null}
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${statusStyle[r.status]}`}>
+                <div className="flex items-center gap-4">
+                  <span className={`rounded-full border px-2 py-1 text-xs font-medium ${statusStyle[r.status]}`}>
                     {statusLabels[r.status]}
                   </span>
                   <span className="text-xs text-steel-500 tabular-nums">
@@ -91,7 +91,7 @@ export default async function PoptavkyPage() {
                   </span>
                 </div>
               </div>
-              <p className="mt-3 whitespace-pre-wrap text-sm text-steel-700">{r.message}</p>
+              <p className="mt-4 whitespace-pre-wrap text-sm text-steel-700">{r.message}</p>
             </li>
           ))}
         </ul>

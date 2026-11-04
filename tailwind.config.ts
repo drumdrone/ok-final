@@ -3,6 +3,38 @@ import type { Config } from "tailwindcss";
 export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
+    // ── 8px grid (Wayfair "Rule of 8") ─────────────────────────────
+    // Every line-height is a multiple of 8px, so text blocks always
+    // land on the grid. Font sizes follow a 4/8-step scale.
+    // Ratio-based leading (relaxed/tight/snug) is deliberately removed:
+    // a ratio × font-size rarely lands on 8px. Use leading-{4,6,8,…}.
+    fontSize: {
+      xs: ["0.75rem", { lineHeight: "1rem" }], //    12 / 16
+      sm: ["0.875rem", { lineHeight: "1.5rem" }], // 14 / 24
+      base: ["1rem", { lineHeight: "1.5rem" }], //   16 / 24
+      lg: ["1.125rem", { lineHeight: "2rem" }], //   18 / 32  (lead copy)
+      xl: ["1.25rem", { lineHeight: "1.5rem" }], //  20 / 24  (card titles)
+      "2xl": ["1.5rem", { lineHeight: "2rem" }], //  24 / 32
+      "3xl": ["2rem", { lineHeight: "2.5rem" }], //  32 / 40
+      "4xl": ["2.5rem", { lineHeight: "3rem" }], //  40 / 48
+      "5xl": ["3rem", { lineHeight: "3.5rem" }], //  48 / 56
+      "6xl": ["4rem", { lineHeight: "4.5rem" }], //  64 / 72
+      "7xl": ["4.5rem", { lineHeight: "5rem" }], //  72 / 80
+      "8xl": ["6rem", { lineHeight: "6rem" }], //    96 / 96
+      "9xl": ["8rem", { lineHeight: "8rem" }], //   128 / 128
+    },
+    lineHeight: {
+      none: "1",
+      "4": "1rem",
+      "6": "1.5rem",
+      "8": "2rem",
+      "10": "2.5rem",
+      "12": "3rem",
+      "14": "3.5rem",
+      "16": "4rem",
+      "18": "4.5rem",
+      "20": "5rem",
+    },
     extend: {
       colors: {
         // PLAN.md §2 steel + cool crimson accent (logo-adjacent)
@@ -54,7 +86,7 @@ export default {
           "2xl": "1280px",
         },
         padding: {
-          DEFAULT: "1.25rem",
+          DEFAULT: "1.5rem",
           lg: "2rem",
         },
       },

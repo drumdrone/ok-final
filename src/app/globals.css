@@ -24,7 +24,7 @@
 @layer components {
   .btn {
     @apply relative isolate inline-flex items-center justify-center overflow-hidden
-           rounded-full px-5 py-3 text-sm font-semibold;
+           h-12 rounded-full px-6 text-sm font-semibold;
   }
   .btn::before {
     content: "";
@@ -79,16 +79,16 @@
     clip-path: inset(0 0 0 0);
   }
   .arrow-btn-orb {
-    @apply relative z-10 ml-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full;
+    @apply relative z-10 ml-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-full;
   }
   .arrow-btn-orb svg {
     @apply h-4 w-4;
   }
   .arrow-btn-small .arrow-btn-orb {
-    @apply ml-2 h-7 w-7;
+    @apply ml-2 h-8 w-8;
   }
   .arrow-btn-small .arrow-btn-orb svg {
-    @apply h-3.5 w-3.5;
+    @apply h-4 w-4;
   }
   .arrow-btn-light .arrow-btn-orb {
     @apply bg-white text-steel-950 shadow-sm;
@@ -140,9 +140,9 @@
   .section       { @apply py-16 lg:py-24; }
   .container-tight { @apply container max-w-5xl; }
 
-  .field-label   { @apply mb-1.5 block text-sm font-medium text-steel-800; }
+  .field-label   { @apply mb-2 block text-sm font-medium text-steel-800; }
   .field-input   {
-    @apply w-full rounded-md border border-steel-300 bg-white px-3.5 py-2.5
+    @apply min-h-12 w-full rounded-md border border-steel-300 bg-white px-4 py-2
            text-sm text-steel-900 placeholder:text-steel-400
            focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30;
   }

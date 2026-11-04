@@ -18,7 +18,7 @@ export function NavLinks() {
         <Link
           key={item.href}
           href={item.href}
-          className="rounded-md px-3 py-2 text-sm font-medium text-steel-700 transition-colors hover:bg-steel-50 hover:text-steel-950"
+          className="rounded-md px-4 py-2 text-sm font-medium text-steel-700 transition-colors hover:bg-steel-50 hover:text-steel-950"
         >
           {item.label}
         </Link>

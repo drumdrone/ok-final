@@ -28,7 +28,7 @@ export function Footer() {
 
   return (
     <footer className="okf-footer bg-[#141619] pt-20 text-zinc-400">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 lg:grid-cols-12 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 pb-16 lg:grid-cols-12 lg:px-8">
         <div className="lg:col-span-5">
           <Link href={t.home} className="flex items-center" aria-label={site.name}>
             <Image
@@ -41,19 +41,19 @@ export function Footer() {
               className="h-8 w-auto"
             />
           </Link>
-          <p className="mt-5 max-w-xs text-sm leading-relaxed">{t.tagline}</p>
+          <p className="mt-6 max-w-xs text-sm">{t.tagline}</p>
         </div>
 
         <div className="lg:col-span-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white">
             {t.contact}
           </p>
-          <address className="mt-5 space-y-2 text-sm not-italic">
+          <address className="mt-6 space-y-2 text-sm not-italic">
             <p>{site.address.street}</p>
             <p>
               {site.address.zip} {site.address.city}
             </p>
-            <p className="pt-3">
+            <p className="pt-4">
               <a href={phoneHref} className="transition hover:text-white">
                 {site.contacts.phone}
               </a>
@@ -73,7 +73,7 @@ export function Footer() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white">
             {t.sitemap}
           </p>
-          <ul className="mt-5 grid grid-cols-2 gap-y-2 text-sm">
+          <ul className="mt-6 grid grid-cols-2 gap-y-2 text-sm">
             {items.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition hover:text-white">
@@ -86,7 +86,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-6 text-xs sm:flex-row sm:items-center sm:justify-between lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-6 text-xs sm:flex-row sm:items-center sm:justify-between lg:px-8">
           <p>
             © {year} {site.name} · IČ {site.company.ico} · DIČ {site.company.dic}
           </p>
