@@ -43,10 +43,10 @@ export default async function AdminHome() {
             href={c.href}
             className="relative rounded-lg border border-steel-200 bg-white p-6 transition-shadow hover:shadow-md"
           >
-            <h2 className="text-lg font-bold text-steel-950">{c.title}</h2>
+            <h2 className="text-lg font-bold leading-6 text-steel-950">{c.title}</h2>
             <p className="mt-2 text-sm text-steel-600">{c.body}</p>
             {c.badge ? (
-              <span className="absolute right-4 top-4 rounded-full bg-accent-500 px-2 py-0.5 text-xs font-bold text-white">
+              <span className="absolute right-4 top-4 rounded-full bg-accent-500 px-2 py-1 text-xs font-bold text-white">
                 {c.badge}
               </span>
             ) : null}

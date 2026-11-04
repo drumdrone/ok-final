@@ -46,7 +46,7 @@ export default async function EnCareersPage() {
         {jobs.length === 0 ? (
           <div className="rounded-lg border border-steel-200 bg-white p-10 text-center">
             <h2 className="text-2xl font-bold">{t.emptyTitle}</h2>
-            <p className="mx-auto mt-3 max-w-xl text-steel-600">{t.emptyBody}</p>
+            <p className="mx-auto mt-4 max-w-xl text-steel-600">{t.emptyBody}</p>
             <ArrowButton href="tel:+420603534364" variant="light" className="mt-6">
               {t.emptyCta}
             </ArrowButton>

@@ -31,7 +31,7 @@ export default function CertifikatyPage() {
               href={cert.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-3 transition-shadow hover:shadow-lg"
+              className="overflow-hidden rounded-lg border border-steel-200 bg-steel-50 p-4 transition-shadow hover:shadow-lg"
             >
               <div className="relative aspect-[1298/1840]">
                 <Image
@@ -52,12 +52,12 @@ export default function CertifikatyPage() {
               className="rounded-lg border border-steel-200 bg-white p-6"
             >
               <div className="flex items-start justify-between gap-4">
-                <h3 className="text-lg font-bold">{c.title}</h3>
-                <span className="rounded-full bg-accent-500/10 px-3 py-1 text-xs font-semibold text-accent-700">
+                <h3 className="text-lg font-bold leading-6">{c.title}</h3>
+                <span className="rounded-full bg-accent-500/10 px-4 py-1 text-xs font-semibold text-accent-700">
                   {c.tag}
                 </span>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-steel-600">
+              <p className="mt-4 text-sm text-steel-600">
                 {c.body}
               </p>
             </div>

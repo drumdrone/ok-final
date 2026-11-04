@@ -40,7 +40,7 @@ function Logo({ href }: { href: string }) {
 function ArrowGlyph() {
   return (
     <svg
-      className="h-6 w-6 rounded-full bg-white/15 p-1.5"
+      className="h-6 w-6 rounded-full bg-white/15 p-2"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -84,11 +84,11 @@ export function Header() {
 
   return (
     <header className="okf-header sticky top-0 z-50 border-b border-white/10 bg-[#141619]/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-8">
         <Logo href={homeHref} />
 
         <nav
-          className="hidden items-center gap-7 text-sm text-zinc-300 lg:flex"
+          className="hidden items-center gap-8 text-sm text-zinc-300 lg:flex"
           aria-label={isEn ? "Main" : "Hlavní"}
         >
           {items.map((item) => {
@@ -109,16 +109,16 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <div
-            className="hidden items-center rounded-full border border-white/15 p-0.5 text-xs font-medium sm:flex"
+            className="hidden items-center rounded-full border border-white/15 p-1 text-xs font-medium sm:flex"
             aria-label="Jazyk / Language"
           >
             <Link
               href={czHref}
               aria-current={isEn ? undefined : "page"}
               className={
-                "rounded-full px-2.5 py-1 transition-colors " +
+                "rounded-full px-2 py-1 transition-colors " +
                 (isEn
                   ? "text-zinc-400 hover:text-white"
                   : "bg-white text-zinc-900")
@@ -130,7 +130,7 @@ export function Header() {
               href={enHref}
               aria-current={isEn ? "page" : undefined}
               className={
-                "rounded-full px-2.5 py-1 transition-colors " +
+                "rounded-full px-2 py-1 transition-colors " +
                 (isEn
                   ? "bg-white text-zinc-900"
                   : "text-zinc-400 hover:text-white")
@@ -182,7 +182,7 @@ export function Header() {
       {open && (
         <div
           id="okf-mobile-menu"
-          className="border-t border-white/10 bg-[#141619]/95 px-5 pb-6 pt-2 backdrop-blur-xl lg:hidden"
+          className="border-t border-white/10 bg-[#141619]/95 px-6 pb-6 pt-2 backdrop-blur-xl lg:hidden"
         >
           <ul className="flex flex-col text-base text-zinc-200">
             {items.map((item, i) => (
@@ -192,7 +192,7 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   aria-current={pathname === item.href ? "page" : undefined}
                   className={
-                    "block py-3 " +
+                    "block py-4 " +
                     (i < items.length - 1 ? "border-b border-white/5 " : "") +
                     (pathname === item.href ? "text-white" : "")
                   }
@@ -211,7 +211,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               aria-current={isEn ? undefined : "page"}
               className={
-                "rounded-full py-2.5 text-center text-sm font-medium transition " +
+                "rounded-full py-2 text-center text-sm font-medium transition " +
                 (isEn
                   ? "border border-white/15 text-zinc-300 hover:text-white"
                   : "bg-white text-zinc-900")
@@ -224,7 +224,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               aria-current={isEn ? "page" : undefined}
               className={
-                "rounded-full py-2.5 text-center text-sm font-medium transition " +
+                "rounded-full py-2 text-center text-sm font-medium transition " +
                 (isEn
                   ? "bg-white text-zinc-900"
                   : "border border-white/15 text-zinc-300 hover:text-white")
@@ -236,7 +236,7 @@ export function Header() {
           <Link
             href={contactHref}
             onClick={() => setOpen(false)}
-            className="mt-4 flex justify-center rounded-full bg-red-600 py-3 text-sm font-medium text-white transition hover:bg-red-500"
+            className="mt-4 flex justify-center rounded-full bg-red-600 py-4 text-sm font-medium text-white transition hover:bg-red-500"
           >
             {ctaLabel}
           </Link>

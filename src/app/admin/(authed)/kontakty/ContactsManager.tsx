@@ -31,7 +31,7 @@ export function ContactsManager({ contacts }: { contacts: Contact[] }) {
         <div>
           <h1 className="text-2xl font-bold text-steel-950">Kontaktní osoby</h1>
           <p className="mt-2 text-steel-600">
-            Tým zobrazený na stránce <code className="rounded bg-steel-100 px-1.5 py-0.5 text-xs">/kontakt</code>.
+            Tým zobrazený na stránce <code className="rounded bg-steel-100 px-2 py-1 text-xs">/kontakt</code>.
           </p>
         </div>
         <button
@@ -53,7 +53,7 @@ export function ContactsManager({ contacts }: { contacts: Contact[] }) {
         </div>
       ) : null}
 
-      <div className="mt-8 space-y-3">
+      <div className="mt-8 space-y-4">
         {contacts.length === 0 ? (
           <div className="rounded-lg border border-dashed border-steel-300 bg-white p-10 text-center">
             <p className="text-steel-600">
@@ -72,8 +72,8 @@ function ContactRow({ contact }: { contact: Contact }) {
   const [editing, setEditing] = useState(false);
 
   return (
-    <div className="rounded-lg border border-steel-200 bg-white p-5">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+    <div className="rounded-lg border border-steel-200 bg-white p-6">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <span className="font-semibold text-steel-950">
@@ -82,9 +82,9 @@ function ContactRow({ contact }: { contact: Contact }) {
             <span className="text-xs text-steel-400">pořadí {contact.order}</span>
           </div>
           {contact.role ? (
-            <div className="mt-0.5 text-sm text-steel-600">{contact.role}</div>
+            <div className="mt-1 text-sm text-steel-600">{contact.role}</div>
           ) : null}
-          <div className="mt-1 space-x-3 text-sm text-steel-500">
+          <div className="mt-1 space-x-4 text-sm text-steel-500">
             {contact.email ? <span>{contact.email}</span> : null}
             {contact.phone ? <span>{contact.phone}</span> : null}
           </div>
@@ -94,7 +94,7 @@ function ContactRow({ contact }: { contact: Contact }) {
           <button
             type="button"
             onClick={() => setEditing((v) => !v)}
-            className="rounded-md border border-steel-300 px-3 py-1.5 text-sm text-steel-700 hover:bg-steel-50"
+            className="rounded-md border border-steel-300 px-4 py-2 text-sm text-steel-700 hover:bg-steel-50"
           >
             {editing ? "Zavřít" : "Upravit"}
           </button>
@@ -106,7 +106,7 @@ function ContactRow({ contact }: { contact: Contact }) {
       </div>
 
       {editing ? (
-        <div className="mt-5 border-t border-steel-100 pt-5">
+        <div className="mt-6 border-t border-steel-100 pt-6">
           <ContactForm
             contact={contact}
             onDone={() => setEditing(false)}
@@ -196,7 +196,7 @@ function ContactForm({
       </div>
 
       {state.status === "error" ? (
-        <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+        <div className="rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
           {state.message ?? "Něco se nepovedlo."}
         </div>
       ) : null}
@@ -252,7 +252,7 @@ function DeleteButton({ name }: { name: string }) {
       onClick={(e) => {
         if (!confirm(`Smazat kontakt „${name}"?`)) e.preventDefault();
       }}
-      className="rounded-md border border-red-200 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 disabled:opacity-60"
+      className="rounded-md border border-red-200 px-4 py-2 text-sm text-red-600 hover:bg-red-50 disabled:opacity-60"
     >
       {pending ? "Mažu…" : "Smazat"}
     </button>

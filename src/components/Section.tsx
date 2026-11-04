@@ -31,7 +31,7 @@ export function SectionHeader({
 }) {
   return (
     <div className={`mb-12 ${align === "center" ? "text-center" : ""}`}>
-      {eyebrow ? <div className="eyebrow mb-3">{eyebrow}</div> : null}
+      {eyebrow ? <div className="eyebrow mb-4">{eyebrow}</div> : null}
       <h2 className="text-3xl font-bold sm:text-4xl">{title}</h2>
       {lead ? (
         <p
@@ -58,7 +58,7 @@ export function PageHero({
   return (
     <section className="border-b border-steel-100 bg-steel-50">
       <div className="container py-16 lg:py-20">
-        <div className="eyebrow mb-3">{eyebrow}</div>
+        <div className="eyebrow mb-4">{eyebrow}</div>
         <h1 className="max-w-3xl text-4xl font-bold sm:text-5xl">{title}</h1>
         {lead ? (
           <p className="mt-6 max-w-2xl text-lg text-steel-600">{lead}</p>

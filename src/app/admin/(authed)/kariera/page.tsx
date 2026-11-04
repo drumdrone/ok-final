@@ -32,22 +32,22 @@ export default async function KarieraAdminPage() {
         </div>
 
         <div className="mt-8 rounded-lg border border-dashed border-steel-300 bg-white p-10 text-center">
-          <h2 className="text-lg font-semibold text-steel-950">
+          <h2 className="text-lg font-semibold leading-6 text-steel-950">
             Convex zatím není napojený
           </h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-steel-600">
             Nastavte{" "}
-            <code className="rounded bg-steel-50 px-1.5 py-0.5 text-xs">
+            <code className="rounded bg-steel-50 px-2 py-1 text-xs">
               NEXT_PUBLIC_CONVEX_URL
             </code>{" "}
             a spusťte{" "}
-            <code className="rounded bg-steel-50 px-1.5 py-0.5 text-xs">
+            <code className="rounded bg-steel-50 px-2 py-1 text-xs">
               npx convex dev
             </code>
             . Pak zde půjde spravovat pozice (tabulka{" "}
-            <code className="rounded bg-steel-50 px-1.5 py-0.5 text-xs">jobs</code>
+            <code className="rounded bg-steel-50 px-2 py-1 text-xs">jobs</code>
             ) a veřejná stránka{" "}
-            <code className="rounded bg-steel-50 px-1.5 py-0.5 text-xs">/kariera</code>{" "}
+            <code className="rounded bg-steel-50 px-2 py-1 text-xs">/kariera</code>{" "}
             je začne zobrazovat.
           </p>
         </div>
