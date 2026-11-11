@@ -49,7 +49,7 @@ export default function EnContactPage() {
             </ContactCard>
 
             {site.contacts.people.map((person) => (
-              <ContactCard key={person.email} title={person.role}>
+              <ContactCard key={person.email} title={person.roleEn}>
                 <div className="font-semibold text-steel-950">{person.name}</div>
                 <div className="mt-2 space-y-1 text-sm">
                   <a href={`mailto:${person.email}`} className="block hover:text-accent-600">
