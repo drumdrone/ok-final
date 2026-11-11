@@ -58,7 +58,7 @@ export const site = {
       {
         name: "Kateřina Čammrová",
         role: "Administrativní pracovnice-účetní",
-        phone: "+420 603 534 364",
+        phone: "+420 608 960 980",
         email: "katerina.cammrova@okfinal.cz",
       },
     ],
