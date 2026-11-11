@@ -3,11 +3,13 @@
 # spustí `npm run build` s NEXT_PUBLIC_CONVEX_URL nastaveným na URL té
 # produkční deployment. Vyžaduje CONVEX_DEPLOY_KEY v Netlify env.
 [build]
-  # Když je CONVEX_DEPLOY_KEY nastavený, nasadíme Convex funkce a build
-  # proběhne s auto-injektnutým NEXT_PUBLIC_CONVEX_URL (datová vrstva
-  # aktivní). Bez klíče jen běžný build — web běží dál, formulář
-  # doručuje přes Resend. Fallback brání rozbití buildu, než je klíč nastaven.
-  command = "if [ -n \"$CONVEX_DEPLOY_KEY\" ]; then npx convex deploy --cmd-url-env-var-name NEXT_PUBLIC_CONVEX_URL --cmd 'npm run build'; else npm run build; fi"
+  # Když je CONVEX_DEPLOY_KEY nastavený a platný, nasadíme Convex funkce
+  # a build proběhne s auto-injektnutým NEXT_PUBLIC_CONVEX_URL (datová
+  # vrstva aktivní). Bez klíče — nebo když je klíč neplatný a `convex
+  # deploy` selže — jen běžný build; web běží dál, formulář doručuje
+  # přes Resend. Fallback brání rozbití deployu, než je klíč nastaven
+  # nebo když vyexpiruje.
+  command = "if [ -n \"$CONVEX_DEPLOY_KEY\" ]; then npx convex deploy --cmd-url-env-var-name NEXT_PUBLIC_CONVEX_URL --cmd 'npm run build' || npm run build; else npm run build; fi"
   publish = ".next"
 
 [build.environment]
