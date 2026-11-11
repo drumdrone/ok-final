@@ -52,7 +52,7 @@ export default async function KarieraPage() {
         {jobs.length === 0 ? (
           <div className="rounded-lg border border-steel-200 bg-white p-10 text-center">
             <h2 className="text-2xl font-bold">Adresa a telefony</h2>
-            <p className="mx-auto mt-3 max-w-xl text-steel-600">
+            <p className="mx-auto mt-4 max-w-xl text-steel-600">
               OK FINAL s.r.o., ul. Nádražní 608, 564 01 Žamberk. IČ: 46506578,
               DIČ: CZ46506578. Tel.: +420 603 534 364.
             </p>

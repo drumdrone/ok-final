@@ -31,7 +31,7 @@ export function PhotoGallery({ photos }: { photos: readonly Photo[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-flow-dense md:grid-cols-12">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-flow-dense md:grid-cols-12">
         {photos.map((photo, index) => (
           <button
             key={photo.src}
@@ -41,7 +41,7 @@ export function PhotoGallery({ photos }: { photos: readonly Photo[] }) {
               photo.feature
                 ? "min-h-72 sm:col-span-2 md:col-span-7 md:row-span-2 md:min-h-[480px]"
                 : index < 3
-                  ? "min-h-56 md:col-span-5 md:min-h-[234px]"
+                  ? "min-h-56 md:col-span-5 md:min-h-[232px]"
                   : "min-h-52 md:col-span-4 md:min-h-[240px]"
             }`}
           >
@@ -74,7 +74,7 @@ export function PhotoGallery({ photos }: { photos: readonly Photo[] }) {
               event.stopPropagation();
               setOpen((open - 1 + photos.length) % photos.length);
             }}
-            className="absolute left-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl text-white sm:flex"
+            className="absolute left-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl text-white sm:flex"
             aria-label="Previous"
           >
             ‹
@@ -92,7 +92,7 @@ export function PhotoGallery({ photos }: { photos: readonly Photo[] }) {
               event.stopPropagation();
               setOpen((open + 1) % photos.length);
             }}
-            className="absolute right-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl text-white sm:flex"
+            className="absolute right-4 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl text-white sm:flex"
             aria-label="Next"
           >
             ›

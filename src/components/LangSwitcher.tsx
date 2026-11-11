@@ -34,7 +34,7 @@ export function LangSwitcher() {
         href={czHref}
         aria-current={isEn ? undefined : "page"}
         className={
-          "px-2.5 py-1.5 transition-colors " +
+          "px-2 py-2 transition-colors " +
           (isEn
             ? "text-steel-500 hover:bg-steel-50 hover:text-steel-900"
             : "bg-steel-900 text-white")
@@ -46,7 +46,7 @@ export function LangSwitcher() {
         href={enHref}
         aria-current={isEn ? "page" : undefined}
         className={
-          "px-2.5 py-1.5 transition-colors " +
+          "px-2 py-2 transition-colors " +
           (isEn
             ? "bg-steel-900 text-white"
             : "text-steel-500 hover:bg-steel-50 hover:text-steel-900")

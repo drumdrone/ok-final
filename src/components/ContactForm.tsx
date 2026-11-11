@@ -93,7 +93,7 @@ export function ContactForm() {
           </svg>
         </div>
         <h3 className="text-xl font-bold text-emerald-900">Poptávka odeslána</h3>
-        <p className="mt-3 text-emerald-800">
+        <p className="mt-4 text-emerald-800">
           Děkujeme. Dílce vám bezplatně naceníme a ozveme se co nejdříve.
         </p>
         <button
@@ -108,8 +108,8 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-      <div className="grid gap-5 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+      <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Jméno" name="name" placeholder="Jan Novák" required />
         <Field label="Firma" name="company" placeholder="Nepovinné" />
         <Field label="E-mail" name="email" type="email" placeholder="jan@firma.cz" />
@@ -149,12 +149,12 @@ export function ContactForm() {
         ) : null}
       </div>
 
-      <label className="flex items-start gap-3 text-sm text-steel-700">
+      <label className="flex items-start gap-4 text-sm text-steel-700">
         <input
           type="checkbox"
           name="gdpr"
           required
-          className="mt-0.5 h-4 w-4 rounded border-steel-300 text-accent-500 focus:ring-accent-500"
+          className="mt-1 h-4 w-4 rounded border-steel-300 text-accent-500 focus:ring-accent-500"
         />
         <span>
           Souhlasím se zpracováním osobních údajů za účelem vyřízení poptávky.{" "}
@@ -165,7 +165,7 @@ export function ContactForm() {
       {error ? (
         <div
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+          className="rounded-md border border-red-200 bg-red-50 px-4 py-4 text-sm text-red-700"
         >
           {error}
         </div>

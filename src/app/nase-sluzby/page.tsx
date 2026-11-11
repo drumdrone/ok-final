@@ -44,17 +44,17 @@ export default function ServicesPage() {
                   0{i + 1}
                 </div>
                 <h2 className="mt-4 text-3xl font-bold">{s.title}</h2>
-                <p className="mt-3 text-lg text-steel-600">{s.short}</p>
+                <p className="mt-4 text-lg text-steel-600">{s.short}</p>
               </div>
               <div>
-                <p className="text-lg leading-relaxed text-steel-700">
+                <p className="text-lg text-steel-700">
                   {s.body}
                 </p>
                 {s.slug === "soustruzeni" ? (
-                  <ol className="mt-6 space-y-3">
+                  <ol className="mt-6 space-y-4">
                     {s.bullets.map((b, bulletIndex) => (
-                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
-                        <span className="w-9 flex-shrink-0 font-display font-bold tabular-nums text-accent-500">
+                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-4">
+                        <span className="w-10 flex-shrink-0 font-display font-bold tabular-nums text-accent-500">
                           {bulletIndex + 1}.
                         </span>
                         <span className="text-steel-700">{b}</span>
@@ -62,21 +62,21 @@ export default function ServicesPage() {
                     ))}
                   </ol>
                 ) : s.slug === "svarovani" ? (
-                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                     {s.bullets.map((b, bulletIndex) => (
                       <li
                         key={`${s.slug}-${bulletIndex}`}
-                        className="rounded-xl border border-steel-200 bg-white p-5 shadow-sm"
+                        className="rounded-xl border border-steel-200 bg-white p-6 shadow-sm"
                       >
-                        <p className="font-semibold leading-snug text-steel-950">{b}</p>
+                        <p className="font-semibold text-steel-950">{b}</p>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                     {s.bullets.map((b, bulletIndex) => (
-                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-3">
-                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-500" />
+                      <li key={`${s.slug}-${bulletIndex}`} className="flex items-start gap-4">
+                        <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-accent-500" />
                         <span className="text-steel-700">{b}</span>
                       </li>
                     ))}

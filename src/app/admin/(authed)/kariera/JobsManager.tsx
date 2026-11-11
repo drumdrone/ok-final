@@ -48,7 +48,7 @@ export function JobsManager({ jobs }: { jobs: Job[] }) {
         </div>
       ) : null}
 
-      <div className="mt-8 space-y-3">
+      <div className="mt-8 space-y-4">
         {jobs.length === 0 ? (
           <div className="rounded-lg border border-dashed border-steel-300 bg-white p-10 text-center">
             <p className="text-steel-600">
@@ -67,13 +67,13 @@ function JobRow({ job }: { job: Job }) {
   const [editing, setEditing] = useState(false);
 
   return (
-    <div className="rounded-lg border border-steel-200 bg-white p-5">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+    <div className="rounded-lg border border-steel-200 bg-white p-6">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <span className="font-semibold text-steel-950">{job.title}</span>
             <span
-              className={`rounded-full border px-2 py-0.5 text-xs font-medium ${
+              className={`rounded-full border px-2 py-1 text-xs font-medium ${
                 job.active
                   ? "border-accent-500/30 bg-accent-500/10 text-accent-700"
                   : "border-steel-300 bg-steel-50 text-steel-500"
@@ -97,7 +97,7 @@ function JobRow({ job }: { job: Job }) {
           <button
             type="button"
             onClick={() => setEditing((v) => !v)}
-            className="rounded-md border border-steel-300 px-3 py-1.5 text-sm text-steel-700 hover:bg-steel-50"
+            className="rounded-md border border-steel-300 px-4 py-2 text-sm text-steel-700 hover:bg-steel-50"
           >
             {editing ? "Zavřít" : "Upravit"}
           </button>
@@ -109,7 +109,7 @@ function JobRow({ job }: { job: Job }) {
       </div>
 
       {editing ? (
-        <div className="mt-5 border-t border-steel-100 pt-5">
+        <div className="mt-6 border-t border-steel-100 pt-6">
           <JobForm
             job={job}
             onDone={() => setEditing(false)}
@@ -214,7 +214,7 @@ function JobForm({
             <option value="en">Angličtina</option>
           </select>
         </Field>
-        <label className="flex items-center gap-2 pb-2.5 text-sm text-steel-700">
+        <label className="flex items-center gap-2 pb-2 text-sm text-steel-700">
           <input
             type="checkbox"
             name="active"
@@ -226,7 +226,7 @@ function JobForm({
       </div>
 
       {state.status === "error" ? (
-        <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+        <div className="rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
           {state.message ?? "Něco se nepovedlo."}
         </div>
       ) : null}
@@ -282,7 +282,7 @@ function DeleteButton({ title }: { title: string }) {
       onClick={(e) => {
         if (!confirm(`Smazat pozici „${title}"?`)) e.preventDefault();
       }}
-      className="rounded-md border border-red-200 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 disabled:opacity-60"
+      className="rounded-md border border-red-200 px-4 py-2 text-sm text-red-600 hover:bg-red-50 disabled:opacity-60"
     >
       {pending ? "Mažu…" : "Smazat"}
     </button>

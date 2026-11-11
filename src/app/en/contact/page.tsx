@@ -33,7 +33,7 @@ export default function EnContactPage() {
             <ContactCard title={t.cardPhone}>
               <a
                 href={`tel:${site.contacts.phone.replace(/\s/g, "")}`}
-                className="text-lg font-semibold text-steel-950 hover:text-accent-600"
+                className="text-lg font-semibold leading-6 text-steel-950 hover:text-accent-600"
               >
                 {site.contacts.phone}
               </a>
@@ -42,14 +42,14 @@ export default function EnContactPage() {
             <ContactCard title={t.cardEmail}>
               <a
                 href={`mailto:${site.contacts.email}`}
-                className="text-lg font-semibold text-steel-950 hover:text-accent-600"
+                className="text-lg font-semibold leading-6 text-steel-950 hover:text-accent-600"
               >
                 {site.contacts.email}
               </a>
             </ContactCard>
 
             {site.contacts.people.map((person) => (
-              <ContactCard key={person.email} title={person.role}>
+              <ContactCard key={person.email} title={person.roleEn}>
                 <div className="font-semibold text-steel-950">{person.name}</div>
                 <div className="mt-2 space-y-1 text-sm">
                   <a href={`mailto:${person.email}`} className="block hover:text-accent-600">
@@ -103,7 +103,7 @@ export default function EnContactPage() {
             <iframe
               title="OK FINAL s.r.o. map"
               src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-              className="h-[320px] w-full sm:h-[420px]"
+              className="h-[320px] w-full sm:h-[416px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
@@ -117,7 +117,7 @@ export default function EnContactPage() {
 
 function ContactCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-lg border border-steel-200 bg-white p-5">
+    <div className="rounded-lg border border-steel-200 bg-white p-6">
       <div className="text-xs font-semibold uppercase tracking-widest text-accent-600">
         {title}
       </div>
